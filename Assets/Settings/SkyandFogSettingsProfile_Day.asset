@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: SkyandFogSettingsProfile
+  m_Name: SkyandFogSettingsProfile_Day
   m_EditorClassIdentifier: 
   components:
   - {fileID: 1142777632297148762}
@@ -374,7 +374,7 @@ MonoBehaviour:
     m_Value: 0
   m_CloudPreset:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 4
   cumulusMap:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -418,8 +418,8 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.05
-        value: 1
+        time: 0.4625023
+        value: 0.45918274
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -519,15 +519,15 @@ MonoBehaviour:
     m_Value: 0.5
   densityMultiplier:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.036
   shapeFactor:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.259
   shapeScale:
     m_OverrideState: 1
     m_Value: 5
   shapeOffset:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0, y: 0, z: 0}
   erosionFactor:
     m_OverrideState: 1
@@ -557,14 +557,14 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.1
   globalWindSpeed:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       mode: 0
-      customValue: 1
+      customValue: 3.57
       additiveValue: 0
       multiplyValue: 0
   orientation:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       mode: 0
       customValue: 0
@@ -642,10 +642,10 @@ MonoBehaviour:
     m_Value: 0
   limitMin:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 4
   limitMax:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: 13
   curveMap:
     m_OverrideState: 0
     m_Value:
