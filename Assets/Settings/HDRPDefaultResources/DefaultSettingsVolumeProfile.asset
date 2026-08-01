@@ -814,6 +814,25 @@ MonoBehaviour:
   saturation:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-1044636954766066331
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2c9e4a1d3f4a7c8e0b5f2d9a6c1e4b, type: 3}
+  m_Name: CS_Mosaic
+  m_EditorClassIdentifier: Assembly-CSharp::CS_Mosaic
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0
+  blockCount:
+    m_OverrideState: 1
+    m_Value: 64
 --- !u!114 &-1016694868962581565
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -945,6 +964,7 @@ MonoBehaviour:
   - {fileID: 3154544600418019398}
   - {fileID: -5454914452981073821}
   - {fileID: -8953450273361782738}
+  - {fileID: -1044636954766066331}
 --- !u!114 &416415831005473971
 MonoBehaviour:
   m_ObjectHideFlags: 3

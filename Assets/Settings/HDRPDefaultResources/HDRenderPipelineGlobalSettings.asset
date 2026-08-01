@@ -304,7 +304,7 @@ MonoBehaviour:
         m_AfterPostProcessCustomPostProcesses:
           m_InjectionPoint: 2
           m_CustomPostProcessTypesAsString:
-          - Mosaic, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          - CS_Mosaic, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     - rid: 7333932294451494920
       type: {class: RenderingPathFrameSettings, ns: UnityEngine.Rendering.HighDefinition, asm: Unity.RenderPipelines.HighDefinition.Runtime}
       data:

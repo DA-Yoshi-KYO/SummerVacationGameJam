@@ -1,4 +1,4 @@
-Shader "Hidden/Shader/Mosaic"
+Shader "Hidden/Shader/SH_Mosaic"
 {
     Properties
     {
@@ -73,7 +73,7 @@ Shader "Hidden/Shader/Mosaic"
     {
         Pass
         {
-            Name "Mosaic"
+            Name "SH_Mosaic"
 
             ZWrite Off
             ZTest Always

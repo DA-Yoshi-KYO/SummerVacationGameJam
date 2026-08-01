@@ -54,7 +54,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {x: 0, y: -6378100, z: 0}
   type:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   atmosphericScattering:
     m_OverrideState: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: SkyandFogSettingsProfile_Day
+  m_Name: SkyAndFogSettingsProfile_Day
   m_EditorClassIdentifier: 
   components:
   - {fileID: 1142777632297148762}
@@ -275,26 +275,6 @@ MonoBehaviour:
   - {fileID: 7642060734654139733}
   - {fileID: 5423918273645102938}
   - {fileID: -600138462465283595}
-  - {fileID: 900003001}
---- !u!114 &900003001
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b2c9e4a1d3f4a7c8e0b5f2d9a6c1e4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0
-  blockCount:
-    m_OverrideState: 1
-    m_Value: 64
 --- !u!114 &1142777632297148762
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -461,14 +441,23 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.4625023
-        value: 0.45918274
-        inSlope: 0
-        outSlope: 0
+        time: 0.08749467
+        value: 0.3564186
+        inSlope: 0.5246603
+        outSlope: 0.5246603
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.10895906
+      - serializedVersion: 3
+        time: 0.6993942
+        value: 0.20982364
+        inSlope: -0.8204005
+        outSlope: -0.8204005
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.9
         value: 0
@@ -565,7 +554,7 @@ MonoBehaviour:
     m_Value: 0.036
   shapeFactor:
     m_OverrideState: 1
-    m_Value: 0.259
+    m_Value: 0.304
   shapeScale:
     m_OverrideState: 1
     m_Value: 5
