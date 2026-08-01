@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// 右クリック等でADSに入った際、メインカメラをスコープの接眼位置へ寄せ、
@@ -24,17 +23,17 @@ public class CS_ADSController : MonoBehaviour
     public CS_ScopeRig activeScope; // 現在装備中の武器が持つScopeRig
     public CS_ReticleOverlay reticle; // 中央の赤ドット/十字線オーバーレイ(任意)
 
-    private bool _isAiming;
-    private float _blend; // 0=ヒップファイア, 1=ADS
+    private bool isAiming;
+    private float blend; // 0=ヒップファイア, 1=ADS
 
     void Update()
     {
         var player = CS_InputManager.readInstance.customInputSystem.Player;
         SetAiming(player.Aim.IsPressed());
 
-        float target = _isAiming ? 1f : 0f;
-        _blend = Mathf.MoveTowards(_blend, target, Time.deltaTime * adsTransitionSpeed);
-        float eased = easing.Evaluate(_blend);
+        float target = isAiming ? 1f : 0f;
+        blend = Mathf.MoveTowards(blend, target, Time.deltaTime * adsTransitionSpeed);
+        float eased = easing.Evaluate(blend);
 
         if (adsAlignPoint != null && hipFireHold != null)
         {
@@ -58,7 +57,7 @@ public class CS_ADSController : MonoBehaviour
                 reticle.SetVisible(shouldRender);
 
             // 覗いている間だけホイールで倍率切り替え(タルコフの倍率変更操作)
-            if (_isAiming)
+            if (isAiming)
             {
                 float scroll = player.Zoom.ReadValue<float>();
                 if (player.Zoom.WasPerformedThisFrame() && Mathf.Abs(scroll) > 0.01f)
@@ -83,10 +82,10 @@ public class CS_ADSController : MonoBehaviour
 
     public void SetAiming(bool aiming)
     {
-        _isAiming = aiming;
+        isAiming = aiming;
     }
 
-    public bool IsFullyAimed => _blend > 0.95f;
+    public bool IsFullyAimed => blend > 0.95f;
 
     /// <summary>
     /// ADS中はスコープ倍率に応じてマウス感度を下げる。CS_PlayerLookから参照する。
@@ -97,7 +96,7 @@ public class CS_ADSController : MonoBehaviour
         get
         {
             if (activeScope == null) return 1f;
-            float eased = easing.Evaluate(_blend);
+            float eased = easing.Evaluate(blend);
             float zoomedMultiplier = 1f / Mathf.Max(1f, activeScope.CurrentMagnification);
             return Mathf.Lerp(1f, zoomedMultiplier, eased);
         }

@@ -17,7 +17,7 @@ public class CS_ScopeRig : MonoBehaviour
     [Header("ズーム設定")]
     [Tooltip("スコープの倍率一覧(例: 4倍, 8倍)")]
     public float[] zoomLevels = { 4f, 8f };
-    private int _zoomIndex = 0;
+    private int zoomIndex = 0;
 
     [Tooltip("裸眼相当のFOV。ここから倍率で割って算出する")]
     public float baseFov = 60f;
@@ -28,31 +28,30 @@ public class CS_ScopeRig : MonoBehaviour
     [Tooltip("負荷が気になる場合はここでMSAAを制御")]
     public int msaaSamples = 1;
 
-    private Camera _scopeCamera;
-    private RenderTexture _rt;
-    private static readonly int MainTexId = Shader.PropertyToID("_ScopeTex");
+    private Camera scopeCamera;
+    private RenderTexture rt;
+    private static readonly int mainTexId = Shader.PropertyToID("_ScopeTex");
 
     void Awake()
     {
-        _scopeCamera = GetComponent<Camera>();
-
+        scopeCamera = GetComponent<Camera>();
         // ---- RenderTextureを動的生成 ----
-        _rt = new RenderTexture(renderTextureSize, renderTextureSize, 16, RenderTextureFormat.DefaultHDR)
+        rt = new RenderTexture(renderTextureSize, renderTextureSize, 16, RenderTextureFormat.DefaultHDR)
         {
             antiAliasing = Mathf.Max(1, msaaSamples),
             filterMode = FilterMode.Bilinear,
             useMipMap = false,
             name = "ScopeRT_" + gameObject.name
         };
-        _rt.Create();
+        rt.Create();
 
-        _scopeCamera.targetTexture = _rt;
-        _scopeCamera.enabled = false; // 手動でRenderさせる(常時Updateで回さない=負荷軽減)
+        scopeCamera.targetTexture = rt;
+        scopeCamera.enabled = false; // 手動でRenderさせる(常時Updateで回さない=負荷軽減)
 
         if (lensRenderer != null)
         {
             // マテリアルインスタンスを作ってRTを割り当て
-            lensRenderer.material.SetTexture(MainTexId, _rt);
+            lensRenderer.material.SetTexture(mainTexId, rt);
         }
 
         ApplyZoom();
@@ -68,9 +67,9 @@ public class CS_ScopeRig : MonoBehaviour
 
         // Camera.onPreCullはHDRP等のSRPでは発火しないため、直接毎フレーム描画する
         // (このコンポーネント自体がADS中だけenabledになるので、負荷は自然に抑えられる)
-        if (_scopeCamera != null)
+        if (scopeCamera != null)
         {
-            _scopeCamera.Render();
+            scopeCamera.Render();
         }
     }
 
@@ -78,18 +77,18 @@ public class CS_ScopeRig : MonoBehaviour
     public void CycleZoom(int direction)
     {
         if (zoomLevels.Length == 0) return;
-        _zoomIndex = (_zoomIndex + direction + zoomLevels.Length) % zoomLevels.Length;
+        zoomIndex = (zoomIndex + direction + zoomLevels.Length) % zoomLevels.Length;
         ApplyZoom();
     }
 
     private void ApplyZoom()
     {
-        float mag = zoomLevels[_zoomIndex];
-        _scopeCamera.fieldOfView = baseFov / mag;
+        float mag = zoomLevels[zoomIndex];
+        scopeCamera.fieldOfView = baseFov / mag;
     }
 
     /// <summary>現在の倍率。マウス感度をズームに応じて下げる際に使う。</summary>
-    public float CurrentMagnification => zoomLevels.Length > 0 ? zoomLevels[_zoomIndex] : 1f;
+    public float CurrentMagnification => zoomLevels.Length > 0 ? zoomLevels[zoomIndex] : 1f;
 
     /// <summary>
     /// スコープの位置を武器のマウント位置に追従させる。
@@ -104,10 +103,10 @@ public class CS_ScopeRig : MonoBehaviour
 
     void OnDestroy()
     {
-        if (_rt != null)
+        if (rt != null)
         {
-            _scopeCamera.targetTexture = null;
-            _rt.Release();
+            scopeCamera.targetTexture = null;
+            rt.Release();
         }
     }
 }

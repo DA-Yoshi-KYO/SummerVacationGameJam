@@ -15,7 +15,7 @@ public class CS_ReticleOverlay : MonoBehaviour
     public float lineThickness = 2f;
     public float gapFromCenter = 14f;
 
-    private GameObject _root;
+    private GameObject root;
 
     void Awake()
     {
@@ -25,8 +25,8 @@ public class CS_ReticleOverlay : MonoBehaviour
 
     public void SetVisible(bool visible)
     {
-        if (_root != null)
-            _root.SetActive(visible);
+        if (root != null)
+            root.SetActive(visible);
     }
 
     private void BuildReticle()
@@ -42,8 +42,8 @@ public class CS_ReticleOverlay : MonoBehaviour
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1920, 1080);
 
-        _root = new GameObject("Reticle", typeof(RectTransform));
-        _root.transform.SetParent(canvasGO.transform, false);
+        root = new GameObject("Reticle", typeof(RectTransform));
+        root.transform.SetParent(canvasGO.transform, false);
 
         float halfSpan = gapFromCenter + lineLength * 0.5f;
         CreateBar("Dot", Vector2.zero, new Vector2(dotSize, dotSize));
@@ -56,7 +56,7 @@ public class CS_ReticleOverlay : MonoBehaviour
     private void CreateBar(string name, Vector2 anchoredPos, Vector2 size)
     {
         var go = new GameObject(name, typeof(Image));
-        go.transform.SetParent(_root.transform, false);
+        go.transform.SetParent(root.transform, false);
 
         var img = go.GetComponent<Image>();
         img.color = reticleColor;
