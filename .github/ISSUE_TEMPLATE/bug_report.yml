@@ -18,8 +18,8 @@ body:
       options:
         - 最優先・即対応
         - 優先度高
-        - 通常
+        - 優先度中
         - 優先度低
       default: 2
-      validations:
-        required: true
+    validations:
+      required: true
