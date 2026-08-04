@@ -7,6 +7,8 @@ body:
   - type: textarea
     id: description
     attributes:
+      placeholder: |
+        例: 特定の位置でスコープを除くと画面が真っ黒になる(動画添付)
       label: 概要
     validations:
       required: true

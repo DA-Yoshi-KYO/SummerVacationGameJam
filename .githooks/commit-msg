@@ -12,7 +12,7 @@ case "$first_line" in
         ;;
 esac
 
-pattern='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci|revert)(\([a-zA-Z0-9_-]+\))?: .+'
+pattern='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci|revert|update)(\([a-zA-Z0-9_-]+\))?: .+'
 
 if ! echo "$first_line" | grep -qE "$pattern"; then
     echo "エラー: コミットメッセージにprefixがありません。" >&2
