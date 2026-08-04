@@ -1,7 +1,9 @@
-name: バグ報告
-description: 不具合を報告する
-title: "バグ:"
-labels: ["バグ修正"]
+# add-spec-link.ymlのリンク部分と同時に修正・追加・削除をすること
+
+name: 実装依頼
+description: 新しいタスクを依頼する
+title: "依頼:"
+labels: ["実装"]
 # milestone: 開始時に変更
 projects: ["DA-Yoshi-KYO/14"]
 body:
@@ -24,5 +26,15 @@ body:
         - 優先度中
         - 優先度低
       default: 2
+    validations:
+      required: true
+  - type: dropdown
+    id: spec_page
+    attributes:
+      label: 関連する仕様書ページ
+      description: 該当するページを選択してください(リンクは自動でコメントされます)
+      options:
+        - 変更履歴
+        - プレイヤー
     validations:
       required: true
