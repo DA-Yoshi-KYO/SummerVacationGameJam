@@ -1,0 +1,42 @@
+name: Commit Message Lint
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  check-prefix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check commit message prefixes
+        run: |
+          set -e
+          pattern='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci|revert)(\([a-zA-Z0-9_-]+\))?: .+'
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+
+          failed=0
+          while IFS= read -r sha; do
+            subject=$(git log -1 --format='%s' "$sha")
+            case "$subject" in
+              "Merge "*|"fixup! "*|"squash! "*)
+                continue
+                ;;
+            esac
+            if ! echo "$subject" | grep -qE "$pattern"; then
+              echo "::error::prefixがありません: \"$subject\" ($sha)"
+              failed=1
+            fi
+          done < <(git rev-list "$base..$head")
+
+          if [ "$failed" -eq 1 ]; then
+            echo ""
+            echo "使用可能なprefix: feat, fix, docs, style, refactor, perf, test, chore, build, ci, revert"
+            echo "例: feat: ○○機能を追加"
+            exit 1
+          fi
