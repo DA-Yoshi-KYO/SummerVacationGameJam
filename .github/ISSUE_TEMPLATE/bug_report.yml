@@ -1,7 +1,8 @@
 name: バグ報告
 description: 不具合を報告する
-title: "[BUG]: "
-labels: ["bug"]
+title: "バグ： "
+labels: ["バグ修正"]
+projects: ["DA-Yoshi-KYO/14"]
 body:
   - type: textarea
     id: description
@@ -9,3 +10,16 @@ body:
       label: 概要
     validations:
       required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 優先度
+      description: このIssueの優先度を選択してください
+      options:
+        - 最優先・即対応
+        - 優先度高
+        - 通常
+        - 優先度低
+      default: 2
+      validations:
+        required: true
