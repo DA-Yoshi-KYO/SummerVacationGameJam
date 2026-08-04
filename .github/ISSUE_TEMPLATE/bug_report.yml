@@ -1,0 +1,11 @@
+name: バグ報告
+description: 不具合を報告する
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 概要
+    validations:
+      required: true
