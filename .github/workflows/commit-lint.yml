@@ -16,7 +16,7 @@ jobs:
       - name: Check commit message prefixes
         run: |
           set -e
-          pattern='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci|revert)(\([a-zA-Z0-9_-]+\))?: .+'
+          pattern='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci|revert|update)(\([a-zA-Z0-9_-]+\))?: .+'
           base="${{ github.event.pull_request.base.sha }}"
           head="${{ github.event.pull_request.head.sha }}"
 
@@ -36,7 +36,7 @@ jobs:
 
           if [ "$failed" -eq 1 ]; then
             echo ""
-            echo "使用可能なprefix: feat, fix, docs, style, refactor, perf, test, chore, build, ci, revert"
+            echo "使用可能なprefix: feat, fix, docs, style, refactor, perf, test, chore, build, ci, revert, update"
             echo "例: feat: ○○機能を追加"
             exit 1
           fi
