@@ -19,3 +19,10 @@
 
 *.pdf binary
 *.md text eol=lf
+
+# NightDemoTerrainData.asset is Unity's binary TerrainData serialization
+# (not YAML), despite the .asset extension. The generic "*.asset" rule
+# above treats it as text/eol=lf, which corrupts comparisons on random
+# CRLF-like byte sequences in the binary data and produces a phantom
+# "modified" status that survives discard. Force it back to binary.
+Assets/Terrain/NightDemoTerrainData.asset binary
