@@ -18,13 +18,13 @@ MonoBehaviour:
     m_Value: 2
   enabled:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   enabledTransparent:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   tracing:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   m_MinSmoothness:
     m_OverrideState: 1
     m_Value: 0.9
@@ -71,10 +71,10 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 64
   rayMiss:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 3
   lastBounceFallbackHierarchy:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 3
   ambientProbeDimmer:
     m_OverrideState: 0
@@ -444,10 +444,10 @@ MonoBehaviour:
     m_Value: 1
   rayTracing:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   directLightingStrength:
     m_OverrideState: 1
     m_Value: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 4294967295
   specularOcclusion:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.5
   occluderMotionRejection:
     m_OverrideState: 0
@@ -601,6 +601,7 @@ MonoBehaviour:
   - {fileID: -2880836133219188943}
   - {fileID: 8647564161856621884}
   - {fileID: -1088480491398372936}
+  - {fileID: 7036728694157140077}
 --- !u!114 &1142777632297148762
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1019,6 +1020,49 @@ MonoBehaviour:
   shadowOpacityFallback:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &7036728694157140077
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d877a03bef431a847adca8ab343db3e1, type: 3}
+  m_Name: RayTracingSettings
+  m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.RayTracingSettings
+  active: 1
+  rayBias:
+    m_OverrideState: 1
+    m_Value: 0.001
+  distantRayBias:
+    m_OverrideState: 1
+    m_Value: 0.001
+  extendShadowCulling:
+    m_OverrideState: 1
+    m_Value: 1
+  extendCameraCulling:
+    m_OverrideState: 1
+    m_Value: 0
+  directionalShadowRayLength:
+    m_OverrideState: 1
+    m_Value: 1000
+  directionalShadowFallbackIntensity:
+    m_OverrideState: 1
+    m_Value: 1
+  buildMode:
+    m_OverrideState: 1
+    m_Value: 0
+  cullingMode:
+    m_OverrideState: 1
+    m_Value: 0
+  cullingDistance:
+    m_OverrideState: 1
+    m_Value: 1000
+  minSolidAngle:
+    m_OverrideState: 1
+    m_Value: 4
 --- !u!114 &7642060734654139733
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1191,7 +1235,7 @@ MonoBehaviour:
     m_Value: 1
   tracing:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   rayMiss:
     m_OverrideState: 0
     m_Value: 3
