@@ -1,5 +1,5 @@
 // Confluenceページが更新された際、ページ内の「変更履歴」見出し直下にある表を
-// 更新前後のバージョンで比較し、新しく追加された行だけをDiscordに通知する。
+// 更新前後のバージョンで比較し、新しく追加された行・内容が変更された行をDiscordに通知する。
 //
 // 必要な環境変数:
 //   CONFLUENCE_BASE_URL   例: https://summervacationgamejam.atlassian.net
@@ -12,8 +12,9 @@
 // 実装メモ:
 // - Confluence REST API v1 の `content` エンドポイントに `version` パラメータを付けると、
 //   指定バージョン時点の本文を取得できる(要現地確認・現状ドキュメント上の挙動に基づく実装)。
-// - 表の「新規行」判定は、行数が増えていたら末尾に増えた分を新規行とみなす単純な方式。
-//   途中への挿入・行の並び替え・削除には対応しない。
+// - 表の「新規/変更行」判定は、行内容(セルの結合文字列)を多重集合として比較する方式。
+//   直前バージョンの行内容と一致しない行(新規追加・既存行の文字変更・途中への挿入を含む)を
+//   通知対象とする。行の削除や、内容が全く同じままの並び替えは通知対象にならない。
 
 const REQUIRED = [
   "CONFLUENCE_BASE_URL",
@@ -119,7 +120,7 @@ async function postToDiscord({ webhookUrl, pageTitle, pageUrl, headerRow, newRow
   });
 
   const content =
-    `📝 **${pageTitle}** の変更履歴に新しい行が追加されました\n${pageUrl}\n\n` +
+    `📝 **${pageTitle}** の変更履歴に新規/変更行があります\n${pageUrl}\n\n` +
     blocks.map((b) => `---\n${b}`).join("\n");
 
   const res = await fetch(webhookUrl, {
@@ -182,18 +183,30 @@ async function main() {
 
   console.log(`現在の行数: ${currentData.length} / 直前バージョンの行数: ${previousData.length}`);
 
-  if (currentData.length <= previousData.length) {
-    console.log("新規に追加された行はありませんでした(行数が増えていません)。");
-    return;
+  // 直前バージョンの行内容を多重集合(出現回数つき)として持ち、現在の各行が
+  // 直前バージョンの「未消費の」同一内容行と一致するかどうかを順に判定する。
+  // 一致すれば「そのまま残っていた行」として消費し、一致しなければ
+  // 「新規に追加された行」または「内容が変更された行」とみなす。
+  // これにより、末尾への追加だけでなく、既存行の文字変更や途中への挿入も拾える。
+  const previousKeyCounts = new Map();
+  for (const r of previousData) {
+    const k = rowKey(r.cells);
+    previousKeyCounts.set(k, (previousKeyCounts.get(k) || 0) + 1);
   }
 
-  // 直前バージョンに存在した行(内容一致)を除いた、末尾側の増分を新規行とみなす
-  const previousKeys = new Set(previousData.map((r) => rowKey(r.cells)));
-  const tailCandidates = currentData.slice(previousData.length);
-  const newRows = tailCandidates.filter((r) => !previousKeys.has(rowKey(r.cells)));
+  const newRows = [];
+  for (const r of currentData) {
+    const k = rowKey(r.cells);
+    const remaining = previousKeyCounts.get(k) || 0;
+    if (remaining > 0) {
+      previousKeyCounts.set(k, remaining - 1);
+    } else {
+      newRows.push(r);
+    }
+  }
 
   if (newRows.length === 0) {
-    console.log("末尾の行が直前バージョンと同一内容のため、新規行なしと判断しました。");
+    console.log("新規または変更された行はありませんでした。");
     return;
   }
 
