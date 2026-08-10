@@ -10,8 +10,9 @@
 //   CHANGELOG_HEADING     変更履歴表の直前にある見出しの文字列(既定値: "仕様書の変更ログ")
 //
 // 実装メモ:
-// - Confluence REST API v1 の `content` エンドポイントに `version` パラメータを付けると、
-//   指定バージョン時点の本文を取得できる(要現地確認・現状ドキュメント上の挙動に基づく実装)。
+// - Confluence REST API v1 の `content` エンドポイントで過去バージョンの本文を取得するには、
+//   `version` パラメータと合わせて `status=historical` を指定する必要がある(実機で確認済み。
+//   `status=any` では "Only historical content can be fetched by version" エラーになる)。
 // - 表の「新規/変更行」判定は、行内容(セルの結合文字列)を多重集合として比較する方式。
 //   直前バージョンの行内容と一致しない行(新規追加・既存行の文字変更・途中への挿入を含む)を
 //   通知対象とする。行の削除や、内容が全く同じままの並び替えは通知対象にならない。
@@ -96,7 +97,7 @@ function parseTableRows(tableHtml) {
 }
 
 async function fetchPageVersion({ baseUrl, headers, pageId, version }) {
-  const versionParam = version ? `&version=${version}&status=any` : "";
+  const versionParam = version ? `&version=${version}&status=historical` : "";
   const url = `${baseUrl}/wiki/rest/api/content/${pageId}?expand=body.storage,version,space${versionParam}`;
   const res = await fetch(url, { headers });
   if (!res.ok) {
