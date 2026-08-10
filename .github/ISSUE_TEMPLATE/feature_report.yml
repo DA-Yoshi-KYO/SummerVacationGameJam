@@ -37,18 +37,9 @@ body:
       options:
         # BEGIN AUTO-GENERATED spec-pages
         - 変更履歴
-        - プレイヤー
-        - 概要
-        - 概要
-        - Untitled live doc 2026-08-09
-        - エネミー
         - 仕様書フォーマット
-        - SummerVacationGameJam
-        - Untitled live doc 2026-08-09
-        - Untitled live doc 2026-08-09
-        - 概要
-        - 会社ハブへようこそ!
-        - 概要
+        - プレイヤー
+        - エネミー
         # END AUTO-GENERATED spec-pages
     validations:
       required: true

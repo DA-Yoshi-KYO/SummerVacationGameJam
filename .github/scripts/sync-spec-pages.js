@@ -9,9 +9,9 @@
 //   CONFLUENCE_SPACE_KEY  例: MFS
 //   CONFLUENCE_FOLDER_ID  仕様書フォルダのID 例: 65812
 //
-// 注意: 「フォルダー」型コンテンツの子ページ取得APIは比較的新しいConfluence機能のため、
-// 実際にAtlassian環境で一度実行してエンドポイントが想定通り動くか確認すること。
-// 失敗した場合はエラーメッセージに従ってエンドポイントを見直す。
+// 実装メモ: 子ページ取得には CQL検索 API (`ancestor = <folderId>`) を使う。
+// v2の pages/folders 系エンドポイントは parent-id 指定時にフォルダ配下へ正しく絞り込めず、
+// スペース内の無関係なページまで返ってくることが実際に確認されたため使用しない。
 
 const fs = require("fs");
 const path = require("path");
@@ -38,38 +38,46 @@ async function fetchConfluenceFolderChildren({ baseUrl, email, apiToken, folderI
     Accept: "application/json",
   };
 
-  // 候補1: v2 API の pages 一覧を parent-id で絞り込む
-  const candidateUrls = [
-    `${baseUrl}/wiki/api/v2/pages?parent-id=${folderId}&limit=100`,
-    `${baseUrl}/wiki/api/v2/folders/${folderId}/direct-children?limit=100`,
-  ];
+  const cql = `ancestor = ${folderId}`;
+  const results = [];
+  let url = `${baseUrl}/wiki/rest/api/content/search?cql=${encodeURIComponent(cql)}&limit=100`;
 
-  let lastError = null;
-  for (const url of candidateUrls) {
-    try {
-      const res = await fetch(url, { headers });
-      if (!res.ok) {
-        lastError = new Error(`${url} -> HTTP ${res.status}: ${await res.text()}`);
-        continue;
-      }
-      const json = await res.json();
-      const results = json.results || [];
-      if (results.length === 0 && candidateUrls.indexOf(url) === 0) {
-        // 空でも成功扱い(フォルダ配下が本当に空の可能性があるため)だが、
-        // 念のため次の候補も試さずここで確定させる
-      }
-      return results.map((item) => ({
-        id: item.id,
-        title: item.title,
-      }));
-    } catch (err) {
-      lastError = err;
+  while (url) {
+    const res = await fetch(url, { headers });
+    if (!res.ok) {
+      throw new Error(`${url} -> HTTP ${res.status}: ${await res.text()}`);
     }
+    const json = await res.json();
+    for (const item of json.results || []) {
+      // "page" 以外(blogpost 等)や、フォルダ自身が混ざるのを避ける
+      if (item.type === "page") {
+        results.push({ id: item.id, title: item.title });
+      }
+    }
+    url = json._links && json._links.next ? `${baseUrl}${json._links.next}` : null;
   }
 
-  throw new Error(
-    `Confluence APIから子ページ一覧を取得できませんでした。エンドポイントの見直しが必要な可能性があります。最後のエラー: ${lastError}`
-  );
+  return results;
+}
+
+function dedupeByTitle(pages) {
+  const seen = new Set();
+  const result = [];
+  const skipped = [];
+  for (const p of pages) {
+    if (seen.has(p.title)) {
+      skipped.push(p.title);
+      continue;
+    }
+    seen.add(p.title);
+    result.push(p);
+  }
+  if (skipped.length > 0) {
+    console.log(
+      `タイトルが重複していたため除外した項目(ドロップダウンには最初の1件のみ残します): ${skipped.join(", ")}`
+    );
+  }
+  return result;
 }
 
 function loadSpecPages() {
@@ -130,7 +138,7 @@ async function main() {
   const added = [...afterTitles].filter((t) => !beforeTitles.has(t));
   const removed = [...beforeTitles].filter((t) => !afterTitles.has(t));
 
-  data.pages = [...manualPages, ...confluencePages];
+  data.pages = dedupeByTitle([...manualPages, ...confluencePages]);
   saveSpecPages(data);
 
   regenerateFeatureReportOptions(data.pages.map((p) => p.title));
