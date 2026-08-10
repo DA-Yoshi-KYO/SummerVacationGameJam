@@ -37,8 +37,9 @@ body:
       options:
         # BEGIN AUTO-GENERATED spec-pages
         - 変更履歴
-        - 仕様書フォーマット
         - プレイヤー
+        - 仕様書フォーマット
+        - UI
         - エネミー
         # END AUTO-GENERATED spec-pages
     validations:
