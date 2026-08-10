@@ -1,4 +1,5 @@
-# add-spec-link.ymlのリンク部分と同時に修正・追加・削除をすること
+# 選択肢の追加・削除は .github/spec-pages.json を編集すること
+# options 内の AUTO-GENERATED の範囲は sync-spec-pages ワークフロー(ボタン実行)が自動で書き換えます。手動編集した場合は次回実行時に上書きされます
 
 name: 実装依頼
 description: 新しいタスクを依頼する
@@ -34,7 +35,9 @@ body:
       label: 関連する仕様書ページ
       description: 該当するページを選択してください(リンクは自動でコメントされます)
       options:
+        # BEGIN AUTO-GENERATED spec-pages
         - 変更履歴
         - プレイヤー
+        # END AUTO-GENERATED spec-pages
     validations:
       required: true

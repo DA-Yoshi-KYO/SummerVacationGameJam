@@ -1,4 +1,5 @@
-# feature_report.ymlのリンク部分と同時に修正・追加・削除をすること
+# 選択肢の追加・削除は .github/spec-pages.json を編集すること
+# (Confluence由来の項目は sync-spec-pages ワークフローのボタン実行でも更新できます)
 
 name: Add Spec Link Comment
 
@@ -13,14 +14,17 @@ jobs:
   add-spec-link:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Post spec page link as comment
         uses: actions/github-script@v7
         with:
           script: |
-            const urlMap = {
-              "変更履歴": "https://nkzacjp-my.sharepoint.com/:x:/g/personal/nhs30106_nhs_hal_ac_jp/IQASBhsy1LBJTZ76GQPU3gknAZnHYgmc3kSP1ii2sYur7uU?e=tIhPul",
-              "プレイヤー": "https://nkzacjp-my.sharepoint.com/:x:/g/personal/nhs30106_nhs_hal_ac_jp/IQASBhsy1LBJTZ76GQPU3gknAZnHYgmc3kSP1ii2sYur7uU?e=tIhPul",
-            };
+            const fs = require("fs");
+
+            const data = JSON.parse(fs.readFileSync(".github/spec-pages.json", "utf8"));
+            const urlMap = Object.fromEntries(data.pages.map(p => [p.title, p.url]));
 
             const body = context.payload.issue.body || "";
             const match = body.match(/### 関連する仕様書ページ\s*\n\s*(.+)/);
