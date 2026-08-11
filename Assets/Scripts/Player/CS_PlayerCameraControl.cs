@@ -56,7 +56,6 @@ public class CS_PlayerCameraController : MonoBehaviour
     [SerializeField]
     private float _distance = 15f;
 
-
     private float _yaw;
     private float _pitch;
 
@@ -65,9 +64,11 @@ public class CS_PlayerCameraController : MonoBehaviour
 
     private void Start()
     {
+        // カーソルをロックする
         Cursor.lockState =
             CursorLockMode.Locked;
 
+        // カーソルを非表示にする
         Cursor.visible = false;
 
         // カメラの初期位置
@@ -92,8 +93,10 @@ public class CS_PlayerCameraController : MonoBehaviour
     /// </summary>
     private void UpdateFollow()
     {
+        // 追従ターゲット場合は追従しない
         if (_cameraFollowTarget == null) { return; }
 
+        // プレイヤーのワールド座標を取得
         Vector3 targetPosition = _cameraFollowTarget.position; 
 
         // プレイヤーのスクリーン座標を取得
@@ -117,6 +120,7 @@ public class CS_PlayerCameraController : MonoBehaviour
 
         if (edgeDistance > _screenEdgeThreshold)
         {
+            // 画面端に近づいた割合を計算
             float t = 
                 Mathf.InverseLerp(
                     _screenEdgeThreshold,
@@ -124,6 +128,7 @@ public class CS_PlayerCameraController : MonoBehaviour
                     edgeDistance
                     );
 
+            // 追従速度を補間
             smoothTime = 
                 Mathf.Lerp(
                     _followSmoothTime, 
@@ -159,6 +164,7 @@ public class CS_PlayerCameraController : MonoBehaviour
     /// </summary>
     private void UpdateLook()
     {
+        // カメラの回転入力を取得
         Vector2 lookInput =
             CS_InputManager.readInstance.customInputSystem.Player.Look.ReadValue<Vector2>();
 

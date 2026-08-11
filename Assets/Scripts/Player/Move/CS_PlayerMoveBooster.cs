@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class CS_PlayerMoveBooster : MonoBehaviour
 {
+    [Header("===== 参照 =====")]
+
+    [Tooltip("プレイヤーのステータスSO")]
     [SerializeField]
     private SO_PlayerMoveStatus _stats;
 
+    [Tooltip("プレイヤーの入力情報")]
     [SerializeField]
     private CS_PlayerMoveInput _input;
 
+    [Tooltip("プレイヤーのエネルギー管理")]
     [SerializeField]
     private CS_PlayerMoveEnergy _energy;
 
+    /// <summary>
+    /// ブースト中かどうか
+    /// </summary>
     public bool IsBoosting { get; private set; }
 
     /// <summary>
@@ -18,20 +26,15 @@ public class CS_PlayerMoveBooster : MonoBehaviour
     /// </summary>
     public float CurrentBoostForce { get; private set; }
 
-    /// <summary>
-    /// ブースト開始からの時間
-    /// </summary>
+    [Tooltip("ブースト開始からの時間")]
     private float _boostTimer;
 
-    /// <summary>
-    /// 前フレームのブースト入力
-    /// </summary>
+    [Tooltip("前フレームのブースト入力")]
     private bool _previousBoostInput;
 
-    /// <summary>
-    /// ブースト入力を離してからの時間
-    /// </summary>
+    [Tooltip("ブースト入力を離してからの時間")]
     private float _releaseBoostInputTimer;
+
 
     private void Awake()
     {
@@ -43,6 +46,9 @@ public class CS_PlayerMoveBooster : MonoBehaviour
         UpdateBoost();
     }
 
+    /// <summary>
+    /// ブーストの状態を更新
+    /// </summary>
     private void UpdateBoost()
     {
         bool boostInput = _input.BoostInput;
@@ -148,15 +154,18 @@ public class CS_PlayerMoveBooster : MonoBehaviour
         // 初動ブースト中
         if (_boostTimer < _stats.boostInitialDuration)
         {
+            // 初動ブーストの時間を0～1に正規化
             float normalizedTime =
                 _boostTimer /
                 _stats.boostInitialDuration;
 
+            // 初動ブーストのカーブ値を取得
             float curveValue =
                 _stats.boostInitialCurve.Evaluate(
                     normalizedTime
                 );
 
+            // 初動ブーストのカーブ値を使って、初動ブースト力と継続ブースト力を補間
             CurrentBoostForce =
                 Mathf.Lerp(
                     _stats.boostContinuousForce,
@@ -173,7 +182,7 @@ public class CS_PlayerMoveBooster : MonoBehaviour
     }
 
     /// <summary>
-    /// EN消費
+    /// エネルギー消費
     /// </summary>
     private void ConsumeEnergy()
     {

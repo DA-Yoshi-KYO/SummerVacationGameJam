@@ -2,12 +2,22 @@ using UnityEngine;
 
 public class CS_PlayerMoveEnergy : MonoBehaviour
 {
+    [Header("===== 参照 =====")]
+
+    [Tooltip("プレイヤーのステータスSO")]
     [SerializeField]
     private SO_PlayerMoveStatus _stats;
 
+    /// <summary>
+    /// 現在のエネルギー値
+    /// </summary>
     public float CurrentEnergy { get; private set; }
 
+    /// <summary>
+    /// 最大エネルギー値
+    /// </summary>
     public float MaxEnergy => _stats.maxEnergy;
+
 
     private void Awake()
     {
@@ -22,9 +32,11 @@ public class CS_PlayerMoveEnergy : MonoBehaviour
     }
 
     /// <summary>
-    /// ENを消費する
+    /// エネルギーを消費する
     /// </summary>
-    /// <returns>消費できた場合true</returns>
+    /// <returns>
+    /// true: 消費成功 false : 消費失敗
+    /// </returns>
     public bool TryConsume(float amount)
     {
         if (CurrentEnergy < amount)
@@ -38,7 +50,7 @@ public class CS_PlayerMoveEnergy : MonoBehaviour
     }
 
     /// <summary>
-    /// ENを強制的に消費する
+    /// エネルギーを強制的に消費する
     /// </summary>
     public void Consume(float amount)
     {
@@ -49,7 +61,7 @@ public class CS_PlayerMoveEnergy : MonoBehaviour
     }
 
     /// <summary>
-    /// ENを回復する
+    /// エネルギーを回復する
     /// </summary>
     [ContextMenu("エネルギー回復")]
     private void RecoverEnergy()
@@ -60,6 +72,9 @@ public class CS_PlayerMoveEnergy : MonoBehaviour
     /// <summary>
     /// ブースト可能か
     /// </summary>
+    /// <returns>
+    /// true: ブースト可能 false : ブースト不可
+    /// </returns>
     public bool CanBoost()
     {
         return CurrentEnergy > 0f;
