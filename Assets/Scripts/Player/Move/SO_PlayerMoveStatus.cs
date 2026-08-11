@@ -57,5 +57,6 @@ public class SO_PlayerMoveStatus : ScriptableObject
 
     [Header("===== エネルギー =====")]
 
+    [Tooltip("最大エネルギー値")]
     public float maxEnergy = 100f;
 }
