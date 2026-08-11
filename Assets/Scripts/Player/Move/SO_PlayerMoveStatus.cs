@@ -40,7 +40,7 @@ public class SO_PlayerMoveStatus : ScriptableObject
 
     [Tooltip("初動推進力の減衰カーブ")]
     public AnimationCurve boostInitialCurve =
-        AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+        AnimationCurve.EaseInOut(0f, 1f, 1f, 0.2f);
 
     [Tooltip("初動が終わった後の継続推進力")]
     public float boostContinuousForce = 15f;
@@ -48,12 +48,11 @@ public class SO_PlayerMoveStatus : ScriptableObject
     [Tooltip("ブースト中のEN消費量 / 秒")]
     public float boostEnergyConsumption = 10f;
 
+    [Tooltip("ブーストを離した後のブーストを再度使用できるまでのクールタイム")]
+    public float boostCooldown = 0.5f;
+
 
     [Header("===== エネルギー =====")]
 
     public float maxEnergy = 100f;
-
-    public float energyRecovery = 20f;
-
-    public float energyRecoveryDelay = 0.5f;
 }

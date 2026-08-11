@@ -12,17 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f919100636164a94d5a767d05b5a9, type: 3}
   m_Name: SO_PlayerMoveStatus
   m_EditorClassIdentifier: Assembly-CSharp::SO_PlayerMoveStatus
-  moveSpeed: 8
-  acceleration: 20
-  deceleration: 15
+  moveSpeed: 12
+  acceleration: 40
+  deceleration: 20
   groundTurnSpeed: 720
   airTurnSpeed: 360
   jumpPower: 10
   airControl: 0.6
-  boostSpeed: 25
-  boostAcceleration: 40
+  boostInitialForce: 300
+  boostInitialDuration: 0.15
+  boostInitialCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9865334
+      value: 0.20595686
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  boostContinuousForce: 15
   boostEnergyConsumption: 10
-  boostStartEnergy: 1
+  boostCooldown: 0.5
   maxEnergy: 100
-  energyRecovery: 20
-  energyRecoveryDelay: 0.5

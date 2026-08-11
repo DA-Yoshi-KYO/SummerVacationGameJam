@@ -28,6 +28,11 @@ public class CS_PlayerMoveBooster : MonoBehaviour
     /// </summary>
     private bool _previousBoostInput;
 
+    /// <summary>
+    /// ブースト入力を離してからの時間
+    /// </summary>
+    private float _releaseBoostInputTimer;
+
     private void FixedUpdate()
     {
         UpdateBoost();
@@ -38,6 +43,24 @@ public class CS_PlayerMoveBooster : MonoBehaviour
         bool boostInput = _input.BoostInput;
 
         // ========================================
+        // ブースト入力を離してからの時間を更新
+        // ========================================
+
+        if (_releaseBoostInputTimer < _stats.boostCooldown)
+        {
+            StopBoost();
+
+            _releaseBoostInputTimer += Time.fixedDeltaTime;
+
+            if (_releaseBoostInputTimer >= _stats.boostCooldown)
+            {
+                _releaseBoostInputTimer = _stats.boostCooldown;
+            }
+            else return;
+        }
+
+
+        // ========================================
         // ブーストしていない
         // ========================================
 
@@ -46,6 +69,8 @@ public class CS_PlayerMoveBooster : MonoBehaviour
             StopBoost();
 
             _previousBoostInput = false;
+
+            _releaseBoostInputTimer = 0;
 
             return;
         }
