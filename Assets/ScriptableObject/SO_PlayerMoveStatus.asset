@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f919100636164a94d5a767d05b5a9, type: 3}
   m_Name: SO_PlayerMoveStatus
   m_EditorClassIdentifier: Assembly-CSharp::SO_PlayerMoveStatus
+  gravity: 18
   moveSpeed: 12
   acceleration: 40
   deceleration: 20
-  groundTurnSpeed: 720
-  airTurnSpeed: 360
-  jumpPower: 10
+  ascendForce: 20
   airControl: 0.6
   boostInitialForce: 300
+  boostAscendReduction: 0.3
   boostInitialDuration: 0.15
   boostInitialCurve:
     serializedVersion: 2
@@ -48,4 +48,4 @@ MonoBehaviour:
   boostContinuousForce: 15
   boostEnergyConsumption: 10
   boostCooldown: 0.5
-  maxEnergy: 100
+  maxEnergy: 200

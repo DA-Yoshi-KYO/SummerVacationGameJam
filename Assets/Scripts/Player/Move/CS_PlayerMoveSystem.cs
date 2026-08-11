@@ -1,5 +1,5 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Windows;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -28,10 +28,27 @@ public class CS_PlayerMoveSystem : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
+    private void Awake()
+    {
+        if (_rb == null)
+        {
+            _rb = GetComponent<Rigidbody>();
+        }
+        _rb.useGravity = false;
+
+        CS_ValueObserver.Instance.Register(
+            gameObject,
+            this,
+            "プレイヤー：現在の速度",
+            () => _rb.linearVelocity
+        );
+    }
+
     private void FixedUpdate()
     {
         Move();
-        Jump();
+        ApplyAscend();
+        Gravity();
     }
 
     /// <summary>
@@ -112,14 +129,9 @@ public class CS_PlayerMoveSystem : MonoBehaviour
 
         if (_booster.IsBoosting)
         {
+            // ブースト方向に移動方向を加算する
             Vector3 boostDirection =
                 moveDirection;
-
-            if (boostDirection.sqrMagnitude < 0.01f)
-            {
-                boostDirection =
-                    transform.forward;
-            }
 
             boostDirection.Normalize();
 
@@ -129,13 +141,26 @@ public class CS_PlayerMoveSystem : MonoBehaviour
                 ForceMode.Acceleration
             );
         }
+
+        // -------------------------------
+        // 上昇ブースト
+        // -------------------------------
+
+        if (_input.AscendInput)
+        {
+            _rb.AddForce(
+                Vector3.up *
+                _booster.CurrentBoostForce *
+                _stats.boostAscendReduction,
+                ForceMode.Acceleration
+            );
+        }
     }
 
     /// <summary>
     /// カメラ基準の移動方向を取得
     /// </summary>
-    private Vector3 CalculateMoveDirection(
-        Vector2 inputValue)
+    private Vector3 CalculateMoveDirection(Vector2 inputValue)
     {
         Vector3 forward =
             targetCamera.transform.forward;
@@ -160,27 +185,33 @@ public class CS_PlayerMoveSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// ジャンプ
+    /// 上昇処理
     /// </summary>
-    private void Jump()
+    private void ApplyAscend()
     {
-        if (!_input.JumpInput)
+        if (!_input.AscendInput)
         {
             return;
         }
 
-        if (!_groundDetector.IsGrounded)
+        _rb.AddForce(
+            Vector3.up *
+            _stats.ascendForce,
+            ForceMode.Force
+        );
+    }
+
+    private void Gravity()
+    {
+        if (_groundDetector.IsGrounded)
         {
             return;
         }
 
-        Vector3 velocity =
-            _rb.linearVelocity;
-
-        velocity.y =
-                _stats.jumpPower;
-
-        _rb.linearVelocity =
-            velocity;
+        _rb.AddForce(
+            Vector3.down *
+            _stats.gravity,
+            ForceMode.Acceleration
+        );
     }
 }

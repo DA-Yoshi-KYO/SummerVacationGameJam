@@ -16,11 +16,12 @@ public class CS_PlayerMoveInput : MonoBehaviour
     public bool BoostInput { get; private set; }
 
     /// <summary>
-    /// ジャンプ入力
+    /// 上昇入力
     /// </summary>
-    public bool JumpInput { get; private set; }
+    public bool AscendInput { get; private set; }
 
-    private void Update()
+
+    private void FixedUpdate()
     {
         // 入力をリセット
         MoveInput = Vector2.zero;
@@ -50,13 +51,12 @@ public class CS_PlayerMoveInput : MonoBehaviour
                 1f
             );
 
-            // ブーストの入力判定
-            BoostInput =
-                Keyboard.current.leftShiftKey.isPressed;
+            // ブーストの入力判定 
+            BoostInput = Keyboard.current.leftShiftKey.isPressed;
 
             // ジャンプの入力判定
-            JumpInput =
-                Keyboard.current.spaceKey.wasPressedThisFrame;
+            AscendInput =
+                Keyboard.current.spaceKey.isPressed;
         }
     }
 }

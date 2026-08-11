@@ -33,6 +33,11 @@ public class CS_PlayerMoveBooster : MonoBehaviour
     /// </summary>
     private float _releaseBoostInputTimer;
 
+    private void Awake()
+    {
+        _releaseBoostInputTimer = _stats.boostCooldown;
+    }
+
     private void FixedUpdate()
     {
         UpdateBoost();
@@ -68,9 +73,9 @@ public class CS_PlayerMoveBooster : MonoBehaviour
         {
             StopBoost();
 
-            _previousBoostInput = false;
+            if(_previousBoostInput) _releaseBoostInputTimer = 0;
 
-            _releaseBoostInputTimer = 0;
+            _previousBoostInput = false;
 
             return;
         }

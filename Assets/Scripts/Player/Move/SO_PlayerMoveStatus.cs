@@ -6,6 +6,11 @@ using UnityEngine;
 )]
 public class SO_PlayerMoveStatus : ScriptableObject
 {
+    [Header("===== 基本設定 =====")]
+
+    [Tooltip("重力")]
+    public float gravity = 9.81f;
+
     [Header("===== 移動 =====")]
 
     [Tooltip("通常移動速度")]
@@ -17,15 +22,10 @@ public class SO_PlayerMoveStatus : ScriptableObject
     [Tooltip("通常移動時の減速度")]
     public float deceleration = 15f;
 
-    [Header("===== 旋回 =====")]
+    [Header("===== 上昇 =====")]
 
-    public float groundTurnSpeed = 720f;
-
-    public float airTurnSpeed = 360f;
-
-    [Header("===== ジャンプ =====")]
-
-    public float jumpPower = 10f;
+    [Tooltip("上昇時の推進力")]
+    public float ascendForce = 20f;
 
     [Range(0f, 1f)]
     public float airControl = 0.6f;
@@ -34,6 +34,9 @@ public class SO_PlayerMoveStatus : ScriptableObject
 
     [Tooltip("ブーストを押した瞬間の最大推進力")]
     public float boostInitialForce = 100f;
+
+    [Tooltip("上昇方向のブースト軽減係数")]
+    public float boostAscendReduction = 0.5f;
 
     [Tooltip("初動推進力が減衰する時間")]
     public float boostInitialDuration = 0.15f;
@@ -48,7 +51,7 @@ public class SO_PlayerMoveStatus : ScriptableObject
     [Tooltip("ブースト中のEN消費量 / 秒")]
     public float boostEnergyConsumption = 10f;
 
-    [Tooltip("ブーストを離した後のブーストを再度使用できるまでのクールタイム")]
+    [Tooltip("ブーストを離した後、再度使用できるまでのクールタイム")]
     public float boostCooldown = 0.5f;
 
 
