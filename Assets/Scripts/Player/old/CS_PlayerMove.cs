@@ -2,21 +2,26 @@ using UnityEngine;
 
 public class CS_PlayerMove : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpHeight = 1.5f;
-    [SerializeField] float gravity = -9.81f;
+    [SerializeField]
+    [Header("プレイヤーの基礎移動速度")]
+    private float _baseMoveSpeed = 5f;
+
+    [SerializeField]
+    [Header("ジャンプの高さ")]
+    private float _jumpHeight = 2f;
+
+    [SerializeField] 
+    private float _gravity = -9.81f;
 
     CharacterController controller;
     Vector3 vel;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controller = GetComponent<CharacterController>();
         vel = Vector3.zero;
     }
 
-    // Update is called once per frame
     void Update()
     {
         var player = CS_InputManager.readInstance.customInputSystem.Player;
@@ -29,11 +34,12 @@ public class CS_PlayerMove : MonoBehaviour
                 vel.y = -2f;
 
             if (player.Jump.WasPressedThisFrame())
-                vel.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                vel.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
         }
 
-        vel.y += gravity * Time.deltaTime;
+        // 重力を適用
+        vel.y += _gravity * Time.deltaTime;
 
-        controller.Move((move * moveSpeed + vel) * Time.deltaTime);
+        controller.Move((move * _baseMoveSpeed + vel) * Time.deltaTime);
     }
 }
