@@ -15,7 +15,7 @@ body:
         例: プレイヤーの移動処理を実装してください。
       label: 概要
     validations:
-      required: true
+      required: false
   - type: dropdown
     id: priority
     attributes:
