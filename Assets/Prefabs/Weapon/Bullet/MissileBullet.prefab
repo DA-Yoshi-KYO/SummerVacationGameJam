@@ -155,6 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bd3603e9416db4d9297a9d7a3d5395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_MissileBullet
-  angleWeight: 0
   startCurvePower: 20
   endCurvePower: 5
+  distanceForward: 20

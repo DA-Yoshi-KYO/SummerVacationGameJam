@@ -9,59 +9,75 @@ using UnityEngine;
 using static CSO_WeaponDataBase;
 using System.Collections;
 
-public class CS_BaseWeapon : MonoBehaviour
+public abstract class CS_BaseWeapon : MonoBehaviour
 {
     [Header("武器データベース")][SerializeField] protected CSO_WeaponDataBase weaponDataBase;
-    [Header("武器のインデックス")][SerializeField] protected int weaponIndex;
 
-    protected WeaponList weaponData;//武器のデータ
+    [Header("武器名（Dictionaryで検索）")][SerializeField] protected string weaponName;
+
+    [Header("弾プール")][SerializeField] protected CS_BulletPool bulletPool;
+
+    protected WeaponDataBase weaponData;
 
     protected int currentBullets;//現在の弾数
-    protected bool reloading;//リロード中かどうか
+    protected bool isReloading;//リロード中かどうか
     protected float nextFireTime;//次に発射できる時間
+
+    protected float reloadTime = 0.0f;//リロード中のタイマー
 
     public virtual void Start()
     {
-        weaponData = weaponDataBase.weapons[weaponIndex];
+        if (weaponDataBase == null)
+        {
+            Debug.LogError("WeaponDataBase が設定されていません");
+            return;
+        }
+
+        if (!weaponDataBase.weaponDatas.TryGetValue(weaponName, out weaponData))
+        {
+            Debug.LogError(weaponName + " がデータベースに存在しません");
+            return;
+        }
 
         currentBullets = weaponData.bulletCount;
     }
 
     protected virtual void Update()
     {
-        //リロード中は発射しない
-        if (reloading)
-            return;
-
         //弾を発射
-        //InputActionにするなら処理変更が必要
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (isReloading)
+            Reloading();
+        else
             TryShoot();
-        }
     }
 
     //弾を発射可能か判定して、可能なら発射する
-    public virtual void TryShoot()
+    protected virtual void TryShoot()
     {
         //次に発射出来るまで待つ
-        if (Time.time < nextFireTime) return;
+        if (Time.time < nextFireTime)
+            return;
 
         //弾がない場合はリロード
-        if (currentBullets <= 0.0f)
+        if (currentBullets <= 0)
         {
-            StartCoroutine(Reload());
+            isReloading = true;
             return;
         }
 
         //弾を発射
-        StartCoroutine(FireBurst());
+        Shoot();
+        currentBullets--;
 
         //次に発射出来る時間を更新
         nextFireTime = Time.time + (1.0f / weaponData.fireRate);
     }
 
+    //弾を発射する処理
+    protected abstract void Shoot();
+
     //連射処理
+    //一回の射撃で複数の弾を発射する場合に使用
     protected virtual IEnumerator FireBurst()
     {
         //現在の撃てる弾数と武器の最大連射数を比較
@@ -78,21 +94,16 @@ public class CS_BaseWeapon : MonoBehaviour
         }
     }
 
-    //弾を発射する処理
-    protected virtual void Shoot()
-    {
-    }
-
     //リロード処理
-    protected IEnumerator Reload()
+    protected virtual void Reloading()
     {
-        reloading = true;
+        reloadTime += Time.deltaTime;
 
-        //リロード時間待つ
-        yield return new WaitForSeconds(weaponData.reloadTime);
-
-        currentBullets = weaponData.bulletCount;
-        reloading = false;
+        if (reloadTime >= weaponData.reloadTime)
+        {
+            currentBullets = weaponData.bulletCount;
+            isReloading = false;
+            reloadTime = 0.0f;
+        }
     }
-
 }

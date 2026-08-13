@@ -10,7 +10,6 @@ using UnityEngine;
 public class CS_MissileBullet : CS_BaseBullet
 {
     private Transform target;//追尾するターゲット
-    private bool isDummyTarget = false;//ダミーターゲットかどうか
 
     private float t = 0.0f;//エルミート曲線の進行度
     private Vector3 startPos;//発射位置
@@ -19,16 +18,28 @@ public class CS_MissileBullet : CS_BaseBullet
     [Header("始点の曲がり具合（接線の強さ）")][SerializeField] private float startCurvePower;
     [Header("終点の曲がり具合（接線の強さ）")][SerializeField] private float endCurvePower;
 
-    void Start()
+    [Header("敵がいない場合の直進距離")][SerializeField] public float distanceForward;
+
+    public override void Activate(Vector3 pos, Quaternion rot)
     {
-        startPos = transform.position;
-        prevPos = startPos;
+        base.Activate(pos, rot);
+
+        startPos = pos;
+        prevPos = pos;
+        t = 0f;
     }
 
-    void Update()
+    protected override void Update()
     {
-        if (target == null)
+        if (!isActive)
             return;
+
+        if (target == null)
+        {
+            base.Update();
+            Deactivate();
+            return;
+        }
 
         //エルミート曲線の進行度を増やす
         t += Time.deltaTime * (speed / 10.0f);
@@ -37,7 +48,7 @@ public class CS_MissileBullet : CS_BaseBullet
         if (t >= 1.0f)
         {
             t = 1.0f;
-            Destroy(gameObject);
+            Deactivate();
             return;
         }
 
@@ -66,32 +77,30 @@ public class CS_MissileBullet : CS_BaseBullet
         prevPos = nextPos;
     }
 
-    protected override void OnCollisionEnter(Collision collision)
+    public override void Deactivate()
     {
-        base.OnCollisionEnter(collision);
+        base.Deactivate();
 
-        if (collision.gameObject == owner)
-            return;
-
-        //dummyなら消す
-        if (isDummyTarget && target != null)
+        if (target != null && target.name == "DummyTarget")
         {
             Destroy(target.gameObject);
         }
-    }
 
-    //Setter関数
+        target = null;
+    }
 
     //追尾ターゲットを設定する
     public void SetTarget(Transform Target)
     {
-        target = Target;
+        if (target == null)
+        {
+            Transform dummy = new GameObject("DummyTarget").transform;
+            dummy.position = transform.position + transform.forward * distanceForward;
+            target = dummy;
+        }
+        else
+        {
+            target = Target;
+        }
     }
-
-    //ダミーターゲットであることを設定する
-    public void SetDummyTarget()
-    {
-        isDummyTarget = true;
-    }
-
 }

@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aff9beb8edb94748b541f71ba153258, type: 3}
   m_Name: DB_WeaponDataBase
   m_EditorClassIdentifier: Assembly-CSharp::CSO_WeaponDataBase
-  weapons:
+  weaponList:
   - weaponName: Missile
-    damage: 5
+    damage: 10
     fireRate: 5
     bulletSpeed: 30
-    bulletCount: 5
+    bulletCount: 30
     reloadTime: 3
     bulletPrefab: {fileID: 6672024944259534010, guid: 7bb6b2a09ddf40e4886f657d0b7f160e, type: 3}
-    distanceForward: 10

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 public class CSO_WeaponDataBase : ScriptableObject
 {
     [System.Serializable]
-    public class WeaponList
+    public class WeaponDataBase
     {
         [Header("武器の名前")] public string weaponName;
         [Header("ダメージ")] public float damage;
@@ -21,9 +21,24 @@ public class CSO_WeaponDataBase : ScriptableObject
         [Header("弾数")] public int bulletCount;
         [Header("リロード時間")] public float reloadTime;
         [Header("弾のPrefab")] public GameObject bulletPrefab;
-        [Header("敵がいない場合の直進距離")] public float distanceForward;
     }
 
-    public List<WeaponList> weapons;//武器のリスト
+    [SerializeField] private List<WeaponDataBase> weaponList;//Inspectorで設定するための変数
+    [SerializeField] private Dictionary<string, WeaponDataBase> weaponDictionary;//実行時にDictionaryに変換するための変数
+
+    //読み取り専用変数
+    public IReadOnlyDictionary<string, WeaponDataBase> weaponDatas
+    {
+        get
+        {
+            if (weaponDictionary == null)
+            {
+                weaponDictionary = new Dictionary<string, WeaponDataBase>();
+                foreach (var weapon in weaponList)
+                    weaponDictionary[weapon.weaponName] = weapon;
+            }
+            return weaponDictionary;
+        }
+    }
 }
 
