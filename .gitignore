@@ -105,3 +105,17 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Houdini auto-backup files (numbered backups Houdini writes next to
+# .hip/.hiplc/.hipnc/.otl/.hda files on every save, and its default
+# per-scene "backup" subfolder). Not meant for version control.
+*.hip.bak[0-9]*
+*.hiplc.bak[0-9]*
+*.hipnc.bak[0-9]*
+*.otl.bak[0-9]*
+*.otllc.bak[0-9]*
+*.otlnc.bak[0-9]*
+*.hda.bak[0-9]*
+*.hdalc.bak[0-9]*
+*.hdanc.bak[0-9]*
+backup/
