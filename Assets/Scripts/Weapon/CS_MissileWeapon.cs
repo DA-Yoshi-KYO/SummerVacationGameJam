@@ -11,41 +11,29 @@ public class CS_MissileWeapon : CS_BaseWeapon
 {
     [Header("照準UI")][SerializeField] protected CS_AimUI aimUI;
     [Header("照準の重み")][SerializeField] protected float angleWeight;
-    [Header("発射する位置")][SerializeField] private Transform firePoint;
-
-
-    public override void Start()
-    {
-        base.Start();
-
-        bulletPool.Initialize(weaponData.bulletPrefab.GetComponent<CS_BaseBullet>());
-    }
 
     //確認用でUIButtonから呼び出す用の関数のためのちに削除
     public void FireByUI()
     {
-        TryShoot();
+        TryShot();
     }
 
-    protected override void Shoot()
+    protected override void Shot()
     {
-        CS_BaseBullet bullet = bulletPool.GetBullet();
+        //プールから弾を取得して発射
+        CS_BaseBullet bullet = base.ActivateBullet();
 
-        //位置と向きをセットして有効化
-        bullet.Activate(firePoint.position, firePoint.rotation);
-
-        bullet.SetDamage(weaponData.damage);
-        bullet.SetSpeed(weaponData.bulletSpeed);
-        bullet.SetOwner(gameObject);
-
-        //ミサイル弾ならターゲットを設定
+        //ターゲットを設定
         if (bullet is CS_MissileBullet m)
         {
             GameObject target = FindTargetWithAim();
             m.SetTarget(target ? target.transform : null);
         }
+        else
+        {
+            Debug.LogError("ミサイル弾が使用されていません");
+        }
     }
-
 
     //一番近い敵を探す処理
     public GameObject FindNearestEnemy()

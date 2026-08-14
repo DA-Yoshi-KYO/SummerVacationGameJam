@@ -13,21 +13,21 @@ public class CS_BaseBullet : MonoBehaviour
     protected float speed;
     protected GameObject owner;//弾を撃ったオブジェクト
 
-    protected bool isActive = false;
+    protected bool isActive = false;//弾がアクティブかどうか
 
-    protected virtual void Update()
+    private void Update()
     {
         if (!isActive)
             return;
 
-        transform.position += transform.forward * speed * Time.deltaTime;
+        BulletMovement();
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (!isActive) return;
 
-        if (other.gameObject == owner)
+        if (other.gameObject.tag == owner.transform.root.tag)
             return;
 
         //ダメージを与える処理
@@ -36,7 +36,15 @@ public class CS_BaseBullet : MonoBehaviour
         Deactivate();
     }
 
+    //弾の移動処理
+    protected virtual void BulletMovement()
+    {
+        transform.position += transform.forward * speed * Time.deltaTime;
+    }
+
     //プール用のリセット処理
+
+    //弾をアクティブにする処理
     public virtual void Activate(Vector3 pos, Quaternion rot)
     {
         transform.position = pos;
@@ -45,7 +53,7 @@ public class CS_BaseBullet : MonoBehaviour
         isActive = true;
         gameObject.SetActive(true);
     }
-
+    //弾を非アクティブにする処理
     public virtual void Deactivate()
     {
         isActive = false;
@@ -56,9 +64,7 @@ public class CS_BaseBullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-
     //Setter関数
-
     //ダメージの設定
     public void SetDamage(float Damage)
     {

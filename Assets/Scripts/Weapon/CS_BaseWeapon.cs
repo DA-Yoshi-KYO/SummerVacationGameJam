@@ -6,18 +6,16 @@
  * 2026-08-12 | 初回作成
  */
 using UnityEngine;
-using static CSO_WeaponDataBase;
-using System.Collections;
 
 public abstract class CS_BaseWeapon : MonoBehaviour
 {
+    [Header("発射する位置")][SerializeField] private Transform firePoint;
+
     [Header("武器データベース")][SerializeField] protected CSO_WeaponDataBase weaponDataBase;
-
     [Header("武器名（Dictionaryで検索）")][SerializeField] protected string weaponName;
-
     [Header("弾プール")][SerializeField] protected CS_BulletPool bulletPool;
 
-    protected WeaponDataBase weaponData;
+    protected CSO_WeaponDataBase.WeaponDataBase weaponData;
 
     protected int currentBullets;//現在の弾数
     protected bool isReloading;//リロード中かどうか
@@ -33,26 +31,33 @@ public abstract class CS_BaseWeapon : MonoBehaviour
             return;
         }
 
-        if (!weaponDataBase.weaponDatas.TryGetValue(weaponName, out weaponData))
+        //武器名から武器データを取得
+        weaponData = weaponDataBase.weaponDatas[weaponName];
+
+        if (weaponData == null)
         {
             Debug.LogError(weaponName + " がデータベースに存在しません");
             return;
         }
-
+        
+        //現在の弾数を設定
         currentBullets = weaponData.bulletCount;
+
+        //弾プールを初期化
+        bulletPool.Initialize(weaponData.bulletPrefab.GetComponent<CS_BaseBullet>());
     }
 
-    protected virtual void Update()
+    private void Update()
     {
         //弾を発射
         if (isReloading)
-            Reloading();
+            Reloading();//リロード中
         else
-            TryShoot();
+            TryShot();  //射撃処理
     }
 
     //弾を発射可能か判定して、可能なら発射する
-    protected virtual void TryShoot()
+    protected virtual void TryShot()
     {
         //次に発射出来るまで待つ
         if (Time.time < nextFireTime)
@@ -66,36 +71,34 @@ public abstract class CS_BaseWeapon : MonoBehaviour
         }
 
         //弾を発射
-        Shoot();
+        Shot();
         currentBullets--;
 
         //次に発射出来る時間を更新
-        nextFireTime = Time.time + (1.0f / weaponData.fireRate);
+        nextFireTime = Time.time + weaponData.fireRate;
     }
 
     //弾を発射する処理
-    protected abstract void Shoot();
+    protected abstract void Shot();
 
-    //連射処理
-    //一回の射撃で複数の弾を発射する場合に使用
-    protected virtual IEnumerator FireBurst()
+    //弾をプールから取得して有効化する処理
+    //射撃時はこのメソッドを呼び出す
+    protected CS_BaseBullet ActivateBullet()
     {
-        //現在の撃てる弾数と武器の最大連射数を比較
-        int shots = Mathf.Min(currentBullets, weaponData.bulletCount);
+        CS_BaseBullet bullet = bulletPool.GetBullet();
 
-        for (int i = 0; i < shots; i++)
-        {
-            Shoot();
+        //位置と向きをセットして有効化
+        bullet.Activate(firePoint.position, firePoint.rotation);
 
-            currentBullets--;
+        bullet.SetDamage(weaponData.damage);
+        bullet.SetSpeed(weaponData.bulletSpeed);
+        bullet.SetOwner(gameObject);
 
-            //連射間隔
-            yield return new WaitForSeconds(1.0f / weaponData.fireRate);
-        }
+        return bullet;
     }
 
     //リロード処理
-    protected virtual void Reloading()
+    private void Reloading()
     {
         reloadTime += Time.deltaTime;
 

@@ -29,20 +29,10 @@ public class CS_MissileBullet : CS_BaseBullet
         t = 0f;
     }
 
-    protected override void Update()
+    protected override void BulletMovement()
     {
-        if (!isActive)
-            return;
-
-        if (target == null)
-        {
-            base.Update();
-            Deactivate();
-            return;
-        }
-
         //エルミート曲線の進行度を増やす
-        t += Time.deltaTime * (speed / 10.0f);
+        t += Time.deltaTime * speed;
 
         //終点に到達
         if (t >= 1.0f)

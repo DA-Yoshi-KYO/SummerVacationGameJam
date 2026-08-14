@@ -24,7 +24,7 @@ public class CSO_WeaponDataBase : ScriptableObject
     }
 
     [SerializeField] private List<WeaponDataBase> weaponList;//Inspector‚Åİ’è‚·‚é‚½‚ß‚Ì•Ï”
-    [SerializeField] private Dictionary<string, WeaponDataBase> weaponDictionary;//Às‚ÉDictionary‚É•ÏŠ·‚·‚é‚½‚ß‚Ì•Ï”
+    private Dictionary<string, WeaponDataBase> weaponDictionary;//Às‚ÉDictionary‚É•ÏŠ·‚·‚é‚½‚ß‚Ì•Ï”
 
     //“Ç‚İæ‚èê—p•Ï”
     public IReadOnlyDictionary<string, WeaponDataBase> weaponDatas

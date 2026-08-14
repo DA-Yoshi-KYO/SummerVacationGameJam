@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CSO_WeaponDataBase
   weaponList:
   - weaponName: Missile
-    damage: 10
+    damage: 5
     fireRate: 5
-    bulletSpeed: 30
-    bulletCount: 30
+    bulletSpeed: 1
+    bulletCount: 3
     reloadTime: 3
     bulletPrefab: {fileID: 6672024944259534010, guid: 7bb6b2a09ddf40e4886f657d0b7f160e, type: 3}
