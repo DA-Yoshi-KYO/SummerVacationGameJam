@@ -19,6 +19,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
 
     protected int currentBullets;//現在の弾数
     protected bool isReloading;//リロード中かどうか
+    protected bool isShooting;//射撃中かどうか
     protected float nextFireTime;//次に発射できる時間
 
     protected float reloadTime = 0.0f;//リロード中のタイマー
@@ -39,7 +40,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
             Debug.LogError(weaponName + " がデータベースに存在しません");
             return;
         }
-        
+
         //現在の弾数を設定
         currentBullets = weaponData.bulletCount;
 
@@ -52,7 +53,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
         //弾を発射
         if (isReloading)
             Reloading();//リロード中
-        else
+        else if (isShooting)
             TryShot();  //射撃処理
     }
 
@@ -108,5 +109,11 @@ public abstract class CS_BaseWeapon : MonoBehaviour
             isReloading = false;
             reloadTime = 0.0f;
         }
+    }
+
+    // 射撃中かどうかを設定する
+    public void SetShooting(bool shooting)
+    {
+        isShooting = shooting;
     }
 }

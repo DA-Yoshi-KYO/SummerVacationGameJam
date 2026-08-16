@@ -34,19 +34,19 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Aim",
+                    "name": "Shot",
                     "type": "Button",
-                    "id": "a1b2c3d4-e5f6-4789-a1b2-c3d4e5f6a7b8",
-                    "expectedControlType": "Button",
+                    "id": "989ddb8c-b9b7-4ead-aebb-2e092920c9b3",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Zoom",
-                    "type": "Value",
-                    "id": "b2c3d4e5-f6a7-4890-b2c3-d4e5f6a7b8c9",
-                    "expectedControlType": "Axis",
+                    "name": "Boost",
+                    "type": "Button",
+                    "id": "3e98a0c2-ec44-41b4-ad06-0d0d6320d4ad",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -132,23 +132,23 @@
                 },
                 {
                     "name": "",
-                    "id": "c3d4e5f6-a7b8-4901-c3d4-e5f6a7b8c9d0",
-                    "path": "<Mouse>/rightButton",
+                    "id": "fbf29261-b873-4cf9-9751-af52c25fe8ea",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "Shot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "d4e5f6a7-b8c9-4012-d4e5-f6a7b8c9d0e1",
-                    "path": "<Mouse>/scroll/y",
+                    "id": "83dd923a-5607-4d61-852e-6c4fbbd30dae",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Zoom",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
