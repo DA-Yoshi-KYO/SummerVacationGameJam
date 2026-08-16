@@ -2,16 +2,16 @@ using System;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class CS_EnemyBase : MonoBehaviour
 {
     // プレイヤーのtransform
     // スポーン時にマネージャーから取得する
-    [SerializeField] private Transform player;
+    [SerializeField] protected Transform player;
 
     // 移動速度
     [Header("ステータス")]
     [SerializeField] private float _health = 100f;
-    [SerializeField] private float _moveSpeed = 3.0f;
+    [SerializeField] protected float _moveSpeed = 3.0f;
 
     // 攻撃関連
     [Header("攻撃")]
@@ -42,9 +42,6 @@ public class Enemy : MonoBehaviour
         if (player == null)
             return;
 
-        // プレイヤーの方向を向く
-        transform.LookAt(player.position);
-
         // プレイヤーとの距離
         float distToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -60,16 +57,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // プレイヤーの方向に移動する
-    private void Move()
+    // 移動
+    protected virtual void Move()
     {
-        Vector3 direction = player.position - transform.position;
-
-        // Y軸方向の移動を無効化
-        direction.y = 0f;
-        direction.Normalize();
-
-        transform.position += direction * _moveSpeed * Time.deltaTime;
     }
 
     private void Attack()
