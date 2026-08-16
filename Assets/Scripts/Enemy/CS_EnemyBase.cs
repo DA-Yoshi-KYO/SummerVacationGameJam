@@ -6,7 +6,12 @@ public class CS_EnemyBase : MonoBehaviour
 {
     // プレイヤーのtransform
     // スポーン時にマネージャーから取得する
-    [SerializeField] protected Transform player;
+    [SerializeField] protected Transform _playerTransform;
+
+    public Transform PlayerTransform
+    {
+        set { _playerTransform = value; }
+    }
 
     // 移動速度
     [Header("ステータス")]
@@ -39,11 +44,13 @@ public class CS_EnemyBase : MonoBehaviour
             return;
         }
 
-        if (player == null)
+        if (_playerTransform == null)
             return;
 
         // プレイヤーとの距離
-        float distToPlayer = Vector3.Distance(transform.position, player.position);
+        float distToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
+
+        Idle();
 
         // プレイヤーが範囲外にいる場合、移動する
         if (distToPlayer > _stopRange)
@@ -57,6 +64,11 @@ public class CS_EnemyBase : MonoBehaviour
         }
     }
 
+    // 待機中の動き(常に呼び出される)
+    protected virtual void Idle()
+    {
+    }
+    
     // 移動
     protected virtual void Move()
     {
@@ -64,7 +76,7 @@ public class CS_EnemyBase : MonoBehaviour
 
     private void Attack()
     {
-        if (player == null || _bulletPrefab == null)
+        if (_playerTransform == null || _bulletPrefab == null)
             return;
 
         if (_attackTimer > 0f)
@@ -78,7 +90,7 @@ public class CS_EnemyBase : MonoBehaviour
         }
 
         // プレイヤーへの方向
-        Vector3 direction = (player.position - transform.position).normalized;
+        Vector3 direction = (_playerTransform.position - transform.position).normalized;
 
         // 弾を生成
         GameObject bullet = Instantiate(
