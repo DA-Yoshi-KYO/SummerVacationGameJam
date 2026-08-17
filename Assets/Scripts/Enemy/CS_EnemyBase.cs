@@ -2,16 +2,21 @@ using System;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class CS_EnemyBase : MonoBehaviour
 {
     // プレイヤーのtransform
     // スポーン時にマネージャーから取得する
-    [SerializeField] private Transform player;
+    [SerializeField] protected Transform _playerTransform;
+
+    public Transform PlayerTransform
+    {
+        set { _playerTransform = value; }
+    }
 
     // 移動速度
     [Header("ステータス")]
     [SerializeField] private float _health = 100f;
-    [SerializeField] private float _moveSpeed = 3.0f;
+    [SerializeField] protected float _moveSpeed = 3.0f;
 
     // 攻撃関連
     [Header("攻撃")]
@@ -39,14 +44,13 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        if (player == null)
+        if (_playerTransform == null)
             return;
 
-        // プレイヤーの方向を向く
-        transform.LookAt(player.position);
-
         // プレイヤーとの距離
-        float distToPlayer = Vector3.Distance(transform.position, player.position);
+        float distToPlayer = Vector3.Distance(transform.position, _playerTransform.position);
+
+        Idle();
 
         // プレイヤーが範囲外にいる場合、移動する
         if (distToPlayer > _stopRange)
@@ -60,21 +64,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // プレイヤーの方向に移動する
-    private void Move()
+    // 待機中の動き(常に呼び出される)
+    protected virtual void Idle()
     {
-        Vector3 direction = player.position - transform.position;
-
-        // Y軸方向の移動を無効化
-        direction.y = 0f;
-        direction.Normalize();
-
-        transform.position += direction * _moveSpeed * Time.deltaTime;
+    }
+    
+    // 移動
+    protected virtual void Move()
+    {
     }
 
     private void Attack()
     {
-        if (player == null || _bulletPrefab == null)
+        if (_playerTransform == null || _bulletPrefab == null)
             return;
 
         if (_attackTimer > 0f)
@@ -88,7 +90,7 @@ public class Enemy : MonoBehaviour
         }
 
         // プレイヤーへの方向
-        Vector3 direction = (player.position - transform.position).normalized;
+        Vector3 direction = (_playerTransform.position - transform.position).normalized;
 
         // 弾を生成
         GameObject bullet = Instantiate(
