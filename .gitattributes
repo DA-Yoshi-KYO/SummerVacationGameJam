@@ -43,3 +43,5 @@ Assets/Terrain/NightDemoTerrainData.asset binary
 *.hdanc filter=lfs diff=lfs merge=lfs -text
 *.vdb filter=lfs diff=lfs merge=lfs -text
 *.abc filter=lfs diff=lfs merge=lfs -text
+
+.github/workflows/*.lock.yml linguist-generated=true
