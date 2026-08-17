@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 8121477946416220243}
   - component: {fileID: 6584615491475279563}
   - component: {fileID: 4079401033106566549}
+  - component: {fileID: 202552078910008966}
   m_Layer: 31
   m_Name: Player
   m_TagString: Untagged
@@ -231,3 +232,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_PlayerMoveEnergy
   _stats: {fileID: 11400000, guid: 468afda42a2f4664e8e245e140e8505f, type: 2}
+--- !u!114 &202552078910008966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464479283556063199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617bfb21685266f4fa72148b9a52cd91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_PlayerEquipment
+  _firstSelectWeaponList: []
+  _weaponObjectData: {fileID: 11400000, guid: 8bac6fae7ffba294a9fe7acd0e278592, type: 2}
+  _maxWeaponCount: 6

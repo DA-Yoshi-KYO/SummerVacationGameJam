@@ -6,7 +6,7 @@ public class CS_PlayerMoveBooster : MonoBehaviour
 
     [Tooltip("プレイヤーのステータスSO")]
     [SerializeField]
-    private SO_PlayerMoveStatus _stats;
+    private CSO_PlayerMoveStatus _stats;
 
     [Tooltip("プレイヤーの入力情報")]
     [SerializeField]
