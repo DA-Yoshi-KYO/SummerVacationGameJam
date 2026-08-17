@@ -42,8 +42,14 @@ public class CS_PlayerEquipment : MonoBehaviour
             return;
         }
 
+        // 武器を生成
+        GameObject weaponObj = Instantiate(weapon);
+
+        // ======================
         // 武器のスクリプトを取得
-        CS_BaseWeapon weaponScript = weapon.GetComponent<CS_BaseWeapon>();
+        // ======================
+
+        CS_BaseWeapon weaponScript = weaponObj.GetComponent<CS_BaseWeapon>();
         if (weaponScript == null)
         {
             Debug.LogWarning("武器にCS_BaseWeaponスクリプトがアタッチされていません。");
@@ -55,12 +61,9 @@ public class CS_PlayerEquipment : MonoBehaviour
 
         // ======================
         // 武器の位置を設定
-        //======================
+        // ======================
 
         int weaponIndex = _equipmentWeaponScriptList.Count - 1;
-
-        // 武器の位置に武器を生成
-        GameObject weaponObj = Instantiate(weapon);
 
         // 武器の位置を設定
         weaponObj.transform.SetParent(_equipmentWeaponPositionList[weaponIndex]);
@@ -68,6 +71,8 @@ public class CS_PlayerEquipment : MonoBehaviour
         // 武器の位置と回転をリセット
         weaponObj.transform.localPosition = Vector3.zero;
         weaponObj.transform.localRotation = Quaternion.identity;
+
+
     }
 
     private void Update()
