@@ -85,6 +85,7 @@ public class CS_PlayerCameraController : MonoBehaviour
     {
         UpdateFollow();
         UpdateLook();
+        PlayerRotate();
     }
 
 
@@ -197,6 +198,24 @@ public class CS_PlayerCameraController : MonoBehaviour
                 _pitch,
                 0f,
                 0f
+            );
+    }
+
+    private void PlayerRotate()
+    {
+
+        // プレイヤーを画面中央に向けて回転させる
+        Vector3 cameraForward =
+            _camera.transform.forward;
+
+        cameraForward.y = 0f;
+
+        cameraForward.Normalize();
+
+        // プレイヤーの回転を更新
+        _cameraFollowTarget.rotation =
+            Quaternion.LookRotation(
+                cameraForward
             );
     }
 }

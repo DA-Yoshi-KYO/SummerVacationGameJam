@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464420750357414612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -175,7 +175,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3233955294155972363}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -265,7 +265,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4756465539471525284}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -355,7 +355,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4859400662494821110}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -642,7 +642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617bfb21685266f4fa72148b9a52cd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_PlayerEquipment
-  _firstSelectWeaponList: []
+  _firstSelectWeaponList:
+  - {fileID: 7754399794532597180, guid: 36d6cc23afc09674f9b5af01058510b4, type: 3}
   _weaponObjectData: {fileID: 11400000, guid: 8bac6fae7ffba294a9fe7acd0e278592, type: 2}
   _equipmentWeaponPositionList:
   - {fileID: 5919939363025445509}
@@ -651,7 +652,6 @@ MonoBehaviour:
   - {fileID: 261840163620089744}
   - {fileID: 341839314182159569}
   - {fileID: 3245295980464119976}
-  _maxWeaponCount: 6
 --- !u!1 &8431045434756094761
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +700,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8431045434756094761}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -790,7 +790,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8757803061322029904}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
