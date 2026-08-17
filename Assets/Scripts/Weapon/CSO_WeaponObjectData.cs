@@ -34,9 +34,12 @@ public class CSO_WeaponObjectData : ScriptableObject
     {
         get
         {
-            if (_weaponNameList == null)
+            // –¢“o˜^A‚Ü‚½‚Í•Ší‚Ì”‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚à‚Ì‚Ì”‚Æ‚ ‚Á‚Ä‚¢‚È‚¢ê‡
+            if (_weaponNameList == null || _weaponNameList.Count != _weaponObjectList.Length)
             {
-                _weaponNameList = new List<string>();
+                // •Ší–¼ƒŠƒXƒg‚ğì¬
+                if(_weaponNameList == null) _weaponNameList = new List<string>();
+                _weaponNameList.Clear();
                 foreach (var weapon in _weaponObjectList)
                     _weaponNameList.Add(weapon.weaponName);
             }

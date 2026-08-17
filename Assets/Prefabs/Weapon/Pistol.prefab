@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4807884920288845354}
   - component: {fileID: 1771548409834800279}
+  - component: {fileID: 8934218686237703133}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MonoBehaviour:
   bulletPool: {fileID: 0}
   _aimUI: {fileID: 0}
   _angleWeight: 0
+--- !u!114 &8934218686237703133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7754399794532597180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df4dc3aa0383dc4f936461f3cbbc39f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_BulletPool
+  poolSize: 5
+  spawnPoint: {fileID: 0}
 --- !u!1 &8275445458834392356
 GameObject:
   m_ObjectHideFlags: 0

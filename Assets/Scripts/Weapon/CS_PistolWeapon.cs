@@ -10,6 +10,13 @@ public class CS_PistolWeapon : CS_BaseWeapon
     [Header("Æ€‚Ìd‚İ")]
     private float _angleWeight;
 
+    public override void Start()
+    {
+        base.Start();
+
+        _aimUI = GameObject.FindAnyObjectByType<CS_AimUI>();
+    }
+
     protected override void Shot()
     {
         //ƒv[ƒ‹‚©‚ç’e‚ğæ“¾‚µ‚Ä”­Ë

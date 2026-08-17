@@ -44,6 +44,8 @@ public abstract class CS_BaseWeapon : MonoBehaviour
         //Œ»İ‚Ì’e”‚ğİ’è
         currentBullets = weaponData.bulletCount;
 
+        bulletPool = GetComponent<CS_BulletPool>();
+
         //’eƒv[ƒ‹‚ğ‰Šú‰»
         bulletPool.Initialize(weaponData.bulletPrefab.GetComponent<CS_BaseBullet>());
     }

@@ -15,33 +15,59 @@ public class CS_PlayerEquipment : MonoBehaviour
     private List<CS_BaseWeapon> _equipmentWeaponScriptList;
 
     [SerializeField]
-    [Tooltip("持てる武器の最大数")]
-    private int _maxWeaponCount = 6;
+    [Tooltip("装備した武器の位置リスト")]
+    private List<Transform> _equipmentWeaponPositionList;
 
+    private void Start()
+    {
+        CS_ValueObserver.Instance.Register(gameObject, this, "武器の登録数：", ()=>_weaponObjectData.weaponObjectDatas.Count);
+        CS_ValueObserver.Instance.Register(gameObject, this, "武器の名前登録数：", () => _weaponObjectData.weaponNames.Count);
+    }
 
     public void RegisterWeapon(GameObject weapon)
     {
-        if (weapon == null){
+        if (weapon == null)
+        {
             Debug.LogWarning("武器がnullです。");
             return;
         }
 
-        if (_equipmentWeaponScriptList == null){
+        if (_equipmentWeaponScriptList == null)
+        {
             _equipmentWeaponScriptList = new List<CS_BaseWeapon>();
         }
 
-        if (_equipmentWeaponScriptList.Count >= _maxWeaponCount){
+        if (_equipmentWeaponScriptList.Count >= _equipmentWeaponPositionList.Count)
+        {
             return;
         }
 
         // 武器のスクリプトを取得
         CS_BaseWeapon weaponScript = weapon.GetComponent<CS_BaseWeapon>();
-        if (weaponScript == null){
+        if (weaponScript == null)
+        {
             Debug.LogWarning("武器にCS_BaseWeaponスクリプトがアタッチされていません。");
             return;
         }
 
+        // 武器のスクリプト情報をリストに追加
         _equipmentWeaponScriptList.Add(weaponScript);
+
+        // ======================
+        // 武器の位置を設定
+        //======================
+
+        int weaponIndex = _equipmentWeaponScriptList.Count - 1;
+
+        // 武器の位置に武器を生成
+        GameObject weaponObj = Instantiate(weapon);
+
+        // 武器の位置を設定
+        weaponObj.transform.SetParent(_equipmentWeaponPositionList[weaponIndex]);
+
+        // 武器の位置と回転をリセット
+        weaponObj.transform.localPosition = Vector3.zero;
+        weaponObj.transform.localRotation = Quaternion.identity;
     }
 
     private void Update()
@@ -66,7 +92,7 @@ public class CS_PlayerEquipment : MonoBehaviour
     {
 
         // ランダムに武器を選択
-        int randomIndex = Random.Range(0, _weaponObjectData.weaponNames.Count);
+        int randomIndex = Random.Range(0, _weaponObjectData.weaponObjectDatas.Count);
         string selectedWeaponName = _weaponObjectData.weaponNames[randomIndex];
 
         // 選択された武器のPrefabを取得
