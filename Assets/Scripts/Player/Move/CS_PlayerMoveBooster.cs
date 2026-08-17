@@ -14,7 +14,7 @@ public class CS_PlayerMoveBooster : MonoBehaviour
 
     [Tooltip("プレイヤーのエネルギー管理")]
     [SerializeField]
-    private CS_PlayerMoveEnergy _energy;
+    private CS_PlayerMoveBoostEnergy _energy;
 
     /// <summary>
     /// ブースト中かどうか
