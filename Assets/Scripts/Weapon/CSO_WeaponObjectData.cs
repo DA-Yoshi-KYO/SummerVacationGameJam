@@ -13,6 +13,7 @@ public class CSO_WeaponObjectData : ScriptableObject
 
     [SerializeField] private WeaponObjectDataBase[] _weaponObjectList; // Inspectorで設定するための変数
     private Dictionary<string, WeaponObjectDataBase> _weaponObjectDictionary; // 実行時にDictionaryに変換するための変数
+    private List<string> _weaponNameList; // 武器名のリスト
 
     // 読み取り専用変数
     public IReadOnlyDictionary<string, WeaponObjectDataBase> weaponObjectDatas
@@ -29,4 +30,17 @@ public class CSO_WeaponObjectData : ScriptableObject
         }
     }
 
+    public IReadOnlyList<string> weaponNames
+    {
+        get
+        {
+            if (_weaponNameList == null)
+            {
+                _weaponNameList = new List<string>();
+                foreach (var weapon in _weaponObjectList)
+                    _weaponNameList.Add(weapon.weaponName);
+            }
+            return _weaponNameList;
+        }
+    }
 }

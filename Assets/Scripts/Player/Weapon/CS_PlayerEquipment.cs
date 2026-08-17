@@ -60,4 +60,19 @@ public class CS_PlayerEquipment : MonoBehaviour
             weapon.SetShooting(isShootingKeyInput);
         }
     }
+
+    [ContextMenu("ランダム武器装備")]
+    private void RandomWeponEquipment()
+    {
+
+        // ランダムに武器を選択
+        int randomIndex = Random.Range(0, _weaponObjectData.weaponNames.Count);
+        string selectedWeaponName = _weaponObjectData.weaponNames[randomIndex];
+
+        // 選択された武器のPrefabを取得
+        GameObject selectedWeapon = _weaponObjectData.weaponObjectDatas[selectedWeaponName].weaponPrefab;
+
+        // 武器を装備
+        RegisterWeapon(selectedWeapon);
+    }
 }

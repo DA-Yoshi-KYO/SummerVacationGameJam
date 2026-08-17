@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55cd17c5ffc3484a87bb0d973220409, type: 3}
   m_Name: DB_WeaponObjectData
   m_EditorClassIdentifier: Assembly-CSharp::CSO_WeaponObjectData
-  _weaponObjectList:
-  - weaponName: Missile
-    weaponPrefab: {fileID: 0}
+  _weaponObjectList: []
