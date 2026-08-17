@@ -6,7 +6,7 @@ public class CS_PlayerMoveEnergy : MonoBehaviour
 
     [Tooltip("プレイヤーのステータスSO")]
     [SerializeField]
-    private SO_PlayerMoveStatus _stats;
+    private CSO_PlayerMoveStatus _stats;
 
     /// <summary>
     /// 現在のエネルギー値
