@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CS_PlayerMoveEnergy : MonoBehaviour
+public class CS_PlayerMoveBoostEnergy : MonoBehaviour
 {
     [Header("===== éQè∆ =====")]
 
