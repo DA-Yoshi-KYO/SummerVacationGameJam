@@ -723,6 +723,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 15143781860042433, guid: 0705a3603e470ae4eacb25946199129e, type: 3}
+      propertyPath: meterCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 15143781860042433, guid: 0705a3603e470ae4eacb25946199129e, type: 3}
+      propertyPath: meterValue
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 62490732819804392, guid: 0705a3603e470ae4eacb25946199129e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
