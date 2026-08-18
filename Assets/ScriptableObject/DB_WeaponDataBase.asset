@@ -23,7 +23,14 @@ MonoBehaviour:
   - weaponName: Pistol
     damage: 1
     fireRate: 5
-    bulletSpeed: 1
-    bulletCount: 7
+    bulletSpeed: 20
+    bulletCount: 10
+    reloadTime: 3
+    bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
+  - weaponName: Shotgun
+    damage: 4
+    fireRate: 2
+    bulletSpeed: 20
+    bulletCount: 3
     reloadTime: 3
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}

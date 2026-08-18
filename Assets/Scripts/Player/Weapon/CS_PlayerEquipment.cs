@@ -18,6 +18,12 @@ public class CS_PlayerEquipment : MonoBehaviour
     [Tooltip("装備した武器の位置リスト")]
     private List<Transform> _equipmentWeaponPositionList;
 
+    [Header("===== デバッグ用 =====")]
+    [SerializeField]
+    [Tooltip("装備させる武器名")]
+    private string _debugWeaponName;
+
+
     private void Start()
     {
         CS_ValueObserver.Instance.Register(gameObject, this, "武器の登録数：", ()=>_weaponObjectData.weaponObjectDatas.Count);
@@ -105,5 +111,24 @@ public class CS_PlayerEquipment : MonoBehaviour
 
         // 武器を装備
         RegisterWeapon(selectedWeapon);
+    }
+
+    [ContextMenu("デバッグ用：指定武器装備")]
+    private void DebugWeaponEquipment()
+    {
+        if (string.IsNullOrEmpty(_debugWeaponName))
+        {
+            Debug.LogWarning("デバッグ用の武器名が設定されていません。");
+            return;
+        }
+        // デバッグ用の武器名からPrefabを取得
+        if (!_weaponObjectData.weaponObjectDatas.ContainsKey(_debugWeaponName))
+        {
+            Debug.LogWarning($"デバッグ用の武器名 '{_debugWeaponName}' は武器データに存在しません。");
+            return;
+        }
+        GameObject debugWeaponPrefab = _weaponObjectData.weaponObjectDatas[_debugWeaponName].weaponPrefab;
+        // 武器を装備
+        RegisterWeapon(debugWeaponPrefab);
     }
 }

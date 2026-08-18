@@ -15,3 +15,5 @@ MonoBehaviour:
   _weaponObjectList:
   - weaponName: Pistol
     weaponPrefab: {fileID: 7754399794532597180, guid: 36d6cc23afc09674f9b5af01058510b4, type: 3}
+  - weaponName: Shotgun
+    weaponPrefab: {fileID: 2317639452631636686, guid: 49dc720febab1bb44a38d5838380efcf, type: 3}
