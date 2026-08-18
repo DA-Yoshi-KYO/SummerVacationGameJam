@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class CS_PistolWeapon : CS_BaseWeapon
+public class CS_ShotgunWeapon : CS_BaseWeapon
 {
     [Header("Æ€UI")]
     private CS_AimUI _aimUI;
@@ -9,9 +10,17 @@ public class CS_PistolWeapon : CS_BaseWeapon
     [Header("Æ€‚Ìd‚İ")]
     private float _angleWeight;
 
+    [SerializeField]
+    [Header("ƒyƒŒƒbƒg”")]
+    private int _bulletCount;
+
+    [SerializeField]
+    [Header("ƒVƒ‡ƒbƒgƒKƒ“‚Ì’e‚ÌŠgU—¦(”’l‚ª‚‚¢‚Ù‚ÇL‚­ŠgU‚·‚é)")]
+    private float _spreadRate;
+
     public override void Start()
     {
-        weaponName = "Pistol";
+        weaponName = "Shotgun";
 
         base.Start();
 
@@ -21,22 +30,39 @@ public class CS_PistolWeapon : CS_BaseWeapon
     protected override void Shot()
     {
         //ƒv[ƒ‹‚©‚ç’e‚ğæ“¾‚µ‚Ä”­Ë
-        CS_BaseBullet bullet = base.ActivateBullet();
+        List<CS_BaseBullet> bulletList = new List<CS_BaseBullet>();
+
+        for (int i = 0; i < _bulletCount; i++)
+        {
+            bulletList.Add(base.ActivateBullet());
+        }
+        
 
         //•W“I‚ğİ’è
         GameObject targetEnemy = FindTargetWithAim();
 
+        Vector3 baseDirection = transform.forward;
+
         if (targetEnemy != null)
         {
             // “G‚Ì•ûŒüƒw‚ÌƒxƒNƒgƒ‹‚ğŒvZ
-            Vector3 directionToEnemy = (targetEnemy.transform.position - transform.position).normalized;
-
-            bullet.Activate(firePoint.position, Quaternion.LookRotation(directionToEnemy));
+            baseDirection = (targetEnemy.transform.position - transform.position).normalized;
         }
-        else
+
+        // ’e‚ğ”­Ë‚·‚é
+        foreach (var bullet in bulletList)
         {
-            // “G‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍA’Êí‚Ì”­Ë•ûŒü‚Å’e‚ğ”­Ë
-            bullet.Activate(firePoint.position, firePoint.rotation);
+            // ƒ‰ƒ“ƒ_ƒ€‚ÈŠgUŠp“x‚ğŒvZ
+            bullet.transform.position = baseDirection;
+
+            float randomAngleX = Random.Range(-_spreadRate, _spreadRate);
+            float randomAngleY = Random.Range(-_spreadRate, _spreadRate);
+
+            Quaternion spreadRotation = Quaternion.Euler(randomAngleX, randomAngleY, 0);
+
+            // ŠgU•ûŒü‚ğŒvZ
+            Vector3 spreadDirection = spreadRotation * baseDirection;
+            bullet.Activate(firePoint.position, Quaternion.LookRotation(spreadDirection));
         }
     }
 
@@ -66,4 +92,5 @@ public class CS_PistolWeapon : CS_BaseWeapon
 
         return lockonGameObject;
     }
+
 }
