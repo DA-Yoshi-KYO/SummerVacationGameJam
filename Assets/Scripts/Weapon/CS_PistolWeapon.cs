@@ -22,35 +22,21 @@ public class CS_PistolWeapon : CS_BaseWeapon
         //プールから弾を取得して発射
         CS_BaseBullet bullet = base.ActivateBullet();
 
-        //ターゲットを設定
-        if (bullet is CS_MissileBullet m)
+        //標的を設定
+        GameObject targetEnemy = FindTargetWithAim();
+
+        if (targetEnemy != null)
         {
-            GameObject target = FindTargetWithAim();
-            m.SetTarget(target ? target.transform : null);
+            // 敵の方向ヘのベクトルを計算
+            Vector3 directionToEnemy = (targetEnemy.transform.position - transform.position).normalized;
+
+            bullet.Activate(firePoint.position, Quaternion.LookRotation(directionToEnemy));
         }
-    }
-
-    //一番近い敵を探す処理
-    public GameObject FindNearestEnemy()
-    {
-        //"Enemy"タグが付いたオブジェクトを全部取得
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        GameObject nearest = null;
-        float minDist = Mathf.Infinity;
-
-        //全敵の中から最も距離が近いものを探す
-        foreach (var e in enemies)
+        else
         {
-            float dist = Vector3.Distance(transform.position, e.transform.position);
-            if (dist < minDist)
-            {
-                minDist = dist;
-                nearest = e;
-            }
+            // 敵が見つからない場合は、通常の発射方向で弾を発射
+            bullet.Activate(firePoint.position, firePoint.rotation);
         }
-
-        return nearest;
     }
 
     //照準方向の一番近い敵を狙う処理
@@ -79,5 +65,4 @@ public class CS_PistolWeapon : CS_BaseWeapon
 
         return lockonGameObject;
     }
-
 }

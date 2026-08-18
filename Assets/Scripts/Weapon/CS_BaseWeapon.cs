@@ -9,7 +9,7 @@ using UnityEngine;
 
 public abstract class CS_BaseWeapon : MonoBehaviour
 {
-    [Header("発射する位置")][SerializeField] private Transform firePoint;
+    [Header("発射する位置")][SerializeField] protected Transform firePoint;
 
     [Header("武器データベース")][SerializeField] protected CSO_WeaponDataBase weaponDataBase;
     [Header("武器名（Dictionaryで検索）")][SerializeField] protected string weaponName;
@@ -48,6 +48,8 @@ public abstract class CS_BaseWeapon : MonoBehaviour
 
         //弾プールを初期化
         bulletPool.Initialize(weaponData.bulletPrefab.GetComponent<CS_BaseBullet>());
+
+        CS_ValueObserver.Instance.Register(gameObject, this, "発射できるかどうか", () => isShooting);
     }
 
     private void Update()
