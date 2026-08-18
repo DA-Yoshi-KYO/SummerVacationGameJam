@@ -41,3 +41,10 @@ MonoBehaviour:
     bulletCount: 30
     reloadTime: 5
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
+  - weaponName: Minigun
+    damage: 1
+    fireRate: 0.1
+    bulletSpeed: 20
+    bulletCount: 100
+    reloadTime: 15
+    bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}

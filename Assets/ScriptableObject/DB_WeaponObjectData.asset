@@ -19,3 +19,5 @@ MonoBehaviour:
     weaponPrefab: {fileID: 2317639452631636686, guid: 49dc720febab1bb44a38d5838380efcf, type: 3}
   - weaponName: Machinegun
     weaponPrefab: {fileID: 5983866578195823010, guid: cc508b64af689de4faa1d2b64cf2ef80, type: 3}
+  - weaponName: Minigun
+    weaponPrefab: {fileID: 2940581244213751151, guid: b1cf3deecfa840a419f0d0ac2d2af022, type: 3}
