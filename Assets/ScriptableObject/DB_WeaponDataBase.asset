@@ -20,3 +20,10 @@ MonoBehaviour:
     bulletCount: 3
     reloadTime: 3
     bulletPrefab: {fileID: 6672024944259534010, guid: 7bb6b2a09ddf40e4886f657d0b7f160e, type: 3}
+  - weaponName: Pistol
+    damage: 1
+    fireRate: 5
+    bulletSpeed: 1
+    bulletCount: 7
+    reloadTime: 3
+    bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
