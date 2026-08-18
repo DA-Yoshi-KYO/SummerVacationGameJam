@@ -1,29 +1,17 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CS_ShotgunWeapon : CS_BaseWeapon
+public class CS_MachinegunWeapon : CS_BaseWeapon
 {
     [Header("Æ€UI")]
     private CS_AimUI _aimUI;
-
     [SerializeField]
     [Header("Æ€‚Ìd‚İ")]
     private float _angleWeight;
 
-    [SerializeField]
-    [Header("ƒyƒŒƒbƒg”")]
-    private int _bulletCount;
-
-    [SerializeField]
-    [Header("ƒVƒ‡ƒbƒgƒKƒ“‚Ì’e‚ÌŠgU—¦(”’l‚ª‚‚¢‚Ù‚ÇL‚­ŠgU‚·‚é)")]
-    private float _spreadRate;
-
     public override void Start()
     {
-        weaponName = "Shotgun";
-
+        weaponName = "Machinegun";
         base.Start();
-
         _aimUI = GameObject.FindAnyObjectByType<CS_AimUI>();
     }
 
