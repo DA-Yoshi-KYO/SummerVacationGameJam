@@ -30,30 +30,48 @@ public class CS_ShotgunWeapon : CS_BaseWeapon
     protected override void Shot()
     {
         //ƒv[ƒ‹‚©‚ç’e‚ğæ“¾‚µ‚Ä”­Ë
-        CS_BaseBullet bullet = base.ActivateBullet();
+        List<CS_BaseBullet> bulletList = new List<CS_BaseBullet>();
+
+        for (int i = 0; i < _bulletCount; i++)
+        {
+            bulletList.Add(base.ActivateBullet());
+        }
+
 
         //•W“I‚ğİ’è
         GameObject targetEnemy = FindTargetWithAim();
 
+        Vector3 baseDirection = transform.forward;
+
         if (targetEnemy != null)
         {
             // “G‚Ì•ûŒüƒw‚ÌƒxƒNƒgƒ‹‚ğŒvZ
-            Vector3 directionToEnemy = (targetEnemy.transform.position - transform.position).normalized;
-
-            bullet.Activate(firePoint.position, Quaternion.LookRotation(directionToEnemy));
-        }
-        else
-        {
-            // “G‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍA’Êí‚Ì”­Ë•ûŒü‚Å’e‚ğ”­Ë
-            bullet.Activate(firePoint.position, firePoint.rotation);
+            baseDirection = (targetEnemy.transform.position - transform.position).normalized;
         }
 
-        // ’e‚Ìí—Ş‚É‰‚¶‚½İ’è
-        if (bullet is CS_SimpleBullet)
+        // ’e‚ğ”­Ë‚·‚é
+        foreach (var bullet in bulletList)
         {
-            CS_SimpleBullet simpleBullet = bullet as CS_SimpleBullet;
-            simpleBullet.SetRange(weaponData.range);
+            // ƒ‰ƒ“ƒ_ƒ€‚ÈŠgUŠp“x‚ğŒvZ
+            bullet.transform.position = baseDirection;
+
+            float randomAngleX = Random.Range(-_spreadRate, _spreadRate);
+            float randomAngleY = Random.Range(-_spreadRate, _spreadRate);
+
+            Quaternion spreadRotation = Quaternion.Euler(randomAngleX, randomAngleY, 0);
+
+            // ŠgU•ûŒü‚ğŒvZ
+            Vector3 spreadDirection = spreadRotation * baseDirection;
+            bullet.Activate(firePoint.position, Quaternion.LookRotation(spreadDirection));
+
+            // ’e‚Ìí—Ş‚É‰‚¶‚½İ’è
+            if (bullet is CS_SimpleBullet)
+            {
+                CS_SimpleBullet simpleBullet = bullet as CS_SimpleBullet;
+                simpleBullet.SetRange(weaponData.range);
+            }
         }
+
     }
 
     //Æ€•ûŒü‚Ìˆê”Ô‹ß‚¢“G‚ğ‘_‚¤ˆ—
