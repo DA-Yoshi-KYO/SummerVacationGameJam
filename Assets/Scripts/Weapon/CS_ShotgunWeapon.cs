@@ -3,19 +3,15 @@ using UnityEngine;
 
 public class CS_ShotgunWeapon : CS_BaseWeapon
 {
-    [Header("�Ə�UI")]
+    [Header("Aim用UI")]
     private CS_AimUI _aimUI;
 
     [SerializeField]
-    [Header("�Ə��̏d��")]
-    private float _angleWeight;
-
-    [SerializeField]
-    [Header("�y���b�g��")]
+    [Header("ペレット数")]
     private int _bulletCount;
 
     [SerializeField]
-    [Header("�V���b�g�K���̒e�̊g�U��(���l�������قǍL���g�U����)")]
+    [Header("拡散率(小さいほど直進しやすい)")]
     private float _spreadRate;
 
     public override void Start()
@@ -88,7 +84,7 @@ public class CS_ShotgunWeapon : CS_BaseWeapon
             Vector3 dirToEnemy = (enemy.transform.position - transform.position).normalized;
             float angle = Vector3.Angle(transform.forward, dirToEnemy);
 
-            float score = dist + angle * _angleWeight;
+            float score = dist + angle;
 
             if (score < lockonScore)
             {
