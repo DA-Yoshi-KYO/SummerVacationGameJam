@@ -35,6 +35,13 @@ public class CS_MachinegunWeapon : CS_BaseWeapon
             // “G‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍA’Êí‚Ì”­Ë•ûŒü‚Å’e‚ğ”­Ë
             bullet.Activate(firePoint.position, firePoint.rotation);
         }
+
+        // ’e‚Ìí—Ş‚É‰‚¶‚½İ’è
+        if (bullet is CS_SimpleBullet)
+        {
+            CS_SimpleBullet simpleBullet = bullet as CS_SimpleBullet;
+            simpleBullet.SetRange(weaponData.range);
+        }
     }
 
     //Æ€•ûŒü‚Ìˆê”Ô‹ß‚¢“G‚ğ‘_‚¤ˆ—

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3086525138750164696}
   - component: {fileID: 3323404587700578997}
   - component: {fileID: 4632796318873390059}
-  - component: {fileID: -9009914477819118063}
+  - component: {fileID: -3206665684317713873}
   m_Layer: 0
-  m_Name: NormalBullet
+  m_Name: SimpleBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-9009914477819118063
+--- !u!114 &-3206665684317713873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,6 +150,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2339349075961840986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c38cfa86d1f58bf4686963234bc6fa32, type: 3}
+  m_Script: {fileID: 11500000, guid: 22905ecc7dfdd0d4b8a6f0321c988172, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CS_BaseBullet
+  m_EditorClassIdentifier: Assembly-CSharp::CS_SimpleBiullet
