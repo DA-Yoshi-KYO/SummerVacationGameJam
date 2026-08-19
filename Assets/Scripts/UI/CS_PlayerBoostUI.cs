@@ -4,6 +4,7 @@
  *    元浪梨緒
  * ----------------------------------------------------------
  * 2026-08-16 | 初回作成
+ * 2026-08-17 | 自動回復を追加
  */
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class CS_PlayerBoostUI : MonoBehaviour
 {
     [Header("最大ブースト値")][SerializeField] private float maxBoost;
     [Header("現在のブースト値")][SerializeField] private float currentBoost;
+    [Header("自動回復速度")][SerializeField] private float autoRecoverSpeed;
+    [Header("自動回復する一定値")][SerializeField] private float autoRecoverBoost;
 
     [Header("白のゲージ")][SerializeField] private Image fullGauge;
     [Header("赤のゲージ")][SerializeField] private Image fewGauge;
@@ -34,6 +37,13 @@ public class CS_PlayerBoostUI : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            UseBoost(10.0f);
+        }
+
+        AutoRecoverBoost();
+
         targetRate = currentBoost / maxBoost;
 
         displayBoostRate = Mathf.Lerp(displayBoostRate, targetRate, Time.deltaTime * smoothSpeed);
@@ -91,4 +101,19 @@ public class CS_PlayerBoostUI : MonoBehaviour
         currentBoost += amount;
         currentBoost = Mathf.Clamp(currentBoost, 0.0f, maxBoost);
     }
+
+    //ブーストの自動回復
+    private void AutoRecoverBoost()
+    {
+        if (currentBoost < autoRecoverBoost)
+        {
+            currentBoost += autoRecoverSpeed * Time.deltaTime;
+
+            if (currentBoost > autoRecoverBoost)
+            {
+                currentBoost = autoRecoverBoost;
+            }
+        }
+    }
+
 }
