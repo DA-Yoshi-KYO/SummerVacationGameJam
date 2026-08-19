@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class CS_ShotgunWeapon : CS_BaseWeapon
 {
-    [Header("Æ€UI")]
+    [Header("ï¿½Æï¿½UI")]
     private CS_AimUI _aimUI;
 
     [SerializeField]
-    [Header("Æ€‚Ìd‚İ")]
+    [Header("ï¿½Æï¿½ï¿½Ìdï¿½ï¿½")]
     private float _angleWeight;
 
     [SerializeField]
-    [Header("ƒyƒŒƒbƒg”")]
+    [Header("ï¿½yï¿½ï¿½ï¿½bï¿½gï¿½ï¿½")]
     private int _bulletCount;
 
     [SerializeField]
-    [Header("ƒVƒ‡ƒbƒgƒKƒ“‚Ì’e‚ÌŠgU—¦(”’l‚ª‚‚¢‚Ù‚ÇL‚­ŠgU‚·‚é)")]
+    [Header("ï¿½Vï¿½ï¿½ï¿½bï¿½gï¿½Kï¿½ï¿½ï¿½Ì’eï¿½ÌŠgï¿½Uï¿½ï¿½(ï¿½ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù‚ÇLï¿½ï¿½ï¿½gï¿½Uï¿½ï¿½ï¿½ï¿½)")]
     private float _spreadRate;
 
     public override void Start()
@@ -29,34 +29,51 @@ public class CS_ShotgunWeapon : CS_BaseWeapon
 
     protected override void Shot()
     {
-        //ƒv[ƒ‹‚©‚ç’e‚ğæ“¾‚µ‚Ä”­Ë
-        CS_BaseBullet bullet = base.ActivateBullet();
+        //ï¿½vï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½Ä”ï¿½ï¿½ï¿½
+        List<CS_BaseBullet> bulletList = new List<CS_BaseBullet>();
 
-        //•W“I‚ğİ’è
+        for (int i = 0; i < _bulletCount; i++)
+        {
+            bulletList.Add(base.ActivateBullet());
+        }
+
+
+        //ï¿½Wï¿½Iï¿½ï¿½İ’ï¿½
         GameObject targetEnemy = FindTargetWithAim();
+
+        Vector3 baseDirection = transform.forward;
 
         if (targetEnemy != null)
         {
-            // “G‚Ì•ûŒüƒw‚ÌƒxƒNƒgƒ‹‚ğŒvZ
-            Vector3 directionToEnemy = (targetEnemy.transform.position - transform.position).normalized;
-
-            bullet.Activate(firePoint.position, Quaternion.LookRotation(directionToEnemy));
-        }
-        else
-        {
-            // “G‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍA’Êí‚Ì”­Ë•ûŒü‚Å’e‚ğ”­Ë
-            bullet.Activate(firePoint.position, firePoint.rotation);
+            // ï¿½Gï¿½Ì•ï¿½ï¿½ï¿½ï¿½wï¿½Ìƒxï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Z
+            baseDirection = (targetEnemy.transform.position - transform.position).normalized;
         }
 
-        // ’e‚Ìí—Ş‚É‰‚¶‚½İ’è
-        if (bullet is CS_SimpleBullet)
+        // ï¿½eï¿½ğ”­Ë‚ï¿½ï¿½ï¿½
+        foreach (var bullet in bulletList)
         {
-            CS_SimpleBullet simpleBullet = bullet as CS_SimpleBullet;
-            simpleBullet.SetRange(weaponData.range);
+            // ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ÈŠgï¿½Uï¿½pï¿½xï¿½ï¿½ï¿½vï¿½Z
+            bullet.transform.position = baseDirection;
+
+            float randomAngleX = Random.Range(-_spreadRate, _spreadRate);
+            float randomAngleY = Random.Range(-_spreadRate, _spreadRate);
+
+            Quaternion spreadRotation = Quaternion.Euler(randomAngleX, randomAngleY, 0);
+
+            // ï¿½gï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½Z
+            Vector3 spreadDirection = spreadRotation * baseDirection;
+            bullet.Activate(firePoint.position, Quaternion.LookRotation(spreadDirection));
+
+            // ï¿½eï¿½Ìï¿½Ş‚É‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ’ï¿½
+            if (bullet is CS_SimpleBullet)
+            {
+                CS_SimpleBullet simpleBullet = bullet as CS_SimpleBullet;
+                simpleBullet.SetRange(weaponData.range);
+            }
         }
     }
 
-    //Æ€•ûŒü‚Ìˆê”Ô‹ß‚¢“G‚ğ‘_‚¤ˆ—
+    //ï¿½Æï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìˆï¿½Ô‹ß‚ï¿½ï¿½Gï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public GameObject FindTargetWithAim()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
