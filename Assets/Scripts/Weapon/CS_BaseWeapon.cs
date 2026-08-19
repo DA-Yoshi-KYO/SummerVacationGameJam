@@ -12,7 +12,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     [Header("発射する位置")][SerializeField] protected Transform firePoint;
 
     [Header("武器データベース")][SerializeField] protected CSO_WeaponDataBase weaponDataBase;
-    [Header("武器名（Dictionaryで検索）")][SerializeField] protected string weaponName;
+    [Header("武器名（Dictionaryで検索）")] protected string weaponName;
     [Header("弾プール")][SerializeField] protected CS_BulletPool bulletPool;
 
     protected CSO_WeaponDataBase.WeaponDataBase weaponData;
