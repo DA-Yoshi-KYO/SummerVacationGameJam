@@ -12,10 +12,10 @@ public class CS_PlayerLevelUI : MonoBehaviour
 {
     [Header("レベルのテキスト")][SerializeField] private TextMeshProUGUI levelText;
 
-    [Header("初期レベル")][SerializeField]private int initPlayerLevel;
-    [Header("最大レベル")][SerializeField]private int　maxPlayerLevel;
+    [Header("初期レベル")] public int initPlayerLevel;
+    [Header("最大レベル")] public int　maxPlayerLevel;
 
-    private int currentplayerLevel;//現在のレベル
+    [HideInInspector]public int currentplayerLevel;//現在のレベル
 
     void Start()
     {

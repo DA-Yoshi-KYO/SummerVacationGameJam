@@ -20,7 +20,7 @@ public class CS_PlayerHPUI : MonoBehaviour
     [Header("ダメージの速度")][SerializeField] private float damageSpeed = 2.0f;
 
     private float damageTime = 0.0f;
-    private float hpRate;//ブーストの表示割合
+    private float hpRate;//Hpの表示割合
 
     void Start()
     {
