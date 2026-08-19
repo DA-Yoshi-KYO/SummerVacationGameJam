@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CS_PistolWeapon : CS_BaseWeapon
 {
-    [SerializeField]
     [Header("Æ€UI")]
     private CS_AimUI _aimUI;
 
@@ -12,6 +11,8 @@ public class CS_PistolWeapon : CS_BaseWeapon
 
     public override void Start()
     {
+        weaponName = "Pistol";
+
         base.Start();
 
         _aimUI = GameObject.FindAnyObjectByType<CS_AimUI>();
@@ -36,6 +37,13 @@ public class CS_PistolWeapon : CS_BaseWeapon
         {
             // “G‚ªŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍA’Êí‚Ì”­Ë•ûŒü‚Å’e‚ğ”­Ë
             bullet.Activate(firePoint.position, firePoint.rotation);
+        }
+
+        // ’e‚Ìí—Ş‚É‰‚¶‚½İ’è
+        if (bullet is CS_SimpleBullet)
+        {
+            CS_SimpleBullet simpleBullet = bullet as CS_SimpleBullet;
+            simpleBullet.SetRange(weaponData.range);
         }
     }
 

@@ -18,6 +18,7 @@ public class CSO_WeaponDataBase : ScriptableObject
         [Header("ダメージ")] public float damage;
         [Header("連射速度")] public float fireRate;
         [Header("弾速")] public float bulletSpeed;
+        [Header("射程距離")] public float range;
         [Header("弾数")] public int bulletCount;
         [Header("リロード時間")] public float reloadTime;
         [Header("弾のPrefab")] public GameObject bulletPrefab;

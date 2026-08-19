@@ -1,61 +1,131 @@
-/* 
- *    Æ€UIƒNƒ‰ƒX
- * 
- *    Œ³˜Q—œ
+ï»¿/* ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼
+ *    ç…§æº–UIã‚¯ãƒ©ã‚¹
+ * ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼
+ *    å…ƒæµªæ¢¨ç·’
  * ----------------------------------------------------------
- * 2026-08-12 | ‰‰ñì¬(‰¼‚Åì‚Á‚½‚½‚ßC³•K—viƒA[ƒ}[ƒhƒRƒA‚ğŠî‚Éì¬j)
+ * 2026-08-12 | åˆå›ä½œæˆ(ä»®ã§ä½œã£ãŸãŸã‚ä¿®æ­£å¿…è¦ï¼ˆã‚¢ãƒ¼ãƒãƒ¼ãƒ‰ã‚³ã‚¢ã‚’åŸºã«ä½œæˆï¼‰)
+ * 2026-08-15 | UIã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®å¤‰æ›´
  */
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CS_AimUI : MonoBehaviour
 {
-    [Header("‰ñ“]‚·‚éƒŠƒ“ƒO")][SerializeField] private Image outRing;
-    [Header("—h‚ê‚éƒŠƒ“ƒO")][SerializeField] private Image inRing;
-    [Header("ƒƒbƒNƒIƒ“‚Ì“_–Å")][SerializeField] private Image lockRing;
+    [Header("InRing")][SerializeField] private RectTransform inRing;
+    [Header("InRingã®æ‹¡å¤§ã®é€Ÿåº¦")][SerializeField] private float inExpandSpeed;
+    [Header("InRingã®ç¸®å°ã®é€Ÿåº¦")][SerializeField] private float inShrinkSpeed;
+    [Header("InRingã®æœ€å¤§ã‚¹ã‚±ãƒ¼ãƒ«")][SerializeField] private float inMaxScale;
+    [Header("InRingã®æœ€å°ã‚¹ã‚±ãƒ¼ãƒ«")][SerializeField] private float inMinScale;
+    [Header("InRingã®æ‹¡å¤§æ™‚ã®å›è»¢è§’åº¦")][SerializeField] private float inRotateExpand;
+    [Header("InRingã®ç¸®å°æ™‚ã®å›è»¢è§’åº¦")][SerializeField] private float inRotateShrink;
 
-    [Header("ŠO‘¤ƒŠƒ“ƒO‚Ì‰ñ“]‘¬“x")][SerializeField] private float outRotateSpeed = 30f;
-    [Header("“à‘¤ƒŠƒ“ƒO‚Ì—h‚ê")][SerializeField] private float inPulseSpeed = 2f;
-    [Header("—h‚ê‚Ì‹­‚³")][SerializeField] private float inPulseAmount = 0.05f;
+    [Header("OutRing")][SerializeField] private RectTransform outRing;
+    [Header("OutRingã®æ‹¡å¤§ã®é€Ÿåº¦")][SerializeField] private float outExpandSpeed;
+    [Header("OutRingã®ç¸®å°ã®é€Ÿåº¦")][SerializeField] private float outShrinkSpeed;
+    [Header("OutRingã®æœ€å¤§ã‚¹ã‚±ãƒ¼ãƒ«")][SerializeField] private float outMaxScale;
+    [Header("OutRingã®æœ€å°ã‚¹ã‚±ãƒ¼ãƒ«")][SerializeField] private float outMinScale;
+    [Header("OutRingã®æ‹¡å¤§æ™‚ã®å›è»¢è§’åº¦")][SerializeField] private float outRotateExpand;
+    [Header("OutRingã®ç¸®å°æ™‚ã®å›è»¢è§’åº¦")][SerializeField] private float outRotateShrink;
 
-    [Header("ƒvƒŒƒCƒ„[‚ªg‚Á‚Ä‚éƒJƒƒ‰")][SerializeField] private Camera playerCamera;
-    [Header("ƒvƒŒƒCƒ„[–{‘Ì")][SerializeField] private Transform player;
-    [Header("Æ€‚Ì‹——£")][SerializeField] private float aimDistance;
+    [Header("å¾…æ©Ÿæ™‚é–“")][SerializeField] private float waitTime;
 
-    private bool isLocked = false;
+    //ãƒªãƒ³ã‚°ã®çŠ¶æ…‹
+    private enum RingState
+    { 
+        Expand,//æ‹¡å¤§ä¸­
+        WaitAfterExpand,//æ‹¡å¤§å¾Œã®å¾…æ©Ÿä¸­
+        Shrink,//ç¸®å°ä¸­
+        WaitAfterShrink,//ç¸®å°å¾Œã®å¾…æ©Ÿä¸­
+    }
+
+    private RingState currentRingState = RingState.Expand;//ç¾åœ¨ã®ãƒªãƒ³ã‚°ã®çŠ¶æ…‹
+
+    private float time = 0.0f;
+
+    private bool isLocked = false;//ãƒ­ãƒƒã‚¯ã‚ªãƒ³ã—ã¦ã‚‹ã‹ã©ã†ã‹
 
     void Update()
     {
-        Vector3 worldPoint = player.position + player.forward * aimDistance;
-        Vector3 screenPos = playerCamera.WorldToScreenPoint(worldPoint);
-
-        transform.position = screenPos;
-
         AimUI();
     }
 
-    //UI‚Ì“®‚«
+    //UIã®å‹•ã
     private void AimUI()
     {
-        //ŠO‘¤ƒŠƒ“ƒO‚ğ‰ñ“]‚³‚¹‚é
-        outRing.rectTransform.Rotate(0.0f, 0.0f, outRotateSpeed * Time.deltaTime);
-
-        //“à‘¤ƒŠƒ“ƒO‚ğ—h‚ç‚·
-        float scale = 1.0f + Mathf.Sin(Time.time * inPulseSpeed) * inPulseAmount;
-        inRing.rectTransform.localScale = new Vector3(scale, scale, 1.0f);
-
-        //ƒƒbƒNƒIƒ“‚Ì“_–Å
-        if (isLocked)
+        switch (currentRingState)
         {
-            float alpha = Mathf.Abs(Mathf.Sin(Time.time * 5.0f));
-            lockRing.color = new Color(1.0f, 0.0f, 0.0f, alpha);
-        }
-        else
-        {
-            lockRing.color = new Color(1.0f, 0.0f, 0.0f, 0.0f);
+            case RingState.Expand:
+                //inRingã®æ‹¡å¤§å‡¦ç†
+                UpdateRingExpand(inRing, inMaxScale, inExpandSpeed, inRotateExpand);
+                //outRingã®æ‹¡å¤§å‡¦ç†
+                UpdateRingExpand(outRing, outMaxScale, outExpandSpeed, outRotateExpand);
+
+                //ãƒªãƒ³ã‚°ãŒæœ€å¤§ã‚¹ã‚±ãƒ¼ãƒ«ã«åˆ°é”ã—ãŸã‚‰ã€æ¬¡ã®çŠ¶æ…‹ã«é·ç§»ã™ã‚‹
+                if (CheckReached(inRing.localScale.x, inMaxScale) && CheckReached(outRing.localScale.x, outMaxScale))
+                {
+                    currentRingState = RingState.WaitAfterExpand;
+                    time = 0.0f;
+                }
+                break;
+
+            case RingState.WaitAfterExpand:
+                time += Time.deltaTime;
+
+                //å¾…æ©Ÿæ™‚é–“ãŒçµŒéã—ãŸã‚‰ã€æ¬¡ã®çŠ¶æ…‹ã«é·ç§»ã™ã‚‹
+                if (time >= waitTime)
+                {
+                    currentRingState = RingState.Shrink;
+                }
+                break;
+
+            case RingState.Shrink:
+                //inRingã®ç¸®å°å‡¦ç†
+                UpdateRingShrink(inRing, inMinScale, inShrinkSpeed, inRotateShrink);
+                //outRingã®ç¸®å°å‡¦ç†
+                UpdateRingShrink(outRing, outMinScale, outShrinkSpeed, outRotateShrink);
+
+                //ãƒªãƒ³ã‚°ãŒæœ€å°ã‚¹ã‚±ãƒ¼ãƒ«ã«åˆ°é”ã—ãŸã‚‰ã€æ¬¡ã®çŠ¶æ…‹ã«é·ç§»ã™ã‚‹
+                if (CheckReached(inRing.localScale.x, inMinScale) && CheckReached(outRing.localScale.x, outMinScale))
+                {
+                    currentRingState = RingState.WaitAfterShrink;
+                    time = 0.0f;
+                }
+                break;
+
+            case RingState.WaitAfterShrink:
+                time += Time.deltaTime;
+
+                //å¾…æ©Ÿæ™‚é–“ãŒçµŒéã—ãŸã‚‰ã€æ¬¡ã®çŠ¶æ…‹ã«é·ç§»ã™ã‚‹
+                if (time >= waitTime)
+                {
+                    currentRingState = RingState.Expand;
+                }
+                break;
         }
     }
 
+    //ãƒªãƒ³ã‚°ã®æ‹¡å¤§å‡¦ç†
+    private void UpdateRingExpand(RectTransform ring, float maxScale, float speed, float rotate)
+    {
+        ring.Rotate(0.0f, 0.0f, rotate * Time.deltaTime);
+        float scale = Mathf.Lerp(ring.localScale.x, maxScale, Time.deltaTime * speed);
+        ring.localScale = new Vector3(scale, scale, 1.0f);
+    }
+
+    //ãƒªãƒ³ã‚°ã‚’ç¸®å°ã™ã‚‹é–¢æ•°
+    private void UpdateRingShrink(RectTransform ring, float minScale, float speed, float rotate)
+    {
+        ring.Rotate(0.0f, 0.0f, rotate * Time.deltaTime);
+        float scale = Mathf.Lerp(ring.localScale.x, minScale, Time.deltaTime * speed);
+        ring.localScale = new Vector3(scale, scale, 1.0f);
+    }
+
+    //ç›®æ¨™å€¤ã«åˆ°é”ã—ãŸã‹ã‚’ç¢ºèªã™ã‚‹é–¢æ•°
+    private bool CheckReached(float current, float target)
+    {
+        return Mathf.Abs(current - target) < 0.01f;
+    }
+
+    //ãƒ­ãƒƒã‚¯ã‚ªãƒ³çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹é–¢æ•°
     public void SetLocked(bool locked)
     {
         isLocked = locked;
