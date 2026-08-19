@@ -298,7 +298,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 202552078910008966, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
       propertyPath: _debugWeaponName
-      value: Machinegun
+      value: MultipleLaunchMissile
       objectReference: {fileID: 0}
     - target: {fileID: 202552078910008966, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
       propertyPath: _firstSelectWeaponList.Array.size
