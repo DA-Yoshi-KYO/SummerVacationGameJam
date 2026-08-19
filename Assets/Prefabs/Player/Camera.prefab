@@ -82,10 +82,13 @@ MonoBehaviour:
   _cameraPivot: {fileID: 5916160374924231662}
   _camera: {fileID: 8729676832615714742}
   _followSmoothTime: 0.15
+  _limitFollowSmoothTime: 0.03
+  _screenEdgeThreshold: 0.75
+  _screenLimitThreshold: 0.9
   _sensitivity: 0.1
   _minPitch: -40
   _maxPitch: 60
-  _distance: 15
+  _distance: 5
 --- !u!1 &4678549503936873818
 GameObject:
   m_ObjectHideFlags: 0
