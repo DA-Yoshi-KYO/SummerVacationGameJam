@@ -103,7 +103,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     }
 
     //ƒŠƒ[ƒhˆ—
-    private void Reloading()
+    protected void Reloading()
     {
         reloadTime += Time.deltaTime;
 

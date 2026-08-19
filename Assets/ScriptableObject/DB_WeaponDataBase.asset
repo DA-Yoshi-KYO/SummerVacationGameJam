@@ -53,3 +53,11 @@ MonoBehaviour:
     bulletCount: 100
     reloadTime: 15
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
+  - weaponName: MultipleLaunchMissile
+    damage: 3
+    fireRate: 0.2
+    bulletSpeed: 1
+    range: 20
+    bulletCount: 5
+    reloadTime: 10
+    bulletPrefab: {fileID: 6672024944259534010, guid: 7bb6b2a09ddf40e4886f657d0b7f160e, type: 3}
