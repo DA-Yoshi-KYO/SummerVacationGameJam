@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: amgtd_emittion
     second: {fileID: 2100000, guid: a93e56322ed75ff4683a5d2f8c48662e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: amgtd_main
+    second: {fileID: 2100000, guid: a93e56322ed75ff4683a5d2f8c48662e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
