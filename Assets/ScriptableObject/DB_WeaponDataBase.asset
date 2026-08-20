@@ -61,3 +61,19 @@ MonoBehaviour:
     bulletCount: 5
     reloadTime: 10
     bulletPrefab: {fileID: 6672024944259534010, guid: 7bb6b2a09ddf40e4886f657d0b7f160e, type: 3}
+  - weaponName: PulseField
+    damage: 1
+    fireRate: 0
+    bulletSpeed: 0
+    range: 3
+    bulletCount: 1
+    reloadTime: 0
+    bulletPrefab: {fileID: 8699888154578139510, guid: 13727c7dedced194f92186bdfd850127, type: 3}
+  - weaponName: SniperRifle
+    damage: 10
+    fireRate: 10
+    bulletSpeed: 20
+    range: 40
+    bulletCount: 5
+    reloadTime: 5
+    bulletPrefab: {fileID: 8699888154578139510, guid: 13727c7dedced194f92186bdfd850127, type: 3}
