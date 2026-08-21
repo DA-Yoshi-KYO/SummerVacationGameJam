@@ -33,7 +33,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
         }
 
         //•Ší–¼‚©‚ç•Šíƒf[ƒ^‚ğæ“¾
-        weaponData = weaponDataBase.weaponDatas[weaponName];
+        weaponData = weaponDataBase.weaponDatas[weaponName].CloneData();
 
         if (weaponData == null)
         {
