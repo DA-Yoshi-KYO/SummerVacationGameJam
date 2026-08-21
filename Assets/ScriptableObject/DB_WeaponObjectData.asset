@@ -23,3 +23,5 @@ MonoBehaviour:
     weaponPrefab: {fileID: 2940581244213751151, guid: b1cf3deecfa840a419f0d0ac2d2af022, type: 3}
   - weaponName: MultipleLaunchMissile
     weaponPrefab: {fileID: 3714052840442064089, guid: 845d251bfae141945a5c34aefd177d7b, type: 3}
+  - weaponName: PulseField
+    weaponPrefab: {fileID: 7890564750385461443, guid: 5fd7a39c79c716348b489ff5543df0cc, type: 3}
