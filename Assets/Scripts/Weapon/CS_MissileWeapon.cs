@@ -24,7 +24,7 @@ public class CS_MissileWeapon : CS_BaseWeapon
         CS_BaseBullet bullet = base.ActivateBullet();
 
         //ターゲットを設定
-        if (bullet is CS_MissileBullet m)
+        if (bullet is CS_HomingMissileBullet m)
         {
             GameObject target = FindTargetWithAim();
             m.SetTarget(target ? target.transform : null);
