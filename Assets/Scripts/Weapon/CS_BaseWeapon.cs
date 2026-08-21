@@ -48,8 +48,6 @@ public abstract class CS_BaseWeapon : MonoBehaviour
 
         //’eƒv[ƒ‹‚ğ‰Šú‰»
         bulletPool.Initialize(weaponData.bulletPrefab.GetComponent<CS_BaseBullet>());
-
-        CS_ValueObserver.Instance.Register(gameObject, this, "”­Ë‚Å‚«‚é‚©‚Ç‚¤‚©", () => isShooting);
     }
 
     private void Update()
@@ -119,5 +117,10 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     public void SetShooting(bool shooting)
     {
         isShooting = shooting;
+    }
+
+    public string GetWeaponName()
+    {
+        return weaponName;
     }
 }
