@@ -76,4 +76,12 @@ MonoBehaviour:
     range: 40
     bulletCount: 5
     reloadTime: 5
-    bulletPrefab: {fileID: 8699888154578139510, guid: 13727c7dedced194f92186bdfd850127, type: 3}
+    bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
+  - weaponName: BeamRifle
+    damage: 1
+    fireRate: 7
+    bulletSpeed: 20
+    range: 30
+    bulletCount: 4
+    reloadTime: 5
+    bulletPrefab: {fileID: 2339349075961840986, guid: 0d8e7e31a9517ba47a16656da7989e1a, type: 3}
