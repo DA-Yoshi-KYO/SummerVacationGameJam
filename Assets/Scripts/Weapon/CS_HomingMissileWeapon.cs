@@ -1,73 +1,55 @@
 using UnityEngine;
 
-public class CS_MultipleLaunchMissileWeapon : CS_BaseWeapon
+public class CS_HomingMissileWeapon : CS_BaseWeapon
 {
-    [Header("照準UI")]
-    [SerializeField] 
-    protected CS_AimUI _aimUI;
-
-    [Header("照準の重み")]
-    [SerializeField] 
-    protected float _angleWeight;
-
-    [Header("発射を開始したかどうか")]
-    private bool _isFiringStarted = false;
+    [Header("照準UI")][SerializeField] protected CS_AimUI _aimUI;
+    [Header("照準の重み")][SerializeField] protected float _angleWeight;
 
     public override void Start()
     {
-        weaponName = "MultipleLaunchMissile";
-
+        weaponName = "HomingMissile";
         base.Start();
-
         _aimUI = GameObject.FindAnyObjectByType<CS_AimUI>();
-    }
-
-    private void Update()
-    {
-        //弾を発射
-        if (isReloading)
-            base.Reloading();//リロード中
-        else if (isShooting || _isFiringStarted)
-            TryShot();  //射撃処理
     }
 
     protected override void Shot()
     {
-        for (int i = 0; i < weaponData.bulletCount; i++)
-        {
-            //プールから弾を取得して発射
-            CS_BaseBullet bullet = base.ActivateBullet();
+        //プールから弾を取得して発射
+        CS_BaseBullet bullet = base.ActivateBullet();
 
-            //ターゲットを設定
-            if (bullet is CS_NormalMissileBullet m)
-            {
-                GameObject target = FindTargetWithAim();
-                m.SetTarget(target ? target.transform : null);
-            }
+        //ターゲットを設定
+        if (bullet is CS_HomingMissileBullet m)
+        {
+            GameObject target = FindTargetWithAim();
+            m.SetTarget(target ? target.transform : null);
+        }
+        else
+        {
+            Debug.LogError("ミサイル弾が使用されていません");
         }
     }
 
-    protected override void TryShot()
+    //一番近い敵を探す処理
+    public GameObject FindNearestEnemy()
     {
-        //次に発射出来るまで待つ
-        if (Time.time < nextFireTime)
-            return;
+        //"Enemy"タグが付いたオブジェクトを全部取得
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        //弾がない場合はリロード
-        if (currentBullets <= 0)
+        GameObject nearest = null;
+        float minDist = Mathf.Infinity;
+
+        //全敵の中から最も距離が近いものを探す
+        foreach (var e in enemies)
         {
-            isReloading = true;
-            _isFiringStarted = false;
-            return;
+            float dist = Vector3.Distance(transform.position, e.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                nearest = e;
+            }
         }
 
-        //弾を発射
-        Shot();
-        currentBullets--;
-        _isFiringStarted = true;
-
-        //次に発射出来る時間を更新
-        nextFireTime = Time.time + weaponData.fireRate;
+        return nearest;
     }
 
     //照準方向の一番近い敵をロックオンする処理

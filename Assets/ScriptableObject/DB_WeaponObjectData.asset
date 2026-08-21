@@ -29,3 +29,5 @@ MonoBehaviour:
     weaponPrefab: {fileID: 2658369428436590472, guid: 28d2479ea354ea54b9b2a5ca9e3e518b, type: 3}
   - weaponName: BeamRifle
     weaponPrefab: {fileID: 1838689691101142680, guid: 74cbad46a23577d4a8143fc4b892b425, type: 3}
+  - weaponName: HomingMissile
+    weaponPrefab: {fileID: 5331869404502916671, guid: 82f83ed9d72387f468d2d22a7abebf80, type: 3}
