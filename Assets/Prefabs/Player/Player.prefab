@@ -409,12 +409,13 @@ GameObject:
   - component: {fileID: 217741187463034964}
   - component: {fileID: 930411283014064365}
   - component: {fileID: 8267047028101423404}
+  - component: {fileID: 202552078910008966}
+  - component: {fileID: 8730120232327184995}
   - component: {fileID: 3110697255269337939}
   - component: {fileID: 2185185080156520522}
   - component: {fileID: 8121477946416220243}
   - component: {fileID: 6584615491475279563}
   - component: {fileID: 4079401033106566549}
-  - component: {fileID: 202552078910008966}
   m_Layer: 31
   m_Name: Player
   m_TagString: Untagged
@@ -497,6 +498,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &202552078910008966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464479283556063199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617bfb21685266f4fa72148b9a52cd91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_PlayerEquipment
+  _firstSelectWeaponList:
+  - {fileID: 7754399794532597180, guid: 36d6cc23afc09674f9b5af01058510b4, type: 3}
+  _weaponObjectData: {fileID: 11400000, guid: 8bac6fae7ffba294a9fe7acd0e278592, type: 2}
+  _equipmentWeaponPositionList:
+  - {fileID: 5919939363025445509}
+  - {fileID: 8331660122459470636}
+  - {fileID: 7703889743424813391}
+  - {fileID: 261840163620089744}
+  - {fileID: 341839314182159569}
+  - {fileID: 3245295980464119976}
+  _debugWeaponName: 
+--- !u!114 &8730120232327184995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464479283556063199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4ab22e8cbdd294d874aaaf6a4e8e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_PlayerStatus
 --- !u!114 &3110697255269337939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,29 +608,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_PlayerMoveEnergy
   _stats: {fileID: 11400000, guid: 468afda42a2f4664e8e245e140e8505f, type: 2}
---- !u!114 &202552078910008966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464479283556063199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 617bfb21685266f4fa72148b9a52cd91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CS_PlayerEquipment
-  _firstSelectWeaponList:
-  - {fileID: 7754399794532597180, guid: 36d6cc23afc09674f9b5af01058510b4, type: 3}
-  _weaponObjectData: {fileID: 11400000, guid: 8bac6fae7ffba294a9fe7acd0e278592, type: 2}
-  _equipmentWeaponPositionList:
-  - {fileID: 5919939363025445509}
-  - {fileID: 8331660122459470636}
-  - {fileID: 7703889743424813391}
-  - {fileID: 261840163620089744}
-  - {fileID: 341839314182159569}
-  - {fileID: 3245295980464119976}
-  _debugWeaponName: 
 --- !u!1 &8431045434756094761
 GameObject:
   m_ObjectHideFlags: 0
