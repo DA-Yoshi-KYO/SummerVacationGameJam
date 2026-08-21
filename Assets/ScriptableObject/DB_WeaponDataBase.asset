@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CSO_WeaponDataBase
   weaponList:
   - weaponName: Missile
+    weaponIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     damage: 5
     fireRate: 5
     bulletSpeed: 1
@@ -22,6 +23,7 @@ MonoBehaviour:
     reloadTime: 3
     bulletPrefab: {fileID: 6672024944259534010, guid: 7bb6b2a09ddf40e4886f657d0b7f160e, type: 3}
   - weaponName: Pistol
+    weaponIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     damage: 1
     fireRate: 5
     bulletSpeed: 20
@@ -30,6 +32,7 @@ MonoBehaviour:
     reloadTime: 3
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: Shotgun
+    weaponIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     damage: 4
     fireRate: 2
     bulletSpeed: 20
@@ -38,6 +41,7 @@ MonoBehaviour:
     reloadTime: 3
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: Machinegun
+    weaponIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     damage: 1
     fireRate: 0.3
     bulletSpeed: 20
@@ -46,6 +50,7 @@ MonoBehaviour:
     reloadTime: 5
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: Minigun
+    weaponIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     damage: 1
     fireRate: 0.1
     bulletSpeed: 20
@@ -54,6 +59,7 @@ MonoBehaviour:
     reloadTime: 15
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: MultipleLaunchMissile
+    weaponIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     damage: 3
     fireRate: 0.2
     bulletSpeed: 1

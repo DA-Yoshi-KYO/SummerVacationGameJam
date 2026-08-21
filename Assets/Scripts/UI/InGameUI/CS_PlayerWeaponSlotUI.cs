@@ -36,7 +36,7 @@ public class CS_PlayerWeaponSlotUI : MonoBehaviour
     }
 
     //武器データをセット
-    public void SetupWeapon(CSO_UIWeaponDataBase.UIWeaponDataBase data)
+    public void SetupWeapon(CSO_WeaponDataBase.WeaponDataBase data)
     {
         hasWeapon = true;
 
@@ -46,8 +46,8 @@ public class CS_PlayerWeaponSlotUI : MonoBehaviour
         BackImage.enabled = false;
         frameImage.GetComponent<CS_ChangeUITexture>().ChangeTexture(true);
 
-        maxBullets = data.initBullets;
-        currentBullets = data.initBullets;
+        maxBullets = data.bulletCount;
+        currentBullets = data.bulletCount;
 
         bulletsText.text = currentBullets.ToString();
 

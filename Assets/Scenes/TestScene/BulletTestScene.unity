@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 6049937930944974173, guid: 12469fb9c132ab5408b3e242b7f1c9c7, type: 3}
+      propertyPath: _cameraFollowTarget
+      value: 
+      objectReference: {fileID: 1587629674}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -525,7 +529,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 233174882}
-  - {fileID: 2707280621392846121}
+  - {fileID: 7031123561616155817}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &909264272
@@ -933,7 +937,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0705a3603e470ae4eacb25946199129e, type: 3}
---- !u!1001 &2707280621392846120
+--- !u!1001 &7031123561616155816
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1030,10 +1034,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 317327767fb1a984b80f91a0a72b13c3, type: 3}
---- !u!224 &2707280621392846121 stripped
+--- !u!224 &7031123561616155817 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5104956716984956152, guid: 317327767fb1a984b80f91a0a72b13c3, type: 3}
-  m_PrefabInstance: {fileID: 2707280621392846120}
+  m_PrefabInstance: {fileID: 7031123561616155816}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

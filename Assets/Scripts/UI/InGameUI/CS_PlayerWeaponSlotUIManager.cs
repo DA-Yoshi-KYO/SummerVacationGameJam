@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class PlayerWeaponSlotUIManager : MonoBehaviour
 {
-    [Header("UI武器データベース")][SerializeField] private CSO_UIWeaponDataBase uiWeaponDataBase;
+    [Header("UI武器データベース")][SerializeField] private CSO_WeaponDataBase weaponDataBase;
 
     [Header("武器スロット配列")][SerializeField] private CS_PlayerWeaponSlotUI[] slotArray;
     private Dictionary<string, List<CS_PlayerWeaponSlotUI>> slots = new Dictionary<string, List<CS_PlayerWeaponSlotUI>>();
@@ -19,7 +19,7 @@ public class PlayerWeaponSlotUIManager : MonoBehaviour
 
     void Start()
     {
-        if (uiWeaponDataBase == null)
+        if (weaponDataBase == null)
         {
             Debug.LogError("UIWeaponDataBase が設定されていません");
             return;
@@ -41,7 +41,7 @@ public class PlayerWeaponSlotUIManager : MonoBehaviour
     {
         if (nextSlotIndex >= slotArray.Length) return;
 
-        var data = uiWeaponDataBase.weaponDatas[weaponName];
+        var data = weaponDataBase.weaponDatas[weaponName];
 
         var slot = slotArray[nextSlotIndex];
         slot.SetupWeapon(data);
