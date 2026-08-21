@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CSO_WeaponDataBase
   weaponList:
   - weaponName: Pistol
-    damage: 1
-    fireRate: 5
+    damage: 2
+    fireRate: 1
     bulletSpeed: 20
     range: 10
     bulletCount: 10
@@ -23,12 +23,20 @@ MonoBehaviour:
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: Shotgun
     damage: 4
-    fireRate: 2
+    fireRate: 3
     bulletSpeed: 20
     range: 5
     bulletCount: 3
     reloadTime: 3
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
+  - weaponName: PulseField
+    damage: 1
+    fireRate: 0
+    bulletSpeed: 0
+    range: 3
+    bulletCount: 1
+    reloadTime: 0
+    bulletPrefab: {fileID: 8699888154578139510, guid: 13727c7dedced194f92186bdfd850127, type: 3}
   - weaponName: Machinegun
     damage: 1
     fireRate: 0.3
@@ -41,7 +49,7 @@ MonoBehaviour:
     damage: 1
     fireRate: 0.1
     bulletSpeed: 20
-    range: 20
+    range: 25
     bulletCount: 100
     reloadTime: 15
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
@@ -51,19 +59,11 @@ MonoBehaviour:
     bulletSpeed: 1
     range: 20
     bulletCount: 5
-    reloadTime: 10
+    reloadTime: 5
     bulletPrefab: {fileID: 6672024944259534010, guid: 7bb6b2a09ddf40e4886f657d0b7f160e, type: 3}
-  - weaponName: PulseField
-    damage: 1
-    fireRate: 0
-    bulletSpeed: 0
-    range: 3
-    bulletCount: 1
-    reloadTime: 0
-    bulletPrefab: {fileID: 8699888154578139510, guid: 13727c7dedced194f92186bdfd850127, type: 3}
   - weaponName: SniperRifle
     damage: 10
-    fireRate: 10
+    fireRate: 7
     bulletSpeed: 20
     range: 40
     bulletCount: 5
@@ -71,7 +71,7 @@ MonoBehaviour:
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: BeamRifle
     damage: 1
-    fireRate: 7
+    fireRate: 5
     bulletSpeed: 20
     range: 30
     bulletCount: 4
@@ -79,7 +79,7 @@ MonoBehaviour:
     bulletPrefab: {fileID: 2339349075961840986, guid: 0d8e7e31a9517ba47a16656da7989e1a, type: 3}
   - weaponName: HomingMissile
     damage: 3
-    fireRate: 10
+    fireRate: 2
     bulletSpeed: 1
     range: 30
     bulletCount: 3
