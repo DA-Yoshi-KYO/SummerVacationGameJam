@@ -39,7 +39,7 @@ public class CS_MultipleLaunchMissileWeapon : CS_BaseWeapon
             CS_BaseBullet bullet = base.ActivateBullet();
 
             //ターゲットを設定
-            if (bullet is CS_MissileBullet m)
+            if (bullet is CS_NormalMissileBullet m)
             {
                 GameObject target = FindTargetWithAim();
                 m.SetTarget(target ? target.transform : null);

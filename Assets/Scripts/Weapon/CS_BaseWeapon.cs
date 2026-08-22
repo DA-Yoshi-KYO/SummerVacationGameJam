@@ -12,7 +12,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     [Header("発射する位置")][SerializeField] protected Transform firePoint;
 
     [Header("武器データベース")][SerializeField] protected CSO_WeaponDataBase weaponDataBase;
-    [Header("武器名（Dictionaryで検索）")][SerializeField] protected string weaponName;
+    [Header("武器名（Dictionaryで検索）")] protected string weaponName;
     [Header("弾プール")][SerializeField] protected CS_BulletPool bulletPool;
 
     protected CSO_WeaponDataBase.WeaponDataBase weaponData;
@@ -33,7 +33,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
         }
 
         //武器名から武器データを取得
-        weaponData = weaponDataBase.weaponDatas[weaponName];
+        weaponData = weaponDataBase.weaponDatas[weaponName].CloneData();
 
         if (weaponData == null)
         {
@@ -48,8 +48,6 @@ public abstract class CS_BaseWeapon : MonoBehaviour
 
         //弾プールを初期化
         bulletPool.Initialize(weaponData.bulletPrefab.GetComponent<CS_BaseBullet>());
-
-        CS_ValueObserver.Instance.Register(gameObject, this, "発射できるかどうか", () => isShooting);
     }
 
     private void Update()
@@ -119,5 +117,10 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     public void SetShooting(bool shooting)
     {
         isShooting = shooting;
+    }
+
+    public string GetWeaponName()
+    {
+        return weaponName;
     }
 }

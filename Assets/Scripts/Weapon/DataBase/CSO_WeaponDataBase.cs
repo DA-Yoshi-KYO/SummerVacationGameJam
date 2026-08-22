@@ -23,12 +23,17 @@ public class CSO_WeaponDataBase : ScriptableObject
         [Header("弾数")] public int bulletCount;
         [Header("リロード時間")] public float reloadTime;
         [Header("弾のPrefab")] public GameObject bulletPrefab;
+
+        public WeaponDataBase CloneData()
+        {
+            return (WeaponDataBase)this.MemberwiseClone();
+        }
     }
 
     [SerializeField] private List<WeaponDataBase> weaponList;//Inspectorで設定するための変数
     private Dictionary<string, WeaponDataBase> weaponDictionary;//実行時にDictionaryに変換するための変数
 
-    //読み取り専用変数
+    // 読み取り専用変数
     public IReadOnlyDictionary<string, WeaponDataBase> weaponDatas
     {
         get

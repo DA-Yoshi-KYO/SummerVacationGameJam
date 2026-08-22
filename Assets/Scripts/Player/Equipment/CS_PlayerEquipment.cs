@@ -26,8 +26,25 @@ public class CS_PlayerEquipment : MonoBehaviour
 
     private void Start()
     {
-        CS_ValueObserver.Instance.Register(gameObject, this, "武器の登録数：", ()=>_weaponObjectData.weaponObjectDatas.Count);
-        CS_ValueObserver.Instance.Register(gameObject, this, "武器の名前登録数：", () => _weaponObjectData.weaponNames.Count);
+        // 初期装備の武器を登録
+        foreach (Transform equipmentPosition in _equipmentWeaponPositionList)
+        {
+            if (equipmentPosition == null)continue;
+
+            if (equipmentPosition.childCount <= 0) continue;
+
+            GameObject weaponObject = equipmentPosition.GetChild(0).gameObject;
+            CS_BaseWeapon weaponScript = weaponObject.GetComponent<CS_BaseWeapon>();
+
+            if (weaponScript == null) continue;
+
+            if (_equipmentWeaponScriptList == null)
+            {
+                _equipmentWeaponScriptList = new List<CS_BaseWeapon>();
+            }
+
+            _equipmentWeaponScriptList.Add(weaponScript);
+        }
     }
 
     public void RegisterWeapon(GameObject weapon)
@@ -35,6 +52,23 @@ public class CS_PlayerEquipment : MonoBehaviour
         if (weapon == null)
         {
             Debug.LogWarning("武器がnullです。");
+            return;
+        }
+
+        // 空いている装備位置を探す
+        int weaponIndex = -1;
+
+        for (int i = 0; i < _equipmentWeaponPositionList.Count; i++)
+        {
+            if (_equipmentWeaponPositionList[i].childCount == 0)
+            {
+                weaponIndex = i;
+                break;
+            }
+        }
+        if (weaponIndex == -1)
+        {
+            Debug.LogWarning("装備位置が空いていません。");
             return;
         }
 
@@ -69,16 +103,12 @@ public class CS_PlayerEquipment : MonoBehaviour
         // 武器の位置を設定
         // ======================
 
-        int weaponIndex = _equipmentWeaponScriptList.Count - 1;
-
         // 武器の位置を設定
         weaponObj.transform.SetParent(_equipmentWeaponPositionList[weaponIndex]);
 
         // 武器の位置と回転をリセット
         weaponObj.transform.localPosition = Vector3.zero;
         weaponObj.transform.localRotation = Quaternion.identity;
-
-
     }
 
     private void Update()
@@ -101,7 +131,6 @@ public class CS_PlayerEquipment : MonoBehaviour
     [ContextMenu("ランダム武器装備")]
     private void RandomWeponEquipment()
     {
-
         // ランダムに武器を選択
         int randomIndex = Random.Range(0, _weaponObjectData.weaponObjectDatas.Count);
         string selectedWeaponName = _weaponObjectData.weaponNames[randomIndex];

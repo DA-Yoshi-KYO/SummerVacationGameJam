@@ -1,15 +1,8 @@
-/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
- *   　弾丸クラス（ミサイル弾）
- * ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
- *    元浪梨緒
- * ----------------------------------------------------------
- * 2026-08-12 | 初回作成
- */
 using UnityEngine;
 
-public class CS_MissileBullet : CS_BaseBullet
+public class CS_NormalMissileBullet : CS_BaseBullet
 {
-    private Transform target;//追尾するターゲット
+    private Vector3 targetPoint; // 着弾させる位置
 
     private float t = 0.0f;//エルミート曲線の進行度
     private Vector3 startPos;//発射位置
@@ -44,7 +37,7 @@ public class CS_MissileBullet : CS_BaseBullet
 
         //エルミート曲線の制御点
         Vector3 p0 = startPos;
-        Vector3 p1 = target.position;
+        Vector3 p1 = targetPoint;
 
         //始点の接線
         Vector3 t0 = (Vector3.right + Vector3.up).normalized * startCurvePower;
@@ -67,30 +60,18 @@ public class CS_MissileBullet : CS_BaseBullet
         prevPos = nextPos;
     }
 
-    public override void Deactivate()
-    {
-        base.Deactivate();
-
-        if (target != null && target.name == "DummyTarget")
-        {
-            Destroy(target.gameObject);
-        }
-
-        target = null;
-    }
-
     //追尾ターゲットを設定する
     public void SetTarget(Transform Target)
     {
-        if (target == null)
+        // 標的の位置を取得
+        if (Target != null)
         {
-            Transform dummy = new GameObject("DummyTarget").transform;
-            dummy.position = transform.position + transform.forward * distanceForward;
-            target = dummy;
+            targetPoint = Target.position;
         }
         else
         {
-            target = Target;
+            // 標的がない場合は、前方に直進する
+            targetPoint = transform.position + transform.forward * distanceForward;
         }
     }
 }

@@ -298,7 +298,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 202552078910008966, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
       propertyPath: _debugWeaponName
-      value: MultipleLaunchMissile
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 202552078910008966, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
       propertyPath: _firstSelectWeaponList.Array.size
@@ -340,6 +340,14 @@ PrefabInstance:
       propertyPath: _stats
       value: 
       objectReference: {fileID: 11400000, guid: 468afda42a2f4664e8e245e140e8505f, type: 2}
+    - target: {fileID: 2256447842671153078, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2878432972332457298, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
+      propertyPath: m_Name
+      value: Equipment
+      objectReference: {fileID: 0}
     - target: {fileID: 2954210582599548018, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
       propertyPath: _distance
       value: 15
@@ -468,6 +476,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8730120232327184995, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
+      propertyPath: _playerStatusDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e515df8faf4e9041b1eabade9fef5dd, type: 2}
     m_RemovedComponents:
     - {fileID: 4142014356743501348, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
     m_RemovedGameObjects: []
@@ -1302,7 +1314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6049937930944974173, guid: 12469fb9c132ab5408b3e242b7f1c9c7, type: 3}
       propertyPath: _distance
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6049937930944974173, guid: 12469fb9c132ab5408b3e242b7f1c9c7, type: 3}
       propertyPath: _followSmoothTime

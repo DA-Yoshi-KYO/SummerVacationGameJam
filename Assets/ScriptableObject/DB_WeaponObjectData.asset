@@ -23,3 +23,11 @@ MonoBehaviour:
     weaponPrefab: {fileID: 2940581244213751151, guid: b1cf3deecfa840a419f0d0ac2d2af022, type: 3}
   - weaponName: MultipleLaunchMissile
     weaponPrefab: {fileID: 3714052840442064089, guid: 845d251bfae141945a5c34aefd177d7b, type: 3}
+  - weaponName: PulseField
+    weaponPrefab: {fileID: 7890564750385461443, guid: 5fd7a39c79c716348b489ff5543df0cc, type: 3}
+  - weaponName: SniperRifle
+    weaponPrefab: {fileID: 2658369428436590472, guid: 28d2479ea354ea54b9b2a5ca9e3e518b, type: 3}
+  - weaponName: BeamRifle
+    weaponPrefab: {fileID: 1838689691101142680, guid: 74cbad46a23577d4a8143fc4b892b425, type: 3}
+  - weaponName: HomingMissile
+    weaponPrefab: {fileID: 5331869404502916671, guid: 82f83ed9d72387f468d2d22a7abebf80, type: 3}

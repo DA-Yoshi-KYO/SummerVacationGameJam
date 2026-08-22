@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(
     fileName = "DB_PlayerMoveStatus",
     menuName = "ScriptableObjects/Player/MoveStatus"
-)]
+    )]
 public class CSO_PlayerMoveStatus : ScriptableObject
 {
     [Header("===== äÓñ{ê›íË =====")]
