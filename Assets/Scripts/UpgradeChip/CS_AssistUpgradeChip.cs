@@ -109,6 +109,6 @@ public class CS_AssistUpgradeChip : CS_UpgradeChipBase
     protected override void ApplyEffectLevel5()
     {
         // すべてのチップの効果量を20%増加させる(1.2倍)
-        _chipManager.upgradeStatus._allChipEffectIncreaseRate = _allChipEffectIncreaseRate;
+        _chipManager.upgradeStatus.allChipEffectIncreaseRate = _allChipEffectIncreaseRate;
     }
 }

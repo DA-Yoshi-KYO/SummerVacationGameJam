@@ -63,6 +63,6 @@ public class CS_BoostUpgradeChip : CS_UpgradeChipBase
     protected override void ApplyEffectLevel5()
     {
         // 敵を倒したときにブーストエネルギーを5回復するエフェクトを追加させる
-        // 対象：プレイヤー
+        // 対象： 弾
     }
 }

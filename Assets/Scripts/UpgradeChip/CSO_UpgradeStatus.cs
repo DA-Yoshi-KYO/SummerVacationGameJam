@@ -61,7 +61,7 @@ public class CSO_UpgradeStatus : ScriptableObject
     public UpgradeStatus upgradeStatus;
 
     [Tooltip("すべてのチップの効果量を増加させる倍率（1.0以上）")]
-    public float _allChipEffectIncreaseRate = 1.0f;
+    public float allChipEffectIncreaseRate = 1.0f;
 
     public UpgradeStatus getupgradeStatus
     {
@@ -74,49 +74,49 @@ public class CSO_UpgradeStatus : ScriptableObject
             // ====================
 
             readUpgradeStatus.healthIncreaseAmount
-                = (int)(upgradeStatus.healthIncreaseAmount * _allChipEffectIncreaseRate);
+                = (int)(upgradeStatus.healthIncreaseAmount * allChipEffectIncreaseRate);
 
             readUpgradeStatus.damageReductionRate 
-                = upgradeStatus.damageReductionRate * _allChipEffectIncreaseRate;
+                = upgradeStatus.damageReductionRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.boostEnergyIncreaseAmount 
-                = (int)(upgradeStatus.boostEnergyIncreaseAmount * _allChipEffectIncreaseRate);
+                = (int)(upgradeStatus.boostEnergyIncreaseAmount * allChipEffectIncreaseRate);
 
             readUpgradeStatus.boostConsumptionReductionRate 
-                = upgradeStatus.boostConsumptionReductionRate * _allChipEffectIncreaseRate;
+                = upgradeStatus.boostConsumptionReductionRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.boostSpeedIncreaseRate 
-                = 1.0f + upgradeStatus.boostSpeedIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.boostSpeedIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.experienceGainIncreaseRate 
-                = 1.0f + upgradeStatus.experienceGainIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.experienceGainIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.playerMovementSpeedIncreaseRate 
-                = 1.0f + upgradeStatus.playerMovementSpeedIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.playerMovementSpeedIncreaseRate * allChipEffectIncreaseRate  ;
 
             readUpgradeStatus.damageIncreaseRate 
-                = 1.0f + upgradeStatus.damageIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.damageIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.bulletCountIncreaseRate 
-                = 1.0f + upgradeStatus.bulletCountIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.bulletCountIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.fireRateIncreaseRate 
-                = 1.0f + upgradeStatus.fireRateIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.fireRateIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.reloadSpeedIncreaseRate 
-                = 1.0f + upgradeStatus.reloadSpeedIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.reloadSpeedIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.bulletSizeIncreaseRate 
-                = 1.0f + upgradeStatus.bulletSizeIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.bulletSizeIncreaseRate *     allChipEffectIncreaseRate;
 
             readUpgradeStatus.bulletRangeIncreaseRate 
-                = 1.0f + upgradeStatus.bulletRangeIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.bulletRangeIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.bulletPenetrationIncreaseAmount 
-                = (int)(upgradeStatus.bulletPenetrationIncreaseAmount * _allChipEffectIncreaseRate);
+                = (int)(upgradeStatus.bulletPenetrationIncreaseAmount * allChipEffectIncreaseRate);
 
             readUpgradeStatus.bulletSpeedIncreaseRate 
-                = 1.0f + upgradeStatus.bulletSpeedIncreaseRate * _allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.bulletSpeedIncreaseRate * allChipEffectIncreaseRate;
 
             return readUpgradeStatus;
         }
