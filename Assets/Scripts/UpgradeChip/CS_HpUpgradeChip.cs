@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class CS_HpUpgradeChip : CS_UpgradeChipBase
 {
@@ -11,22 +12,41 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
     [Range(0.0f, 1.0f)]
     private float _damageReductionRate = 0.2f; // ダメージ軽減率
 
+    [Header("===== HP自然回復 =====")]
+
+    [SerializeField]
+    [Tooltip("HP自然回復量")]
+    private int _hpRegenerationAmount = 5; // HP自然回復量
+
+    [SerializeField]
+    [Tooltip("HP自然回復間隔")]
+    private float _hpRegenerationInterval = 1.0f; // HP自然回復間隔
+
     protected override void ApplyEffectLevel1()
     {
         // 最大HPを50増加
-        _chipManager.upgradeStatus.healthIncreaseAmount += _healthIncreaseAmount;
+        _chipManager.upgradeStatus.upgradeStatus.healthIncreaseAmount += _healthIncreaseAmount;
     }
 
     protected override void ApplyEffectLevel2()
     {
         // HP自然回復エフェクトコンポーネントを追加させる
-        // 対象：プレイヤー
+        CS_HpRegeneration hpRegeneration = _player.AddComponent<CS_HpRegeneration>();
+
+        // 回復量と回復間隔を設定
+        hpRegeneration.SetRegenerationAmount(_hpRegenerationAmount);
+        hpRegeneration.SetRegenerationInterval(_hpRegenerationInterval);
+
+        // プレイヤーのステータスを取得して、回復対象として設定
+        CS_PlayerStatus playerStatus = _player.GetComponent<CS_PlayerStatus>();
+        if (playerStatus != null)
+            hpRegeneration.SetTarget(playerStatus);
     }
 
     protected override void ApplyEffectLevel3()
     {
         // ダメージ軽減率を20%加算
-        _chipManager.upgradeStatus.damageReductionRate += _damageReductionRate;
+        _chipManager.upgradeStatus.upgradeStatus.damageReductionRate += _damageReductionRate;
     }
 
     protected override void ApplyEffectLevel4()

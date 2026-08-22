@@ -17,13 +17,13 @@ public class CS_AssistUpgradeChip : CS_UpgradeChipBase
     protected override void ApplyEffectLevel1()
     {
         // 経験値獲得量増加率を20%加算
-        _chipManager.upgradeStatus.experienceGainIncreaseRate += _experienceGainIncreaseRate;
+        _chipManager.upgradeStatus.upgradeStatus.experienceGainIncreaseRate += _experienceGainIncreaseRate;
     }
 
     protected override void ApplyEffectLevel2()
     {
         // プレイヤーの移動速度増加率を50%加算
-        _chipManager.upgradeStatus.playerMovementSpeedIncreaseRate += _playerMovementSpeedIncreaseRate;
+        _chipManager.upgradeStatus.upgradeStatus.playerMovementSpeedIncreaseRate += _playerMovementSpeedIncreaseRate;
     }
 
     protected override void ApplyEffectLevel3()
@@ -40,38 +40,7 @@ public class CS_AssistUpgradeChip : CS_UpgradeChipBase
 
     protected override void ApplyEffectLevel5()
     {
-        // すべてのチップの効果量を20%増加させる(1.2倍) | 倍率系
-        _chipManager.upgradeStatus.damageReductionRate 
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.boostConsumptionReductionRate 
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.boostSpeedIncreaseRate 
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.experienceGainIncreaseRate 
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.playerMovementSpeedIncreaseRate 
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.damageIncreaseRate 
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.fireRateIncreaseRate 
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.bulletSpeedIncreaseRate 
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.bulletCountIncreaseRate
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.reloadSpeedIncreaseRate
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.bulletRangeIncreaseRate
-            *= _allChipEffectIncreaseRate;
-        _chipManager.upgradeStatus.bulletSizeIncreaseRate
-            *= _allChipEffectIncreaseRate;
-
-        // すべてのチップの効果量を20%増加させる(1.2倍) | 加算系
-        _chipManager.upgradeStatus.boostEnergyIncreaseAmount 
-            = (int)(_chipManager.upgradeStatus.boostEnergyIncreaseAmount * _allChipEffectIncreaseRate);
-        _chipManager.upgradeStatus.healthIncreaseAmount 
-            = (int)(_chipManager.upgradeStatus.healthIncreaseAmount * _allChipEffectIncreaseRate);
-        _chipManager.upgradeStatus.bulletPenetrationIncreaseAmount 
-            = (int)(_chipManager.upgradeStatus.bulletPenetrationIncreaseAmount * _allChipEffectIncreaseRate);
+        // すべてのチップの効果量を20%増加させる(1.2倍)
+        _chipManager.upgradeStatus._allChipEffectIncreaseRate = _allChipEffectIncreaseRate;
     }
 }

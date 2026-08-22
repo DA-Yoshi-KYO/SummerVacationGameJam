@@ -77,4 +77,9 @@ public class CS_PlayerStatus : MonoBehaviour
             _currentHealth = 0;
         }
     }
+
+    public void Regenerate(float amount)
+    {
+        _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
+    }
 }
