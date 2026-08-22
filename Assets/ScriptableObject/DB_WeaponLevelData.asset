@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CSO_WeaponLevelData
   weaponList:
   - weaponName: Missile
+    weaponIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     text: 
     minLevel: 1
     maxLevel: 15
@@ -138,6 +139,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - weaponName: Pistol
+    weaponIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     text: 
     minLevel: 1
     maxLevel: 15
@@ -262,6 +264,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - weaponName: Shotgun
+    weaponIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     text: 
     minLevel: 0
     maxLevel: 0
@@ -386,6 +389,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - weaponName: Machinegun
+    weaponIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     text: 
     minLevel: 1
     maxLevel: 15
@@ -510,6 +514,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - weaponName: Minigun
+    weaponIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     text: 
     minLevel: 1
     maxLevel: 15
@@ -634,6 +639,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - weaponName: MultipleLaunchMissile
+    weaponIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
     text: 
     minLevel: 1
     maxLevel: 15
