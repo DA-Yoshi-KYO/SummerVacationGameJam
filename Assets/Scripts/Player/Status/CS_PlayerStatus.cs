@@ -70,6 +70,10 @@ public class CS_PlayerStatus : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        CS_PlayerShield shield = GetComponent<CS_PlayerShield>();
+        if (shield != null)
+            damage = shield.TakeDamage(damage);
+
         _currentHealth -= damage;
 
         if (_currentHealth < 0)
