@@ -14,7 +14,8 @@ public class CS_EnemyManager : MonoBehaviour
 
     [Header("スポーン設定")]
     [SerializeField] private float _spawnInterval = 5.0f;   // スポーン間隔
-    [SerializeField] private float _spawnRange = 20.0f;  // スポーン範囲
+    [SerializeField] private float _spawnRangeMin = 20.0f;  // スポーン範囲(最小)   // ←プレイヤーを中心にした範囲
+    [SerializeField] private float _spawnRangeMax = 40.0f;  // スポーン範囲(最大)
 
     // 敵のスポーン情報を格納する構造体
     [System.Serializable]
@@ -66,11 +67,12 @@ public class CS_EnemyManager : MonoBehaviour
             for (int j = 0; j < spawnCount; j++)
             {
                 // ランダムな位置を生成
-                Vector3 spawnPosition = new Vector3(
-                    Random.Range(transform.position.x - _spawnRange, transform.position.x + _spawnRange),
-                    spawnInfo._spawnHeight,
-                    Random.Range(transform.position.z - _spawnRange, transform.position.z + _spawnRange)
-                );
+                Vector3 spawnPosition = _playerTransform.position;
+                float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad; // ランダムな角度を取得
+                float randomDistance = Random.Range(_spawnRangeMin, _spawnRangeMax); // ランダムな距離を取得
+                spawnPosition.x += Mathf.Cos(randomAngle) * randomDistance; // X座標を計算
+                spawnPosition.z += Mathf.Sin(randomAngle) * randomDistance; // Z座標を計算
+
                 // 敵をスポーン
                 GameObject enemy = Instantiate(spawnInfo._enemyPrefab, spawnPosition, Quaternion.identity);
                 // プレイヤーのtransformを設定
@@ -90,6 +92,7 @@ public class CS_EnemyManager : MonoBehaviour
 
         // スポーン範囲を表示
         Handles.color = Color.red;
-        Handles.DrawWireDisc(transform.position, Vector3.up, _spawnRange);
+        Handles.DrawWireDisc(_playerTransform.position, Vector3.up, _spawnRangeMin);
+        Handles.DrawWireDisc(_playerTransform.position, Vector3.up, _spawnRangeMax);
     }
 }
