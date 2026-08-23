@@ -119,3 +119,4 @@ InitTestScene*.unity*
 *.hdalc.bak[0-9]*
 *.hdanc.bak[0-9]*
 backup/
+ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
