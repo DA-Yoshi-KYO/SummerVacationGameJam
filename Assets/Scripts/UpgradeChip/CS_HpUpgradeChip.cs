@@ -52,12 +52,12 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
     protected override void ApplyEffectLevel4()
     {
         // 与えたダメージの10%をHPとして回復するエフェクトを追加させる
-        // 対象：プレイヤーの武器
+        // 対象：弾
     }
 
     protected override void ApplyEffectLevel5()
     {
         // 敵を倒したときにHPを5回復するエフェクトを追加させる
-        // 対象：敵 ? 弾 ? プレイヤー
+        // 対象： 弾
     }
 }
