@@ -27,11 +27,52 @@ public class StackOrchestrator
         _cli.OutputReceived += line => Log?.Invoke(line);
     }
 
+    /// <summary>
+    /// git / gh / gh認証 / gh-stack拡張 が揃っているかを事前確認する。
+    /// 他のPC(未セットアップ)で実行したときに、gh単体の生エラーではなく
+    /// 何をすればいいか分かる日本語メッセージを出すためのもの。
+    /// </summary>
+    public async Task<PrerequisiteCheckResult> CheckPrerequisitesAsync()
+    {
+        var result = new PrerequisiteCheckResult();
+
+        var gitVersion = await _cli.RunAsync(_gitPath, "--version", _repoPath);
+        if (!gitVersion.Success)
+            result.Problems.Add("git が見つかりません。Gitをインストールしてください。 (https://git-scm.com/)");
+
+        var ghVersion = await _cli.RunAsync(_ghPath, "--version", _repoPath);
+        if (!ghVersion.Success)
+        {
+            result.Problems.Add("GitHub CLI (gh) が見つかりません。https://cli.github.com/ からインストールしてください。");
+            return result; // ghが無いと以降のチェックも無意味
+        }
+
+        var authStatus = await _cli.RunAsync(_ghPath, "auth status", _repoPath);
+        if (!authStatus.Success)
+            result.Problems.Add("GitHub CLIにログインしていません。ターミナルで `gh auth login` を実行してください。");
+
+        var extList = await _cli.RunAsync(_ghPath, "extension list", _repoPath);
+        if (!extList.Success || !extList.StdOut.Contains("gh-stack"))
+            result.Problems.Add("gh-stack 拡張が入っていません。ターミナルで `gh extension install github/gh-stack` を実行してください。");
+
+        return result;
+    }
+
     public async Task<bool> BuildStackAsync(string baseBranch, IReadOnlyList<StackLayerPlan> layers, string remote = "origin")
     {
         if (layers.Count == 0)
         {
             Log?.Invoke("エラー: レイヤーが1つもありません。");
+            return false;
+        }
+
+        Log?.Invoke("[0/4] 前提条件チェック中...");
+        var check = await CheckPrerequisitesAsync();
+        if (!check.AllOk)
+        {
+            Log?.Invoke("=== 前提条件が揃っていません ===");
+            foreach (var problem in check.Problems)
+                Log?.Invoke($"・{problem}");
             return false;
         }
 
