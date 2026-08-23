@@ -157,6 +157,16 @@ public class StackOrchestrator
     /// そのブランチにオープンなPRが無い場合は gh 側がエラーを返すので、
     /// 呼び出し側でログに出すだけに留め、全体の失敗にはしない。
     /// </summary>
-    public Task<CliResult> CloseSourcePullRequestAsync(string sourceBranch, string comment) =>
-        _cli.RunAsync(_ghPath, $"pr close \"{sourceBranch}\" --comment \"{comment}\"", _repoPath);
+    public Task<CliResult> CloseSourcePullRequestAsync(string sourceBranch, string comment, string remote = "origin")
+    {
+        // GetAllBranchNames() はリモート追跡ブランチを "origin/xxx" 形式で返すが、
+        // GitHub上のPRは remoteプレフィックス無しのブランチ名で管理されているため、
+        // 付いていれば剥がしてから渡す。
+        var prefix = remote + "/";
+        var branchName = sourceBranch.StartsWith(prefix, StringComparison.Ordinal)
+            ? sourceBranch[prefix.Length..]
+            : sourceBranch;
+
+        return _cli.RunAsync(_ghPath, $"pr close \"{branchName}\" --comment \"{comment}\"", _repoPath);
+    }
 }
