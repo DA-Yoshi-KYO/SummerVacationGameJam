@@ -85,13 +85,15 @@ public class StackOrchestrator
             }
         }
 
-        // 1. 各レイヤーの境目にローカルブランチを作成
+        // 1. 各レイヤーの境目にローカルブランチを作成 (前回失敗時の再開に対応: 同じコミットを指す既存ブランチは再利用)
         foreach (var layer in layers)
         {
-            Log?.Invoke($"[1/4] branch作成: {layer.BranchName} @ {layer.Commits[^1].ShortSha}");
             try
             {
-                _git.CreateBranchAt(layer.BranchName, layer.HeadCommitSha);
+                var reused = _git.CreateBranchAt(layer.BranchName, layer.HeadCommitSha);
+                Log?.Invoke(reused
+                    ? $"[1/4] branch再利用(既存): {layer.BranchName} @ {layer.Commits[^1].ShortSha}"
+                    : $"[1/4] branch作成: {layer.BranchName} @ {layer.Commits[^1].ShortSha}");
             }
             catch (Exception ex)
             {
