@@ -22,25 +22,25 @@ public class CS_BulletUpgradeChip : CS_UpgradeChipBase
     protected override void ApplyEffectLevel1()
     {
         // 弾のサイズ増加率を加算
-        _chipManager.upgradeStatus.bulletSizeIncreaseRate += _bulletSizeIncreaseRate;
+        _chipManager.upgradeStatus.upgradeStatus.bulletSizeIncreaseRate += _bulletSizeIncreaseRate;
     }
 
     protected override void ApplyEffectLevel2()
     {
         // 弾の射程増加率を加算
-        _chipManager.upgradeStatus.bulletRangeIncreaseRate += _bulletRangeIncreaseRate;
+        _chipManager.upgradeStatus.upgradeStatus.bulletRangeIncreaseRate += _bulletRangeIncreaseRate;
     }
 
     protected override void ApplyEffectLevel3()
     {
         // 弾の貫通力増加量を加算
-        _chipManager.upgradeStatus.bulletPenetrationIncreaseAmount += _bulletPenetrationIncreaseAmount;
+        _chipManager.upgradeStatus.upgradeStatus.bulletPenetrationIncreaseAmount += _bulletPenetrationIncreaseAmount;
     }
 
     protected override void ApplyEffectLevel4()
     {
         // 弾の速度増加率を加算
-        _chipManager.upgradeStatus.bulletSpeedIncreaseRate += _bulletSpeedIncreaseRate;
+        _chipManager.upgradeStatus.upgradeStatus.bulletSpeedIncreaseRate += _bulletSpeedIncreaseRate;
     }
 
     protected override void ApplyEffectLevel5()

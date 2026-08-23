@@ -10,9 +10,14 @@ public abstract class CS_UpgradeChipBase : MonoBehaviour
     [Tooltip("チップマネージャーの参照")]
     protected CS_UpgradeChipManager _chipManager;
 
+    [Tooltip("プレイヤーの参照")]
+    protected Transform _player;
+
     private void Awake()
     {
         _chipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
+        
+        _player = GameObject.FindAnyObjectByType<CS_PlayerStatus>().transform;
     }
 
     public void LevelUp()

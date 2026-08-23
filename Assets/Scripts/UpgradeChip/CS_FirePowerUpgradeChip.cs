@@ -9,7 +9,7 @@ public class CS_FirePowerUpgradeChip : CS_UpgradeChipBase
     protected override void ApplyEffectLevel1()
     {
         // 与えるダメージ増加率を20%加算
-        _chipManager.upgradeStatus.damageIncreaseRate += _damageIncreaseRate;
+        _chipManager.upgradeStatus.upgradeStatus.damageIncreaseRate += _damageIncreaseRate;
     }
 
     protected override void ApplyEffectLevel2()

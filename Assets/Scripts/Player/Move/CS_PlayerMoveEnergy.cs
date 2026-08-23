@@ -63,10 +63,13 @@ public class CS_PlayerMoveBoostEnergy : MonoBehaviour
     /// <summary>
     /// エネルギーを回復する
     /// </summary>
-    [ContextMenu("エネルギー回復")]
-    private void RecoverEnergy()
+    /// <param name="amount">回復量</param>
+    public void Regenerate(float amount)
     {
-        CurrentEnergy = _stats.maxEnergy;
+        CurrentEnergy = Mathf.Min(
+            CurrentEnergy + amount,
+            MaxEnergy
+        );
     }
 
     /// <summary>

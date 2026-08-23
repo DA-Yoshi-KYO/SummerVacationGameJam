@@ -18,19 +18,19 @@ public class CS_WeaponStatusUpgradeChip : CS_UpgradeChipBase
     protected override void ApplyEffectLevel1()
     {
         // 武器の弾数増加率を50%加算
-        _chipManager.upgradeStatus.bulletCountIncreaseRate += _bulletCountIncreaseRate;
+        _chipManager.upgradeStatus.upgradeStatus.bulletCountIncreaseRate += _bulletCountIncreaseRate;
     }
 
     protected override void ApplyEffectLevel2()
     {
         // 武器の連射速度増加率を30%加算
-        _chipManager.upgradeStatus.fireRateIncreaseRate += _fireRateIncreaseRate;
+        _chipManager.upgradeStatus.upgradeStatus.fireRateIncreaseRate += _fireRateIncreaseRate;
     }
 
     protected override void ApplyEffectLevel3()
     {
         // 武器のリロード時間減少率を30%加算
-        _chipManager.upgradeStatus.reloadSpeedIncreaseRate += _reloadTimeReductionRate;
+        _chipManager.upgradeStatus.upgradeStatus.reloadSpeedIncreaseRate += _reloadTimeReductionRate;
     }
 
     protected override void ApplyEffectLevel4()
