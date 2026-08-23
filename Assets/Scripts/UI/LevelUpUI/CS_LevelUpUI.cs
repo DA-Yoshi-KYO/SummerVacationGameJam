@@ -35,34 +35,31 @@ public class CS_LevelUpUI : MonoBehaviour
 
     void Start()
     {
-        //targetScaleY = minScaleY;
-        //barsShouldShrink = false;
+        targetScaleY = minScaleY;
+        barsShouldShrink = false;
 
-        //CacheOriginalValues();
-        //ForceApplyClosedState();
-
-        //カーソル表示
-        isLevelUpUIOpen = true;
+        CacheOriginalValues();
+        ForceApplyClosedState();
     }
 
     void Update()
     {
         CursorShow();
 
-        //if (Input.GetKeyDown(KeyCode.UpArrow))
-        //{
-        //    OpenUI();
-        //}
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            OpenUI();
+        }
 
-        //if (Input.GetKeyDown(KeyCode.DownArrow))
-        //{
-        //    CloseUIWithDelay();
-        //}
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            CloseUIWithDelay();
+        }
 
-        //UpdateCenterElements();
-        //UpdateBarMovement();
-        //CheckCenterGone();
-        //UpdateBarShrink();
+        UpdateCenterElements();
+        UpdateBarMovement();
+        CheckCenterGone();
+        UpdateBarShrink();
     }
 
     //UIを開く
@@ -72,6 +69,8 @@ public class CS_LevelUpUI : MonoBehaviour
 
         targetScaleY = maxScaleY;
         barsShouldShrink = true;
+
+        Time.timeScale = 0.0f;
     }
 
     //UIを閉じる
@@ -79,6 +78,8 @@ public class CS_LevelUpUI : MonoBehaviour
     {
         targetScaleY = minScaleY;
         barsShouldShrink = false;
+
+        Time.timeScale = 1.0f;
     }
 
     //delayBeforeClose秒待つ
@@ -86,7 +87,8 @@ public class CS_LevelUpUI : MonoBehaviour
     {
         isLevelUpUIOpen = false;
 
-        yield return new WaitForSeconds(delayBeforeClose);
+        yield return new WaitForSecondsRealtime(delayBeforeClose);
+
         CloseUI();
     }
 
@@ -172,14 +174,14 @@ public class CS_LevelUpUI : MonoBehaviour
         float originalY = originalHeights[rect];
 
         Vector2 size = rect.sizeDelta;
-        size.y = Mathf.Lerp(size.y, originalY * targetScaleY, Time.deltaTime * speed);
+        size.y = Mathf.Lerp(size.y, originalY * targetScaleY, Time.unscaledDeltaTime * speed);
         rect.sizeDelta = size;
 
         TextMeshProUGUI text = rect.GetComponent<TextMeshProUGUI>();
         if (text != null)
         {
             float originalFontSize = originalFontSizes[text];
-            text.fontSize = Mathf.Lerp(text.fontSize, originalFontSize * targetScaleY, Time.deltaTime * speed);
+            text.fontSize = Mathf.Lerp(text.fontSize, originalFontSize * targetScaleY, Time.unscaledDeltaTime * speed);
         }
     }
 
@@ -189,7 +191,7 @@ public class CS_LevelUpUI : MonoBehaviour
         Vector2 pos = rect.anchoredPosition;
         Vector2 originalPos = originalPositions[rect];
 
-        pos.y = Mathf.Lerp(pos.y, originalPos.y * targetScaleY, Time.deltaTime * speed);
+        pos.y = Mathf.Lerp(pos.y, originalPos.y * targetScaleY, Time.unscaledDeltaTime * speed);
         rect.anchoredPosition = pos;
     }
 

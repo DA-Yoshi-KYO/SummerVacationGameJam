@@ -3,7 +3,7 @@
  * ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
  *    元浪梨緒
  * ----------------------------------------------------------
- * 2026-08-16 | 初回作成
+ * 2026-08-23 | 初回作成
  */
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,5 +24,19 @@ public class CS_ChangeUITexture : MonoBehaviour
     {
         if (currentImage != null)
             currentImage.sprite = isSelect ? onTexture : offTexture;
+    }
+
+    //選択状態を維持するため、ドラッグ開始時に呼ぶ
+    public void SetDragTexture()
+    {
+        if (currentImage != null)
+            currentImage.sprite = onTexture;
+    }
+
+    //元に戻すため、ドラッグ終了時に呼ぶ
+    public void ResetDragTexture()
+    {
+        if (currentImage != null)
+            currentImage.sprite = offTexture;
     }
 }

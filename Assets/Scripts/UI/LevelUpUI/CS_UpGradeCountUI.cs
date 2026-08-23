@@ -36,4 +36,11 @@ public class CS_UpGradeCountUI : MonoBehaviour
         currentUpGradeCount--;
         upGradeText.text = currentUpGradeCount.ToString() + upGrandeTextSet;
     }
+
+    //ƒŒƒxƒ‹İ’è
+    public void SetLevel(int level)
+    {
+        currentUpGradeCount = level;
+        upGradeText.text = currentUpGradeCount.ToString() + upGrandeTextSet;
+    }
 }

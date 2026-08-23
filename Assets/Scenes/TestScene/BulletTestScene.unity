@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 235140342}
+    - target: {fileID: 8730120232327184995, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
+      propertyPath: _playerStatusDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e515df8faf4e9041b1eabade9fef5dd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -709,268 +713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf22de2892703f3409c61b1ecc3c852b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_DropSelectUIData
---- !u!1 &1577864440
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1577864442}
-  - component: {fileID: 1577864441}
-  m_Layer: 0
-  m_Name: LevelUpUIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1577864441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577864440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4b1c6ccf5d982a4c9ccd6a47278186a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CS_LevelUpManager
-  playerWeapons:
-  - weaponName: 
-    weaponIcon: {fileID: 0}
-    text: 
-    minLevel: 0
-    maxLevel: 0
-    damage:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    fireRate:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    range:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    bulletCount:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    reloadTime:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - weaponName: 
-    weaponIcon: {fileID: 0}
-    text: 
-    minLevel: 0
-    maxLevel: 0
-    damage:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    fireRate:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    range:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    bulletCount:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    reloadTime:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - weaponName: 
-    weaponIcon: {fileID: 0}
-    text: 
-    minLevel: 0
-    maxLevel: 0
-    damage:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    fireRate:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    range:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    bulletCount:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    reloadTime:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - weaponName: 
-    weaponIcon: {fileID: 0}
-    text: 
-    minLevel: 0
-    maxLevel: 0
-    damage:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    fireRate:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    range:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    bulletCount:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    reloadTime:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - weaponName: 
-    weaponIcon: {fileID: 0}
-    text: 
-    minLevel: 0
-    maxLevel: 0
-    damage:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    fireRate:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    range:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    bulletCount:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    reloadTime:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - weaponName: 
-    weaponIcon: {fileID: 0}
-    text: 
-    minLevel: 0
-    maxLevel: 0
-    damage:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    fireRate:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    range:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    bulletCount:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    reloadTime:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  weaponSlots:
-  - {fileID: 1649592995}
-  - {fileID: 11145358}
-  - {fileID: 1750508367}
-  - {fileID: 930780874}
-  - {fileID: 2060397999}
-  - {fileID: 1027434182}
---- !u!4 &1577864442
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577864440}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1037.5363, y: 0.00003, z: 4523.5576}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1587629674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3038522144693326217, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
@@ -1367,6 +1109,87 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5104956716984956152, guid: 317327767fb1a984b80f91a0a72b13c3, type: 3}
   m_PrefabInstance: {fileID: 7031123561616155816}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7433077734099545171
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1037.5363
+      objectReference: {fileID: 0}
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4523.5576
+      objectReference: {fileID: 0}
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 583889724276292920, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365959690159427369, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: m_Name
+      value: LevelUpUIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334041032399330512, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: 'weaponSlots.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1649592995}
+    - target: {fileID: 6334041032399330512, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: 'weaponSlots.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11145358}
+    - target: {fileID: 6334041032399330512, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: 'weaponSlots.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1750508367}
+    - target: {fileID: 6334041032399330512, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: 'weaponSlots.Array.data[3]'
+      value: 
+      objectReference: {fileID: 930780874}
+    - target: {fileID: 6334041032399330512, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: 'weaponSlots.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2060397999}
+    - target: {fileID: 6334041032399330512, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
+      propertyPath: 'weaponSlots.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1027434182}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 468f9b92d42116b49863a42e8ab3a440, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1378,4 +1201,4 @@ SceneRoots:
   - {fileID: 937046122}
   - {fileID: 894024819}
   - {fileID: 1762452278}
-  - {fileID: 1577864442}
+  - {fileID: 7433077734099545171}

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CSO_WeaponDataBase
   weaponList:
   - weaponName: Pistol
+    weaponIcon: {fileID: 21300000, guid: b5867b6b2d9fdcd419fadb55d6c759f5, type: 3}
     damage: 2
     fireRate: 1
     bulletSpeed: 20
@@ -22,6 +23,7 @@ MonoBehaviour:
     reloadTime: 3
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: Shotgun
+    weaponIcon: {fileID: 21300000, guid: 1088048e6cc86b64ab859fa83cc59d55, type: 3}
     damage: 4
     fireRate: 3
     bulletSpeed: 20
@@ -30,6 +32,7 @@ MonoBehaviour:
     reloadTime: 3
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: PulseField
+    weaponIcon: {fileID: 21300000, guid: e9bc24ff7f55b2d459a61e390f509617, type: 3}
     damage: 1
     fireRate: 0
     bulletSpeed: 0
@@ -38,6 +41,7 @@ MonoBehaviour:
     reloadTime: 0
     bulletPrefab: {fileID: 8699888154578139510, guid: 13727c7dedced194f92186bdfd850127, type: 3}
   - weaponName: Machinegun
+    weaponIcon: {fileID: 21300000, guid: c14d4c785283fde4eb2850a43850b502, type: 3}
     damage: 1
     fireRate: 0.3
     bulletSpeed: 20
@@ -46,6 +50,7 @@ MonoBehaviour:
     reloadTime: 5
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: Minigun
+    weaponIcon: {fileID: 21300000, guid: 1130032fd01c8c7448aa3dcf8ee12c88, type: 3}
     damage: 1
     fireRate: 0.1
     bulletSpeed: 20
@@ -54,6 +59,7 @@ MonoBehaviour:
     reloadTime: 15
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: MultipleLaunchMissile
+    weaponIcon: {fileID: 21300000, guid: cf66300a3ea89f348a2399b4c085896d, type: 3}
     damage: 3
     fireRate: 0.2
     bulletSpeed: 1
@@ -62,6 +68,7 @@ MonoBehaviour:
     reloadTime: 5
     bulletPrefab: {fileID: 6672024944259534010, guid: 7bb6b2a09ddf40e4886f657d0b7f160e, type: 3}
   - weaponName: SniperRifle
+    weaponIcon: {fileID: 21300000, guid: 0bd63a6d61738e5459581b9d2a835212, type: 3}
     damage: 10
     fireRate: 7
     bulletSpeed: 20
@@ -70,6 +77,7 @@ MonoBehaviour:
     reloadTime: 5
     bulletPrefab: {fileID: 2339349075961840986, guid: e7e3e9408970b414990b845289b36b1f, type: 3}
   - weaponName: BeamRifle
+    weaponIcon: {fileID: 21300000, guid: 1a0f488cccd91a748a9838b1e595349e, type: 3}
     damage: 1
     fireRate: 5
     bulletSpeed: 20
@@ -78,6 +86,7 @@ MonoBehaviour:
     reloadTime: 5
     bulletPrefab: {fileID: 2339349075961840986, guid: 0d8e7e31a9517ba47a16656da7989e1a, type: 3}
   - weaponName: HomingMissile
+    weaponIcon: {fileID: 21300000, guid: a4379a0d812f4d841ab4545e478fac65, type: 3}
     damage: 3
     fireRate: 2
     bulletSpeed: 1

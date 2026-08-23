@@ -1,24 +1,35 @@
-using Unity.VisualScripting;
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+ *   武器のデータを設定する
+ * ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+ *    元浪梨緒
+ * ----------------------------------------------------------
+ * 2026-08-23 | 初回作成
+ */
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CS_WeaponSet : MonoBehaviour
 {
-    [SerializeField] private Image iconImage;
-    // 今このスロットにセットされている武器
-    public CS_SelectUISet currentWeapon;
+    [Header("アイコンの画像")][SerializeField] private Image iconImage;
+    public CS_SelectUISet currentWeapon;//現在の武器
 
-    // レベルアップUI
     public CS_WeaponLevelUpUI weaponLevelUpUI;
 
-    // UI の表示を更新する（武器アイコンなど）
+    private void Start()
+    {
+        if(currentWeapon == null)
+        {
+            iconImage.enabled = false;
+            weaponLevelUpUI.enabled = false;
+        }
+    }
+
+    //UIの表示を設定する
     public void SetUI(CS_SelectUISet weapon)
     {
+        iconImage.enabled = true;
+        weaponLevelUpUI.enabled = true;
         currentWeapon = weapon;
         iconImage.sprite = weapon.GetData().weapon.weaponIcon;
-        // ここでアイコンや名前を更新する処理を書く
-        // 例：
-        // iconImage.sprite = weapon.icon;
-        // nameText.text = weapon.weaponName;
     }
 }
