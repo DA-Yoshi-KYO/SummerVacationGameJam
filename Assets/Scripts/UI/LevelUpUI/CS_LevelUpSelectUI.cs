@@ -91,7 +91,7 @@ public class CS_LevelUpSelectUI : MonoBehaviour
     }
 
     //Šù‘¶‚ÌƒXƒƒbƒg‚ğíœ‚·‚é
-    private void ClearSlots()
+    public void ClearSlots()
     {
         foreach (Transform child in slotParent)
         {

@@ -17,6 +17,8 @@ public class CS_LevelUpManager : MonoBehaviour
     //武器スロットの UI
     public CS_DropSelectUIData[] weaponSlots = new CS_DropSelectUIData[6];
 
+    [Header("")][SerializeField] private CS_UpGradeCountUI upGradeCountUI;
+
     private void Awake()
     {
         Instance = this;
@@ -43,6 +45,9 @@ public class CS_LevelUpManager : MonoBehaviour
 
             //UIを更新
             weaponSlots[slotIndex].SetUI(weapon);
+
+            //アップグレード回数を減らす
+            upGradeCountUI.LevelDown();
         }
     }
 }

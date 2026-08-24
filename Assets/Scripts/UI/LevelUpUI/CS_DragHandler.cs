@@ -249,7 +249,7 @@ public class CS_DragHandler : MonoBehaviour,
 
         foreach (var r in results)
         {
-            if (r.gameObject.CompareTag("SlotDataUI"))
+            if (r.gameObject.GetComponentInParent<CS_SlotDropData>() != null)
             {
                 return true;
             }
@@ -275,7 +275,7 @@ public class CS_DragHandler : MonoBehaviour,
         {
             if (r.gameObject.CompareTag("SlotDataUI"))
             {
-                return r.gameObject.GetComponent<CS_SlotVisual>();
+                return r.gameObject.GetComponentInParent<CS_SlotVisual>();
             }
         }
 

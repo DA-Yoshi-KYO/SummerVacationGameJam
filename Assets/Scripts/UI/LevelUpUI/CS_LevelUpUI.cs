@@ -22,6 +22,8 @@ public class CS_LevelUpUI : MonoBehaviour
 
     [Header("カーソルの画像")][SerializeField] private Texture2D cursorImage;
 
+    [Header("強化選択生成の親オブジェクト")][SerializeField] private CS_LevelUpSelectUI selectUI;
+
     private float targetScaleY;//現在のターゲットスケール
 
     //元の値を保存する辞書
@@ -71,6 +73,9 @@ public class CS_LevelUpUI : MonoBehaviour
         barsShouldShrink = true;
 
         Time.timeScale = 0.0f;
+
+        //スロット生成
+        selectUI.GenerateUpgradeSlots();
     }
 
     //UIを閉じる
@@ -86,6 +91,9 @@ public class CS_LevelUpUI : MonoBehaviour
     private IEnumerator DelayClose()
     {
         isLevelUpUIOpen = false;
+
+        //スロット削除
+        selectUI.ClearSlots();
 
         yield return new WaitForSecondsRealtime(delayBeforeClose);
 
