@@ -10,7 +10,7 @@ public class CS_KillBoostEnergyRecoveryEffect : MonoBehaviour
     [Tooltip("プレイヤーのステータス参照")]
     private CS_PlayerMoveBoostEnergy _playerMoveBoostEnergy;
 
-    public void ApplyEffect()
+    public void OnDestroy()
     {
         // プレイヤーの体力を回復する
         _playerMoveBoostEnergy.Regenerate(_recoveryBoostEnergyAmount);

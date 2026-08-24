@@ -10,7 +10,7 @@ public class CS_KillHpRecoveryEffect : MonoBehaviour
     [Tooltip("プレイヤーのステータス参照")]
     private CS_PlayerStatus _playerStatus;
 
-    public void ApplyEffect()
+    public void OnDestroy()
     {
         // プレイヤーの体力を回復する
         _playerStatus.Regenerate(_recoveryHpAmount);
