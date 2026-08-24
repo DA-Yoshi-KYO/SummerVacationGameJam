@@ -80,18 +80,33 @@ public class GitService
             ?? repo.Branches[$"origin/{branchName}"]?.Tip;
     }
 
-    /// <summary>指定コミットを指すローカルブランチを作成する。既に存在する場合は例外。</summary>
-    public void CreateBranchAt(string branchName, string commitSha)
+    /// <summary>
+    /// 指定コミットを指すローカルブランチを作成する。
+    /// 途中で失敗した処理を同じボタンで再開できるよう、既に同じコミットを指す
+    /// ブランチが存在する場合は何もせず true(既存を再利用)を返す。
+    /// 既存ブランチが別のコミットを指している場合は、意図しない上書きを避けるため例外にする。
+    /// </summary>
+    /// <returns>true: 既存ブランチをそのまま再利用した / false: 新規作成した</returns>
+    public bool CreateBranchAt(string branchName, string commitSha)
     {
         using var repo = new Repository(_repoPath);
 
-        if (repo.Branches[branchName] is not null)
-            throw new InvalidOperationException($"ブランチが既に存在します: {branchName}");
+        var existing = repo.Branches[branchName];
+        if (existing is not null)
+        {
+            if (existing.Tip.Sha == commitSha)
+                return true; // 既に目的のコミットを指している → 再利用してスキップ
+
+            throw new InvalidOperationException(
+                $"ブランチが既に別のコミットを指して存在します: {branchName} " +
+                $"(現在: {existing.Tip.Sha[..7]}, 目的: {commitSha[..7]})。手動で確認してください。");
+        }
 
         var commit = repo.Lookup<Commit>(commitSha)
             ?? throw new InvalidOperationException($"コミットが見つかりません: {commitSha}");
 
         repo.CreateBranch(branchName, commit);
+        return false;
     }
 
     /// <summary>

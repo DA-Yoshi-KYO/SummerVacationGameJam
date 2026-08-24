@@ -27,11 +27,52 @@ public class StackOrchestrator
         _cli.OutputReceived += line => Log?.Invoke(line);
     }
 
+    /// <summary>
+    /// git / gh / gh認証 / gh-stack拡張 が揃っているかを事前確認する。
+    /// 他のPC(未セットアップ)で実行したときに、gh単体の生エラーではなく
+    /// 何をすればいいか分かる日本語メッセージを出すためのもの。
+    /// </summary>
+    public async Task<PrerequisiteCheckResult> CheckPrerequisitesAsync()
+    {
+        var result = new PrerequisiteCheckResult();
+
+        var gitVersion = await _cli.RunAsync(_gitPath, "--version", _repoPath);
+        if (!gitVersion.Success)
+            result.Problems.Add("git が見つかりません。Gitをインストールしてください。 (https://git-scm.com/)");
+
+        var ghVersion = await _cli.RunAsync(_ghPath, "--version", _repoPath);
+        if (!ghVersion.Success)
+        {
+            result.Problems.Add("GitHub CLI (gh) が見つかりません。https://cli.github.com/ からインストールしてください。");
+            return result; // ghが無いと以降のチェックも無意味
+        }
+
+        var authStatus = await _cli.RunAsync(_ghPath, "auth status", _repoPath);
+        if (!authStatus.Success)
+            result.Problems.Add("GitHub CLIにログインしていません。ターミナルで `gh auth login` を実行してください。");
+
+        var extList = await _cli.RunAsync(_ghPath, "extension list", _repoPath);
+        if (!extList.Success || !extList.StdOut.Contains("gh-stack"))
+            result.Problems.Add("gh-stack 拡張が入っていません。ターミナルで `gh extension install github/gh-stack` を実行してください。");
+
+        return result;
+    }
+
     public async Task<bool> BuildStackAsync(string baseBranch, IReadOnlyList<StackLayerPlan> layers, string remote = "origin")
     {
         if (layers.Count == 0)
         {
             Log?.Invoke("エラー: レイヤーが1つもありません。");
+            return false;
+        }
+
+        Log?.Invoke("[0/4] 前提条件チェック中...");
+        var check = await CheckPrerequisitesAsync();
+        if (!check.AllOk)
+        {
+            Log?.Invoke("=== 前提条件が揃っていません ===");
+            foreach (var problem in check.Problems)
+                Log?.Invoke($"・{problem}");
             return false;
         }
 
@@ -44,13 +85,15 @@ public class StackOrchestrator
             }
         }
 
-        // 1. 各レイヤーの境目にローカルブランチを作成
+        // 1. 各レイヤーの境目にローカルブランチを作成 (前回失敗時の再開に対応: 同じコミットを指す既存ブランチは再利用)
         foreach (var layer in layers)
         {
-            Log?.Invoke($"[1/4] branch作成: {layer.BranchName} @ {layer.Commits[^1].ShortSha}");
             try
             {
-                _git.CreateBranchAt(layer.BranchName, layer.HeadCommitSha);
+                var reused = _git.CreateBranchAt(layer.BranchName, layer.HeadCommitSha);
+                Log?.Invoke(reused
+                    ? $"[1/4] branch再利用(既存): {layer.BranchName} @ {layer.Commits[^1].ShortSha}"
+                    : $"[1/4] branch作成: {layer.BranchName} @ {layer.Commits[^1].ShortSha}");
             }
             catch (Exception ex)
             {
@@ -114,6 +157,16 @@ public class StackOrchestrator
     /// そのブランチにオープンなPRが無い場合は gh 側がエラーを返すので、
     /// 呼び出し側でログに出すだけに留め、全体の失敗にはしない。
     /// </summary>
-    public Task<CliResult> CloseSourcePullRequestAsync(string sourceBranch, string comment) =>
-        _cli.RunAsync(_ghPath, $"pr close \"{sourceBranch}\" --comment \"{comment}\"", _repoPath);
+    public Task<CliResult> CloseSourcePullRequestAsync(string sourceBranch, string comment, string remote = "origin")
+    {
+        // GetAllBranchNames() はリモート追跡ブランチを "origin/xxx" 形式で返すが、
+        // GitHub上のPRは remoteプレフィックス無しのブランチ名で管理されているため、
+        // 付いていれば剥がしてから渡す。
+        var prefix = remote + "/";
+        var branchName = sourceBranch.StartsWith(prefix, StringComparison.Ordinal)
+            ? sourceBranch[prefix.Length..]
+            : sourceBranch;
+
+        return _cli.RunAsync(_ghPath, $"pr close \"{branchName}\" --comment \"{comment}\"", _repoPath);
+    }
 }

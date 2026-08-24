@@ -29,7 +29,35 @@ public partial class MainWindow : Window
         if (repoRoot is not null)
             RepoPathBox.Text = repoRoot;
 
-        Loaded += (_, _) => TryRefreshBranchList();
+        Loaded += async (_, _) =>
+        {
+            TryRefreshBranchList();
+            await RunPrerequisiteCheckAsync();
+        };
+    }
+
+    private async Task RunPrerequisiteCheckAsync()
+    {
+        if (!TryGetServices(out _, out _, out var orchestrator)) return;
+
+        AppendLog("前提条件(git / gh / gh auth / gh-stack拡張)を確認しています...");
+        try
+        {
+            var check = await orchestrator.CheckPrerequisitesAsync();
+            if (check.AllOk)
+            {
+                AppendLog("=== 前提条件OK ===");
+                return;
+            }
+
+            AppendLog("=== 前提条件が揃っていません。以下を対応してください ===");
+            foreach (var problem in check.Problems)
+                AppendLog($"・{problem}");
+        }
+        catch (Exception ex)
+        {
+            AppendLog($"前提条件チェックに失敗しました: {ex.Message}");
+        }
     }
 
     private static string? FindGitRepoRoot(string startDir)

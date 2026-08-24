@@ -70,11 +70,20 @@ public class CS_PlayerStatus : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        CS_PlayerShield shield = GetComponent<CS_PlayerShield>();
+        if (shield != null)
+            damage = shield.TakeDamage(damage);
+
         _currentHealth -= damage;
 
         if (_currentHealth < 0)
         {
             _currentHealth = 0;
         }
+    }
+
+    public void Regenerate(float amount)
+    {
+        _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
     }
 }
