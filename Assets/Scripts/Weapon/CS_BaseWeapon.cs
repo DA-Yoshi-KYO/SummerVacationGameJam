@@ -5,6 +5,8 @@
  * ----------------------------------------------------------
  * 2026-08-12 | 初回作成
  */
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class CS_BaseWeapon : MonoBehaviour
@@ -16,6 +18,10 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     [Header("弾プール")][SerializeField] protected CS_BulletPool bulletPool;
 
     protected CSO_WeaponDataBase.WeaponDataBase weaponData;
+
+    // 引数に弾のゲームオブジェクトを渡して追加コンポーネントを設定するリスト
+    private Dictionary<Type, Action<GameObject>> bulletComponentSetters = new Dictionary<Type, Action<GameObject>>();
+
 
     protected int currentBullets;//現在の弾数
     protected bool isReloading;//リロード中かどうか
@@ -97,6 +103,16 @@ public abstract class CS_BaseWeapon : MonoBehaviour
         bullet.SetSpeed(weaponData.bulletSpeed);
         bullet.SetOwner(gameObject);
 
+        // 弾のゲームオブジェクトに追加するコンポーネントを設定する
+        foreach (var key in bulletComponentSetters.Keys)
+        {
+            // すでに追加されていない場合のみ追加する
+            if (bullet.gameObject.GetComponent(key) == null)
+            {
+                bulletComponentSetters[key](bullet.gameObject);
+            }
+        }
+
         return bullet;
     }
 
@@ -122,5 +138,23 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     public string GetWeaponName()
     {
         return weaponName;
+    }
+
+    // 弾のゲームオブジェクトに追加するコンポーネントを登録するメソッド
+    public void RegistAddBulletComponent<T>() where T : Component
+    {
+        Type bulletComponentType = typeof(T);
+
+        // すでに登録されている場合は何もしない
+        if (bulletComponentSetters.ContainsKey(bulletComponentType)) return;
+
+        // 弾のゲームオブジェクトに追加するコンポーネントを設定するActionを作成
+        Action<GameObject> setter = (bullet) =>
+        {
+            bullet.AddComponent<T>();
+        };
+
+        // リストに追加
+        bulletComponentSetters.Add(bulletComponentType, setter);
     }
 }

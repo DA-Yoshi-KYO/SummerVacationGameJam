@@ -25,6 +25,7 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
     private void Start()
     {
         _chipName = "HpUpgradeChip";
+        _level = 1;
     }
 
     protected override void ApplyEffectLevel1()

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static CSO_WeaponDataBase;
 
 [CreateAssetMenu(fileName = "DB_UpgradeStatus", menuName = "ScriptableObjects/Upgrade")]
 public class CSO_UpgradeStatus : ScriptableObject

@@ -28,6 +28,7 @@ public class CS_BoostUpgradeChip : CS_UpgradeChipBase
     private void Start()
     {
         _chipName = "BoostUpgradeChip";
+        _level = 1;
     }
 
     protected override void ApplyEffectLevel1()

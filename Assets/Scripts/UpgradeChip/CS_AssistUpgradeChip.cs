@@ -65,6 +65,7 @@ public class CS_AssistUpgradeChip : CS_UpgradeChipBase
     private void Start()
     {
         _chipName = "AssistUpgradeChip";
+        _level = 1;
     }
 
     protected override void ApplyEffectLevel1()
