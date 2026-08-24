@@ -13,6 +13,7 @@ public class CS_PlayerEquipment : MonoBehaviour
 
     [Tooltip("装備している武器のスクリプトのリスト")]
     private List<CS_BaseWeapon> _equipmentWeaponScriptList;
+    public List<CS_BaseWeapon> equipmentWeaponScriptList => _equipmentWeaponScriptList;
 
     [SerializeField]
     [Tooltip("装備した武器の位置リスト")]

@@ -63,6 +63,13 @@ public class CSO_UpgradeStatus : ScriptableObject
     [Tooltip("すべてのチップの効果量を増加させる倍率（1.0以上）")]
     public float allChipEffectIncreaseRate = 1.0f;
 
+    [Tooltip("効果を発動させたチップエフェクトを名前保存")]
+    public List<string> activatedChipEffectNames = new List<string>();
+    public void ClearChipEffectNames()
+    {
+        activatedChipEffectNames.Clear();
+    }
+
     public UpgradeStatus getupgradeStatus
     {
         get
