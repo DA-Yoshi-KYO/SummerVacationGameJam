@@ -25,6 +25,12 @@ public class CS_BoostUpgradeChip : CS_UpgradeChipBase
     [Tooltip("ブーストエネルギー自然回復間隔")]
     private float _boostEnergyRecoveryInterval = 1.0f;
 
+    [Header("===== 敵撃破時ブーストエネルギー回復 =====")]
+
+    [SerializeField]
+    [Tooltip("敵撃破時ブーストエネルギー回復量")]
+    private float _killBoostEnergyRecoveryAmount = 5;
+
     private void Start()
     {
         _chipName = "BoostUpgradeChip";
@@ -77,7 +83,13 @@ public class CS_BoostUpgradeChip : CS_UpgradeChipBase
     {
         if (UpgradeStatus_NameCheck("EffectLevel5")) return;
 
-        // 敵を倒したときにブーストエネルギーを5回復するエフェクトを追加させる
-        // 対象： 弾
+        CS_KillBoostEnergyRecoveryEffect killBoostEnergyRecoveryEffect = _player.AddComponent<CS_KillBoostEnergyRecoveryEffect>();
+
+        // 回復量を設定
+        killBoostEnergyRecoveryEffect.SetRecoveryBoostEnergyAmount(_killBoostEnergyRecoveryAmount);
+        // プレイヤーのブーストエネルギーを取得して、回復対象として設定
+        CS_PlayerMoveBoostEnergy playerMoveBoostEnergy = _player.GetComponent<CS_PlayerMoveBoostEnergy>();
+        if (playerMoveBoostEnergy != null)
+            killBoostEnergyRecoveryEffect.SetPlayerMoveBoostEnergy(playerMoveBoostEnergy);
     }
 }
