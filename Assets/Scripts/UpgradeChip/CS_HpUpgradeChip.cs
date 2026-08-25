@@ -22,16 +22,29 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
     [Tooltip("HP自然回復間隔")]
     private float _hpRegenerationInterval = 1.0f; // HP自然回復間隔
 
+    [Header("===== ライフスティール =====")]
+
+    [SerializeField]
+    [Tooltip("ライフスティール回復率")]
+    [Range(0.0f, 1.0f)]
+    private float _lifeStealRate = 0.1f; // ライフスティール回復率
+
+
     [Header("===== 敵撃破時HP回復 =====")]
 
     [SerializeField]
     [Tooltip("敵撃破時HP回復量")]
     private int _killHpRecoveryAmount = 5; // 敵撃破時HP回復量
 
+
+    private CS_PlayerStatus _playerStatus;
+
     private void Start()
     {
         _chipName = "HpUpgradeChip";
         _level = 1;
+
+        _playerStatus = _player.GetComponent<CS_PlayerStatus>();
     }
 
     protected override void ApplyEffectLevel1()
@@ -44,7 +57,7 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
 
     protected override void ApplyEffectLevel2()
     {
-        if(UpgradeStatus_NameCheck("EffectLevel2")) return;
+        if (UpgradeStatus_NameCheck("EffectLevel2")) return;
 
         // HP自然回復エフェクトコンポーネントを追加させる
         CS_HpRegeneration hpRegeneration = _player.AddComponent<CS_HpRegeneration>();
@@ -53,10 +66,8 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
         hpRegeneration.SetRegenerationAmount(_hpRegenerationAmount);
         hpRegeneration.SetRegenerationInterval(_hpRegenerationInterval);
 
-        // プレイヤーのステータスを取得して、回復対象として設定
-        CS_PlayerStatus playerStatus = _player.GetComponent<CS_PlayerStatus>();
-        if (playerStatus != null)
-            hpRegeneration.SetTarget(playerStatus);
+        // プレイヤーのステータスを設定
+        hpRegeneration.SetTarget(_playerStatus);
     }
 
     protected override void ApplyEffectLevel3()
@@ -71,8 +82,12 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
     {
         if (UpgradeStatus_NameCheck("EffectLevel4")) return;
 
-        // 与えたダメージの10%をHPとして回復するエフェクトを追加させる
-        // 対象：弾
+        CS_LifeStealEffect lifeStealEffect = _player.AddComponent<CS_LifeStealEffect>();
+
+        // 回復量を設定
+        lifeStealEffect.SetHealRate(_lifeStealRate);
+        // プレイヤーのステータスを設定
+        lifeStealEffect.SetPlayerStatus(_playerStatus);
     }
 
     protected override void ApplyEffectLevel5()
@@ -85,10 +100,7 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
         // 回復量を設定
         killHpRecoveryEffect.SetRecoveryHpAmount(_killHpRecoveryAmount);
 
-        // プレイヤーのステータスを取得して、回復対象として設定
-        CS_PlayerStatus playerStatus = _player.GetComponent<CS_PlayerStatus>();
-        if (playerStatus != null)
-            killHpRecoveryEffect.SetPlayerStatus(playerStatus);
-
+        // プレイヤーのステータスを設定
+        killHpRecoveryEffect.SetPlayerStatus(_playerStatus);
     }
 }
