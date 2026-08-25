@@ -22,6 +22,12 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
     [Tooltip("HP自然回復間隔")]
     private float _hpRegenerationInterval = 1.0f; // HP自然回復間隔
 
+    [Header("===== 敵撃破時HP回復 =====")]
+
+    [SerializeField]
+    [Tooltip("敵撃破時HP回復量")]
+    private int _killHpRecoveryAmount = 5; // 敵撃破時HP回復量
+
     private void Start()
     {
         _chipName = "HpUpgradeChip";
@@ -73,7 +79,16 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
     {
         if (UpgradeStatus_NameCheck("EffectLevel5")) return;
 
-        // 敵を倒したときにHPを5回復するエフェクトを追加させる
-        // 対象： 弾
+        // 敵を倒したときにHPを回復するエフェクトを追加させる
+        CS_KillHpRecoveryEffect killHpRecoveryEffect = _player.AddComponent<CS_KillHpRecoveryEffect>();
+
+        // 回復量を設定
+        killHpRecoveryEffect.SetRecoveryHpAmount(_killHpRecoveryAmount);
+
+        // プレイヤーのステータスを取得して、回復対象として設定
+        CS_PlayerStatus playerStatus = _player.GetComponent<CS_PlayerStatus>();
+        if (playerStatus != null)
+            killHpRecoveryEffect.SetPlayerStatus(playerStatus);
+
     }
 }
