@@ -2,6 +2,8 @@ using System.IO.Pipes;
 using UnityEngine;
 using UnityEditor;
 using System.Security.Cryptography;
+using System.Collections.Generic;
+using System;
 
 public class CS_EnemyManager : MonoBehaviour
 {
@@ -34,6 +36,9 @@ public class CS_EnemyManager : MonoBehaviour
     [SerializeField] private bool _showDebugRange = true;
 
     private float _spawnTimer = 0f; // スポーンタイマー
+
+    [Tooltip("敵に付与するチップ効果")]
+    private Dictionary<Type, Action<GameObject>> chipEffects = new Dictionary<Type, Action<GameObject>>();
 
     // Update is called once per frame
     void Update()
@@ -68,8 +73,8 @@ public class CS_EnemyManager : MonoBehaviour
             {
                 // ランダムな位置を生成
                 Vector3 spawnPosition = _playerTransform.position;
-                float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad; // ランダムな角度を取得
-                float randomDistance = Random.Range(_spawnRangeMin, _spawnRangeMax); // ランダムな距離を取得
+                float randomAngle = UnityEngine.Random.Range(0f, 360f) * Mathf.Deg2Rad; // ランダムな角度を取得
+                float randomDistance = UnityEngine.Random.Range(_spawnRangeMin, _spawnRangeMax); // ランダムな距離を取得
                 spawnPosition.x += Mathf.Cos(randomAngle) * randomDistance; // X座標を計算
                 spawnPosition.z += Mathf.Sin(randomAngle) * randomDistance; // Z座標を計算
 
@@ -81,8 +86,41 @@ public class CS_EnemyManager : MonoBehaviour
                 {
                     enemyBase.PlayerTransform = _playerTransform;
                 }
+
+                // 登録されているチップ効果を付与
+                foreach (var key in chipEffects.Keys)
+                {
+                    if (enemy.GetComponent(key) == null)
+                    {
+                        chipEffects[key].Invoke(enemy);
+                    }
+                }
             }
         }       
+    }
+
+    public void RegisterChipEffect<T>() where T : Component
+    {
+        Type componentType = typeof(T);
+
+        if (!chipEffects.ContainsKey(componentType))
+        {
+            chipEffects.Add(componentType, (enemy) =>
+            {
+                enemy.AddComponent<T>();
+            });
+
+            // 既に生成されている敵に効果を付与する
+            GameObject[] existingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (var enemy in existingEnemies)
+            {
+                if (enemy.GetComponent<T>() == null)
+                {
+                    chipEffects[componentType].Invoke(enemy);
+                }
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()

@@ -83,13 +83,10 @@ public class CS_BoostUpgradeChip : CS_UpgradeChipBase
     {
         if (UpgradeStatus_NameCheck("EffectLevel5")) return;
 
-        CS_KillBoostEnergyRecoveryEffect killBoostEnergyRecoveryEffect = _player.AddComponent<CS_KillBoostEnergyRecoveryEffect>();
+        CS_EnemyManager enemyManager = GameObject.FindAnyObjectByType<CS_EnemyManager>();
 
-        // 回復量を設定
-        killBoostEnergyRecoveryEffect.SetRecoveryBoostEnergyAmount(_killBoostEnergyRecoveryAmount);
-        // プレイヤーのブーストエネルギーを取得して、回復対象として設定
-        CS_PlayerMoveBoostEnergy playerMoveBoostEnergy = _player.GetComponent<CS_PlayerMoveBoostEnergy>();
-        if (playerMoveBoostEnergy != null)
-            killBoostEnergyRecoveryEffect.SetPlayerMoveBoostEnergy(playerMoveBoostEnergy);
+        // 敵撃破時ブーストエネルギー回復エフェクトを登録
+        if (enemyManager != null)
+            enemyManager.RegisterChipEffect<CS_KillBoostEnergyRecoveryEffect>();
     }
 }

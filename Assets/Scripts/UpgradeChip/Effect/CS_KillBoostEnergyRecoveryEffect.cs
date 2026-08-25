@@ -2,27 +2,15 @@
 
 public class CS_KillBoostEnergyRecoveryEffect : MonoBehaviour
 {
-    [SerializeField]
     [Tooltip("回復する量")]
-    private float _recoveryBoostEnergyAmount;
+    private float _recoveryBoostEnergyAmount = 5f;
 
-    [SerializeField]
-    [Tooltip("プレイヤーのステータス参照")]
-    private CS_PlayerMoveBoostEnergy _playerMoveBoostEnergy;
-
-    public void ApplyEffect()
+    public void OnDestroy()
     {
+        CS_PlayerMoveBoostEnergy playerMoveBoostEnergy = GameObject.FindAnyObjectByType<CS_PlayerMoveBoostEnergy>();
+
         // プレイヤーの体力を回復する
-        _playerMoveBoostEnergy.Regenerate(_recoveryBoostEnergyAmount);
-    }
-
-    public void SetRecoveryBoostEnergyAmount(float amount)
-    {
-        _recoveryBoostEnergyAmount = amount;
-    }
-
-    public void SetPlayerMoveBoostEnergy(CS_PlayerMoveBoostEnergy playerMoveBoostEnergy)
-    {
-        _playerMoveBoostEnergy = playerMoveBoostEnergy;
+        if (playerMoveBoostEnergy != null)
+            playerMoveBoostEnergy.Regenerate(_recoveryBoostEnergyAmount);
     }
 }
