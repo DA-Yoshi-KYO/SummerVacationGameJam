@@ -22,14 +22,23 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
     [Tooltip("HP自然回復間隔")]
     private float _hpRegenerationInterval = 1.0f; // HP自然回復間隔
 
+    private void Start()
+    {
+        _chipName = "HpUpgradeChip";
+    }
+
     protected override void ApplyEffectLevel1()
     {
+        if(UpgradeStatus_NameCheck("EffectLevel1")) return;
+
         // 最大HPを50増加
         _chipManager.upgradeStatus.upgradeStatus.healthIncreaseAmount += _healthIncreaseAmount;
     }
 
     protected override void ApplyEffectLevel2()
     {
+        if(UpgradeStatus_NameCheck("EffectLevel2")) return;
+
         // HP自然回復エフェクトコンポーネントを追加させる
         CS_HpRegeneration hpRegeneration = _player.AddComponent<CS_HpRegeneration>();
 
@@ -45,18 +54,24 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
 
     protected override void ApplyEffectLevel3()
     {
+        if(UpgradeStatus_NameCheck("EffectLevel3")) return;
+
         // ダメージ軽減率を20%加算
         _chipManager.upgradeStatus.upgradeStatus.damageReductionRate += _damageReductionRate;
     }
 
     protected override void ApplyEffectLevel4()
     {
+        if (UpgradeStatus_NameCheck("EffectLevel4")) return;
+
         // 与えたダメージの10%をHPとして回復するエフェクトを追加させる
         // 対象：弾
     }
 
     protected override void ApplyEffectLevel5()
     {
+        if (UpgradeStatus_NameCheck("EffectLevel5")) return;
+
         // 敵を倒したときにHPを5回復するエフェクトを追加させる
         // 対象： 弾
     }

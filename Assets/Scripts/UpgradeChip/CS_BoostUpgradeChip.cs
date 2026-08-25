@@ -25,15 +25,23 @@ public class CS_BoostUpgradeChip : CS_UpgradeChipBase
     [Tooltip("ブーストエネルギー自然回復間隔")]
     private float _boostEnergyRecoveryInterval = 1.0f;
 
+    private void Start()
+    {
+        _chipName = "BoostUpgradeChip";
+    }
 
     protected override void ApplyEffectLevel1()
     {
+        if (UpgradeStatus_NameCheck("EffectLevel1")) return;
+
         // ブーストエネルギー増加量を100増加
         _chipManager.upgradeStatus.upgradeStatus.boostEnergyIncreaseAmount += _boostEnergyIncreaseAmount;
     }
 
     protected override void ApplyEffectLevel2()
     {
+        if (UpgradeStatus_NameCheck("EffectLevel2")) return;
+
         // ブーストエネルギー自然回復エフェクトコンポーネントを追加させる
         CS_BoostEnergyRegeneration boostEnergyRecovery = _player.AddComponent<CS_BoostEnergyRegeneration>();
 
@@ -50,18 +58,24 @@ public class CS_BoostUpgradeChip : CS_UpgradeChipBase
 
     protected override void ApplyEffectLevel3()
     {
+        if(UpgradeStatus_NameCheck("EffectLevel3")) return;
+
         // ブースト消費軽減率を10%加算
         _chipManager.upgradeStatus.upgradeStatus.boostConsumptionReductionRate += _boostConsumptionReductionRate;
     }
 
     protected override void ApplyEffectLevel4()
     {
+        if(UpgradeStatus_NameCheck("EffectLevel4")) return;
+
         // ブースト時の移動速度増加率を50%加算
         _chipManager.upgradeStatus.upgradeStatus.boostSpeedIncreaseRate += _boostSpeedIncreaseRate;
     }
 
     protected override void ApplyEffectLevel5()
     {
+        if (UpgradeStatus_NameCheck("EffectLevel5")) return;
+
         // 敵を倒したときにブーストエネルギーを5回復するエフェクトを追加させる
         // 対象： 弾
     }

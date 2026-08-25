@@ -62,20 +62,31 @@ public class CS_AssistUpgradeChip : CS_UpgradeChipBase
     [Range(0.0f, 1.0f)]
     private float _boostSpeedIncreaseRate = 0.5f;
 
+    private void Start()
+    {
+        _chipName = "AssistUpgradeChip";
+    }
+
     protected override void ApplyEffectLevel1()
     {
+        if(UpgradeStatus_NameCheck("EffectLevel1")) return;
+
         // 経験値獲得量増加率を20%加算
         _chipManager.upgradeStatus.upgradeStatus.experienceGainIncreaseRate += _experienceGainIncreaseRate;
     }
 
     protected override void ApplyEffectLevel2()
     {
+        if(UpgradeStatus_NameCheck("EffectLevel2")) return;
+
         // プレイヤーの移動速度増加率を50%加算
         _chipManager.upgradeStatus.upgradeStatus.playerMovementSpeedIncreaseRate += _playerMovementSpeedIncreaseRate;
     }
 
     protected override void ApplyEffectLevel3()
     {
+        if (UpgradeStatus_NameCheck("EffectLevel3")) return;
+
         // バリアを生成するエフェクトを追加させる
         CS_PlayerShield playerShield = _player.GetComponent<CS_PlayerShield>();
         if (playerShield == null) playerShield = _player.AddComponent<CS_PlayerShield>();
@@ -87,6 +98,8 @@ public class CS_AssistUpgradeChip : CS_UpgradeChipBase
 
     protected override void ApplyEffectLevel4()
     {
+        if (UpgradeStatus_NameCheck("EffectLevel4")) return;
+
         // HPが10%以下になった時に、様々なバフを付与するエフェクトを追加させる
         CS_PlayerLowHpBuff lowHpBuff = _player.AddComponent<CS_PlayerLowHpBuff>();
 
@@ -108,6 +121,8 @@ public class CS_AssistUpgradeChip : CS_UpgradeChipBase
 
     protected override void ApplyEffectLevel5()
     {
+        if (UpgradeStatus_NameCheck("EffectLevel5")) return;
+
         // すべてのチップの効果量を20%増加させる(1.2倍)
         _chipManager.upgradeStatus.allChipEffectIncreaseRate = _allChipEffectIncreaseRate;
     }
