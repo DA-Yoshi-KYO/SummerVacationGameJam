@@ -69,7 +69,7 @@
                          DataObject.Pasting="AsciiOnlyTextBox_Pasting" />
                 <Button x:Name="ApplyMajorElementButton" Content="全レイヤーへ一括反映" Padding="10,4" Click="ApplyMajorElementButton_Click" />
             </StackPanel>
-            <TextBlock Text="※番号は表示順で増加方向のみ(同じ番号=同じPR)。大要素はスタック全体の分類名(例: チップ)、要素は各レイヤーの内容。ブランチ名は stacked/大要素/要素 になります。"
+            <TextBlock Text="※番号は表示順で増加方向のみ(同じ番号=同じPR)。大要素はスタック全体の分類名(例: PlayerStatus)、要素は各レイヤーの内容。ブランチ名は stacked/大要素/要素 になります。"
                        Foreground="Gray" FontSize="11" TextWrapping="Wrap" />
         </StackPanel>
 

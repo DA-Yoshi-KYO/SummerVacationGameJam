@@ -15,7 +15,7 @@ public class StackLayerPlan
     public int GroupNumber { get; set; }
 
     /// <summary>
-    /// 大要素: このスタック全体が何についての分割か(例: "チップ")。
+    /// 大要素: このスタック全体が何についての分割か(例: "PlayerStatus")。
     /// 通常はスタック内の全レイヤーで共通の値になる。
     /// </summary>
     public string MajorElement { get; set; } = "";
