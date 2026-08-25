@@ -41,6 +41,20 @@ public class GitHubService
         }).ToList();
     }
 
+    /// <summary>
+    /// 今ログインしているGitHubアカウントの、このリポジトリに対する権限を返す。
+    /// ("ADMIN" | "MAINTAIN" | "WRITE" | "TRIAGE" | "READ" | 取得失敗時は "UNKNOWN")
+    /// </summary>
+    public async Task<string> GetViewerPermissionAsync()
+    {
+        var result = await _cli.RunAsync(_ghPath, "repo view --json viewerPermission -q .viewerPermission", _repoPath);
+        if (!result.Success)
+            return "UNKNOWN";
+
+        var permission = result.StdOut.Trim();
+        return string.IsNullOrEmpty(permission) ? "UNKNOWN" : permission;
+    }
+
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNameCaseInsensitive = true,

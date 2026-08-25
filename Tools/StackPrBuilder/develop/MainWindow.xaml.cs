@@ -408,7 +408,28 @@ public partial class MainWindow : Window
 
     private async void MergeAllButton_Click(object sender, RoutedEventArgs e)
     {
-        if (!TryGetServices(out _, out _, out var orchestrator)) return;
+        if (!TryGetServices(out _, out var github, out var orchestrator)) return;
+
+        SetButtonsEnabled(false);
+        string permission;
+        try
+        {
+            AppendLog("権限を確認しています(gh repo view --json viewerPermission)...");
+            permission = await github.GetViewerPermissionAsync();
+        }
+        finally
+        {
+            SetButtonsEnabled(true);
+        }
+
+        if (permission != "ADMIN")
+        {
+            AppendLog($"=== Merge All 拒否: リポジトリ管理者(ADMIN)権限が必要です(現在: {permission}) ===");
+            MessageBox.Show(
+                $"一括マージはリポジトリ管理者のみ実行できます。\n現在のあなたの権限: {permission}",
+                "権限不足", MessageBoxButton.OK, MessageBoxImage.Stop);
+            return;
+        }
 
         var confirm = MessageBox.Show(
             "スタック内の全PRをGitHub上でマージします。よろしいですか?",
