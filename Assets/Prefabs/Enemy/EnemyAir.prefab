@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: -5079258282383887661}
   m_Layer: 0
   m_Name: EnemyAir
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff19c27446015c04fa087bb51c3a5fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_EnemyAir
-  player: {fileID: 0}
+  _playerTransform: {fileID: 0}
   _health: 100
   _moveSpeed: 3
   _bulletPrefab: {fileID: 8497294019205993078, guid: a404253da24ba8f40bb4923cc7c37801, type: 3}

@@ -94,13 +94,11 @@ public class CS_HpUpgradeChip : CS_UpgradeChipBase
     {
         if (UpgradeStatus_NameCheck("EffectLevel5")) return;
 
-        // 敵を倒したときにHPを回復するエフェクトを追加させる
-        CS_KillHpRecoveryEffect killHpRecoveryEffect = _player.AddComponent<CS_KillHpRecoveryEffect>();
+        CS_EnemyManager enemyManager = GameObject.FindAnyObjectByType<CS_EnemyManager>();
 
-        // 回復量を設定
-        killHpRecoveryEffect.SetRecoveryHpAmount(_killHpRecoveryAmount);
+        // 敵撃破時HP回復エフェクトを登録
+        if (enemyManager != null)
+            enemyManager.RegisterChipEffect<CS_KillHpRecoveryEffect>();
 
-        // プレイヤーのステータスを設定
-        killHpRecoveryEffect.SetPlayerStatus(_playerStatus);
     }
 }
