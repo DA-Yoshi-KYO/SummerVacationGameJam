@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public abstract class CS_UpgradeChipBase : MonoBehaviour
 {
     // レベル0：未取得
     // レベル1～5：対応した効果を発揮
+    [SerializeField]
     [Tooltip("レベル")]
     protected int _level = 0;
 
@@ -38,6 +40,10 @@ public abstract class CS_UpgradeChipBase : MonoBehaviour
     {
         string chipName = _chipName + "_" + EffectName;
 
+        if (_chipManager.upgradeStatus.activatedChipEffectNames == null)
+        {
+            _chipManager.upgradeStatus.activatedChipEffectNames = new List<string>();
+        }
         // すでに同じ名前のチップが適用されている場合は、効果を重複させないようにする
         if (_chipManager.upgradeStatus.activatedChipEffectNames.Contains(chipName)) return true;
 

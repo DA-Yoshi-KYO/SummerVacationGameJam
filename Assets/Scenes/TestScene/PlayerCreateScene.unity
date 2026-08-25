@@ -1400,6 +1400,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1856150873194497228, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: _upgradeStatus
+      value: 
+      objectReference: {fileID: 11400000, guid: 20ef1ff7aee4bd24bbf77d84c4d7b263, type: 2}
+    - target: {fileID: 1856150873194497228, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: debugAddChipName
+      value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856150873194497228, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: debugLevelUpChipName
+      value: Bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 4520070259262719961, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
       propertyPath: m_Name
       value: UpgradeChipManager

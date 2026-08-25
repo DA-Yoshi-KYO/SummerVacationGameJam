@@ -9,6 +9,7 @@ public class CS_FirePowerUpgradeChip : CS_UpgradeChipBase
     private void Start()
     {
         _chipName = "FirePowerUpgradeChip";
+        _level = 1;
     }
 
     protected override void ApplyEffectLevel1()

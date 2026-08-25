@@ -17,6 +17,7 @@ public class CS_WeaponStatusUpgradeChip : CS_UpgradeChipBase
     private void Start()
     {
         _chipName = "WeaponStatusUpgradeChip";
+        _level = 1;
     }
 
     protected override void ApplyEffectLevel1()

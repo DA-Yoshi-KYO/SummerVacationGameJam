@@ -21,6 +21,7 @@ public class CS_BulletUpgradeChip : CS_UpgradeChipBase
     private void Start()
     {
         _chipName = "BulletUpgradeChip";
+        _level = 1;
     }
 
     protected override void ApplyEffectLevel1()
@@ -60,5 +61,9 @@ public class CS_BulletUpgradeChip : CS_UpgradeChipBase
         if (UpgradeStatus_NameCheck("EffectLevel5")) return;
 
         // 弾が着弾した際、一定範囲の敵にダメージを与えるエフェクトを追加
+        foreach (CS_BaseWeapon equipmentWeapon in _playerEquipment.equipmentWeaponScriptList)
+        {
+            equipmentWeapon.RegistAddBulletComponent<CS_ExplosionBulletEffect>();
+        }
     }
 }
