@@ -78,9 +78,9 @@ public class StackOrchestrator
 
         foreach (var layer in layers)
         {
-            if (string.IsNullOrWhiteSpace(layer.BranchName))
+            if (string.IsNullOrWhiteSpace(layer.MajorElement) || string.IsNullOrWhiteSpace(layer.Element))
             {
-                Log?.Invoke("エラー: ブランチ名が空のレイヤーがあります。");
+                Log?.Invoke($"エラー: レイヤー {layer.GroupNumber} の大要素/要素が空です(現在のブランチ名: {layer.BranchName})。");
                 return false;
             }
         }

@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using StackPrBuilder.Models;
 using StackPrBuilder.Services;
@@ -319,9 +320,10 @@ public partial class MainWindow : Window
                 current = new StackLayerPlan
                 {
                     GroupNumber = commit.GroupNumber,
-                    // このリポジトリのRuleset(DevelopBranchRule)は "stacked/**" のみ作成を許可しているため、
-                    // それに合わせたプレフィックスにする。
-                    BranchName = $"stacked/layer-{commit.GroupNumber}",
+                    // "stacked/" プレフィックスは StackLayerPlan.BranchName 側で固定済み。
+                    // 大要素は共通入力欄の値を初期値として使う(あとで行ごとに編集も可能)。
+                    MajorElement = MajorElementBox.Text.Trim(),
+                    Element = $"layer-{commit.GroupNumber}",
                 };
                 _layers.Add(current);
                 lastGroup = commit.GroupNumber;
@@ -330,7 +332,28 @@ public partial class MainWindow : Window
             current.Commits.Add(commit);
         }
 
-        AppendLog($"{_layers.Count} レイヤーに組み立てました。下のブランチ名を確認・編集してください。");
+        AppendLog($"{_layers.Count} レイヤーに組み立てました。下のブランチ名(大要素/要素)を確認・編集してください。");
+    }
+
+    private void ApplyMajorElementButton_Click(object sender, RoutedEventArgs e)
+    {
+        var value = MajorElementBox.Text.Trim();
+        if (_layers.Count == 0)
+        {
+            AppendLog("エラー: 先に②レイヤー計算を実行してください。");
+            return;
+        }
+
+        foreach (var layer in _layers)
+            layer.MajorElement = value;
+
+        // 各TextBoxの表示を更新するため、ItemsControlを一度リセットして再描画させる
+        // (StackLayerPlanはINotifyPropertyChangedを実装していないため)。
+        // _layers自体は差し替えず、以降のClear()/Add()による自動更新を維持する。
+        LayersList.ItemsSource = null;
+        LayersList.ItemsSource = _layers;
+
+        AppendLog($"大要素「{value}」を全{_layers.Count}レイヤーへ反映しました。");
     }
 
     private async void BuildStackButton_Click(object sender, RoutedEventArgs e)
@@ -404,6 +427,28 @@ public partial class MainWindow : Window
         }
     }
 
+    // ブランチ名(大要素/要素)は git branch として安全なASCII文字だけを許可する。
+    // 日本語などの入力自体はTextBox側のInputMethod.IsInputMethodEnabled="False"で
+    // IMEを無効化して防いでいるが、直接キー入力・ペーストの両方をここでも念のため弾く。
+    private static readonly Regex AsciiBranchCharPattern = new(@"^[A-Za-z0-9_\-]+$", RegexOptions.Compiled);
+
+    private void AsciiOnlyTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+    {
+        e.Handled = !AsciiBranchCharPattern.IsMatch(e.Text);
+    }
+
+    private void AsciiOnlyTextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+    {
+        if (e.DataObject.GetDataPresent(typeof(string)) &&
+            e.DataObject.GetData(typeof(string)) is string text &&
+            AsciiBranchCharPattern.IsMatch(text))
+        {
+            return;
+        }
+
+        e.CancelCommand();
+    }
+
     private void SetButtonsEnabled(bool enabled)
     {
         FetchButton.IsEnabled = enabled;
@@ -413,6 +458,7 @@ public partial class MainWindow : Window
         MoveDownButton.IsEnabled = enabled;
         ApplyReorderButton.IsEnabled = enabled;
         ComputeLayersButton.IsEnabled = enabled;
+        ApplyMajorElementButton.IsEnabled = enabled;
         BuildStackButton.IsEnabled = enabled;
         SyncButton.IsEnabled = enabled;
         MergeAllButton.IsEnabled = enabled;

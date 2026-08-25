@@ -59,9 +59,18 @@
             <TextBlock Text="※作業ツリーを一時的にbaseへ切替えて再構築します。未コミットの変更があると失敗します。" VerticalAlignment="Center" Foreground="Gray" />
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,0,0,8">
-            <Button x:Name="ComputeLayersButton" Content="② レイヤー計算(グループ番号から組み立て)" Padding="10,4" Click="ComputeLayersButton_Click" />
-            <TextBlock Text="※同じ番号=同じPR。番号は表示順(この並び替え後の順)で増加方向のみ" VerticalAlignment="Center" Margin="12,0,0,0" Foreground="Gray" />
+        <StackPanel Grid.Row="4" Orientation="Vertical" Margin="0,0,0,8">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
+                <Button x:Name="ComputeLayersButton" Content="② レイヤー計算(グループ番号から組み立て)" Padding="10,4" Margin="0,0,16,0" Click="ComputeLayersButton_Click" />
+                <TextBlock Text="大要素:" VerticalAlignment="Center" Margin="0,0,4,0" />
+                <TextBox x:Name="MajorElementBox" Width="140" FontFamily="Consolas" VerticalAlignment="Center" Margin="0,0,8,0"
+                         InputMethod.IsInputMethodEnabled="False"
+                         PreviewTextInput="AsciiOnlyTextBox_PreviewTextInput"
+                         DataObject.Pasting="AsciiOnlyTextBox_Pasting" />
+                <Button x:Name="ApplyMajorElementButton" Content="全レイヤーへ一括反映" Padding="10,4" Click="ApplyMajorElementButton_Click" />
+            </StackPanel>
+            <TextBlock Text="※番号は表示順で増加方向のみ(同じ番号=同じPR)。大要素はスタック全体の分類名(例: チップ)、要素は各レイヤーの内容。ブランチ名は stacked/大要素/要素 になります。"
+                       Foreground="Gray" FontSize="11" TextWrapping="Wrap" />
         </StackPanel>
 
         <ItemsControl x:Name="LayersList" Grid.Row="5" Margin="0,0,0,8">
@@ -70,9 +79,20 @@
                     <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="4">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding GroupNumber, StringFormat='レイヤー {0}:'}" Width="90" VerticalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding Summary}" Width="240" VerticalAlignment="Center" />
+                            <TextBlock Text="{Binding Summary}" Width="220" VerticalAlignment="Center" />
                             <TextBlock Text="ブランチ名:" VerticalAlignment="Center" Margin="8,0,4,0" />
-                            <TextBox Text="{Binding BranchName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="260" />
+                            <TextBlock Text="stacked/" VerticalAlignment="Center" FontFamily="Consolas" Foreground="Gray" />
+                            <TextBlock Text="大要素:" VerticalAlignment="Center" Margin="4,0,2,0" Foreground="Gray" FontSize="10" />
+                            <TextBox Text="{Binding MajorElement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="110" FontFamily="Consolas"
+                                     InputMethod.IsInputMethodEnabled="False"
+                                     PreviewTextInput="AsciiOnlyTextBox_PreviewTextInput"
+                                     DataObject.Pasting="AsciiOnlyTextBox_Pasting" />
+                            <TextBlock Text="/" VerticalAlignment="Center" FontFamily="Consolas" Foreground="Gray" Margin="2,0" />
+                            <TextBlock Text="要素:" VerticalAlignment="Center" Margin="4,0,2,0" Foreground="Gray" FontSize="10" />
+                            <TextBox Text="{Binding Element, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="150" FontFamily="Consolas"
+                                     InputMethod.IsInputMethodEnabled="False"
+                                     PreviewTextInput="AsciiOnlyTextBox_PreviewTextInput"
+                                     DataObject.Pasting="AsciiOnlyTextBox_Pasting" />
                         </StackPanel>
                     </Border>
                 </DataTemplate>

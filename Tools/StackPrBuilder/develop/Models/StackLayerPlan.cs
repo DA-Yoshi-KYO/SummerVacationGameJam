@@ -6,10 +6,25 @@ namespace StackPrBuilder.Models;
 /// </summary>
 public class StackLayerPlan
 {
+    /// <summary>
+    /// このリポジトリのRuleset(DevelopBranchRule)で作成が許可されているブランチ名は
+    /// "stacked/**" のみのため、プレフィックスは固定にしてUI上では編集できないようにする。
+    /// </summary>
+    public const string BranchPrefix = "stacked/";
+
     public int GroupNumber { get; set; }
 
-    /// <summary>作成するブランチ名。デフォルト値をUI上で編集可能にする。</summary>
-    public string BranchName { get; set; } = "";
+    /// <summary>
+    /// 大要素: このスタック全体が何についての分割か(例: "チップ")。
+    /// 通常はスタック内の全レイヤーで共通の値になる。
+    /// </summary>
+    public string MajorElement { get; set; } = "";
+
+    /// <summary>要素: そのレイヤー固有の内容(例: "BaseCreate")。</summary>
+    public string Element { get; set; } = "";
+
+    /// <summary>実際に作成するブランチ名 ("stacked/" + 大要素 + "/" + 要素)。</summary>
+    public string BranchName => $"{BranchPrefix}{MajorElement}/{Element}";
 
     /// <summary>このレイヤーに属するコミット(履歴順)。</summary>
     public List<CommitInfo> Commits { get; } = new();
