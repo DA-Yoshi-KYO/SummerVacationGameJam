@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1290099344}
+    - target: {fileID: 8730120232327184995, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
+      propertyPath: _playerStatusDataBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e515df8faf4e9041b1eabade9fef5dd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -189,6 +193,101 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3038522144693326217, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
   m_PrefabInstance: {fileID: 222499693}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &229070534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f149f98b4ada1f047b5a0c3d65f45dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_InstanceInputUIState
+  _showInstanceInputs: 1
+  _numInputsToShowUI: 5
+  _inputsPageIndexUI: 0
+--- !u!114 &320271761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d66a2560bc02844b93f5cd39436c51a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_GeoNode
+  _geoInfo:
+    type: 0
+    nameSH: 2007
+    nodeId: 37
+    isEditable: 0
+    isTemplated: 0
+    isDisplayGeo: 1
+    hasGeoChanged: 0
+    hasMaterialChanged: 0
+    pointGroupCount: 0
+    primitiveGroupCount: 0
+    edgeGroupCount: 0
+    partCount: 7
+  _geoName: output0
+  _parts:
+  - {fileID: 1051871272}
+  - {fileID: 416669064}
+  - {fileID: 1888035768}
+  - {fileID: 1310239257}
+  - {fileID: 320324556}
+  - {fileID: 1714755601}
+  - {fileID: 345327437}
+  _containerObjectNode: {fileID: 532029884}
+  _inputNode: {fileID: 0}
+  _geoCurve: {fileID: 0}
+  _volumeCache: {fileID: 0}
+  _volumeCaches:
+  - {fileID: 790514062}
+--- !u!114 &320324556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ce3a7cc3f38404592fdd27226cb0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
+  _partID: 4
+  _partName: output0_4
+  _objectNodeID: 36
+  _geoID: 37
+  _partType: 2
+  _geoNode: {fileID: 320271761}
+  _isAttribInstancer: 0
+  _isPartInstanced: 0
+  _partPointCount: 1
+  _isObjectInstancer: 0
+  _objectInstancesGenerated: 0
+  _objectInstanceInfos: []
+  _terrainOffsetPosition: {x: 0, y: 0, z: 0}
+  _assetDBTerrainData: {fileID: 0}
+  _isPartEditable: 0
+  _partOutputType: 2
+  _curve: {fileID: 0}
+  _attributesStore: {fileID: 0}
+  _haveInstancesBeenGenerated: 0
+  _meshVertexCount: 1
+  _generatedOutput:
+    _outputData:
+      _gameObject: {fileID: 0}
+      _renderMaterials: []
+      _colliders: []
+    _childOutputs: []
+    isInstancer: 0
+  _volumeLayerName: flow
 --- !u!1001 &344894748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,6 +422,421 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &345327437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ce3a7cc3f38404592fdd27226cb0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
+  _partID: 6
+  _partName: output0_6
+  _objectNodeID: 36
+  _geoID: 37
+  _partType: 2
+  _geoNode: {fileID: 320271761}
+  _isAttribInstancer: 0
+  _isPartInstanced: 0
+  _partPointCount: 1
+  _isObjectInstancer: 0
+  _objectInstancesGenerated: 0
+  _objectInstanceInfos: []
+  _terrainOffsetPosition: {x: 0, y: 0, z: 0}
+  _assetDBTerrainData: {fileID: 0}
+  _isPartEditable: 0
+  _partOutputType: 2
+  _curve: {fileID: 0}
+  _attributesStore: {fileID: 0}
+  _haveInstancesBeenGenerated: 0
+  _meshVertexCount: 1
+  _generatedOutput:
+    _outputData:
+      _gameObject: {fileID: 0}
+      _renderMaterials: []
+      _colliders: []
+    _childOutputs: []
+    isInstancer: 0
+  _volumeLayerName: flowdir.y
+--- !u!114 &384604113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad87cca29eec2004bbb96fc6c0b82da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_AssetSerializedMetaData
+  _softDeleted: 0
+--- !u!114 &416669064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ce3a7cc3f38404592fdd27226cb0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
+  _partID: 1
+  _partName: output0_1
+  _objectNodeID: 36
+  _geoID: 37
+  _partType: 2
+  _geoNode: {fileID: 320271761}
+  _isAttribInstancer: 0
+  _isPartInstanced: 0
+  _partPointCount: 1
+  _isObjectInstancer: 0
+  _objectInstancesGenerated: 0
+  _objectInstanceInfos: []
+  _terrainOffsetPosition: {x: 0, y: 0, z: 0}
+  _assetDBTerrainData: {fileID: 0}
+  _isPartEditable: 0
+  _partOutputType: 2
+  _curve: {fileID: 0}
+  _attributesStore: {fileID: 0}
+  _haveInstancesBeenGenerated: 0
+  _meshVertexCount: 1
+  _generatedOutput:
+    _outputData:
+      _gameObject: {fileID: 0}
+      _renderMaterials: []
+      _colliders: []
+    _childOutputs: []
+    isInstancer: 0
+  _volumeLayerName: mask
+--- !u!1 &484227916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 484227919}
+  - component: {fileID: 484227918}
+  - component: {fileID: 484227920}
+  m_Layer: 0
+  m_Name: test_hightfield_mountain_1_3_output0_output0_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!218 &484227918
+Terrain:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484227916}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_TerrainData: {fileID: 15600000, guid: 1a6bc34c35dcc0e4b9b4b8e648659096, type: 2}
+  m_TreeDistance: 5000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMinimumLODSimplification: 0
+  m_HeightmapMaximumLOD: 0
+  m_ShadowCastingMode: 2
+  m_DrawHeightmap: 1
+  m_DrawInstanced: 1
+  m_DrawTreesAndFoliage: 1
+  m_StaticShadowCaster: 0
+  m_IgnoreQualitySettings: 0
+  m_ReflectionProbeUsage: 1
+  m_MaterialTemplate: {fileID: 1368712172}
+  m_BakeLightProbesForTrees: 1
+  m_PreserveTreePrototypeLayers: 0
+  m_DeringLightProbesForTrees: 1
+  m_ReceiveGI: 1
+  m_ScaleInLightmap: 1
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+  m_GroupingID: 0
+  m_RenderingLayerMask: 1
+  m_AllowAutoConnect: 1
+  m_EnableHeightmapRayTracing: 1
+  m_EnableTreesAndDetailsRayTracing: 0
+  m_EnableHeightmapLODFrustumCulling: 1
+  m_TreeMotionVectorModeOverride: 3
+--- !u!4 &484227919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484227916}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -499, y: -62.693523, z: -499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2007479740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!154 &484227920
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484227916}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_TerrainData: {fileID: 15600000, guid: 1a6bc34c35dcc0e4b9b4b8e648659096, type: 2}
+  m_EnableTreeColliders: 1
+--- !u!114 &532029884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d064048945a579428d136799401f238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_ObjectNode
+  _objName: test_hightfield_mountain_1_3
+  _parentAsset: {fileID: 1546449804}
+  _objectInfo:
+    nameSH: 1396
+    objectInstancePathSH: 0
+    hasTransformChanged: 1
+    haveGeosChanged: 1
+    isVisible: 1
+    isInstancer: 0
+    isInstanced: 0
+    geoCount: 0
+    nodeId: 36
+    objectToInstanceId: -1
+  _geoNodes:
+  - {fileID: 320271761}
+  _objectTransform:
+    position:
+    - 0
+    - 0
+    - 0
+    rotationQuaternion:
+    - 0
+    - 0
+    - 0
+    - 1
+    scale:
+    - 1
+    - 1
+    - 1
+    shear:
+    - 0
+    - 0
+    - 0
+    rstOrder: 5
+--- !u!114 &561560009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8512ec9bb36e55e4dab2691b35626896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_InputNode
+  _inputNodeType: 0
+  _inputObjectType: 1
+  _pendingInputObjectType: 1
+  _inputObjects: []
+  _inputObjectsConnectedAssetIDs: 
+  _inputAsset: {fileID: 0}
+  _connectedInputAsset: {fileID: 0}
+  _inputAssetInfos: []
+  _nodeID: 35
+  _inputIndex: 0
+  _requiresCook: 0
+  _requiresUpload: 0
+  _inputName: Sub-Network Input #1
+  _labelName: Sub-Network Input #1
+  _paramName: 
+  _connectedNodeID: -1
+  _keepWorldTransform: 1
+  _packGeometryBeforeMerging: 0
+  _parentAsset: {fileID: 1546449804}
+  _meshSettings:
+    _exportColliders: 0
+  _tilemapSettings:
+    _createGroupsForTiles: 1
+    _exportUnusedTiles: 1
+    _applyTileColor: 1
+    _applyTilemapOrientation: 1
+  _splineSettings:
+    _samplingResolution: 25
+  _usingSelectFromHierarchy: 0
+--- !u!114 &700022942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d17581e5b7f4946a3c54d1fe65c9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_Parameters
+  _uiLabel: ASSET PARAMETERS
+  _paramInts: 
+  _paramFloats: []
+  _paramStrings: []
+  _paramChoices: []
+  _rootParameters: 
+  _parameterList: []
+  _parameterModifiers: []
+  _regenerateParameters: 0
+  _presetData: 235053495f5052455345540a76657273696f6e20322e30610a6f7076616c7565730a7b0a76657273696f6e20302e380a7d0a
+  _defaultPresetData: 235053495f5052455345540a76657273696f6e20322e30610a6f7076616c7565730a7b0a76657273696f6e20302e380a7d0a
+  _validParameters: 1
+  _showParameters: 1
+  _parentAsset: {fileID: 1546449804}
+--- !u!114 &790514062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054bae7d2b31a224da13732a930a5b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_VolumeCache
+  _ownerNode: {fileID: 320271761}
+  _layers:
+  - _layerName: height
+    _strength: 1
+    _uiExpanded: 0
+    _tile: 0
+    _xLength: 500
+    _yLength: 500
+    _terrainLayer: {fileID: 0}
+    _layerType: 1
+    _part: {fileID: 1051871272}
+  - _layerName: debris
+    _strength: 1
+    _uiExpanded: 1
+    _tile: 0
+    _xLength: 500
+    _yLength: 500
+    _terrainLayer: {fileID: 8574412962073106934, guid: b410f8a78ca03f64992765fe991f4bfe, type: 2}
+    _layerType: 0
+    _part: {fileID: 1888035768}
+  - _layerName: sediment
+    _strength: 1
+    _uiExpanded: 1
+    _tile: 0
+    _xLength: 500
+    _yLength: 500
+    _terrainLayer: {fileID: 8574412962073106934, guid: 3b9e01949af658c4887efaeb31cb5e05, type: 2}
+    _layerType: 0
+    _part: {fileID: 1310239257}
+  - _layerName: flow
+    _strength: 1
+    _uiExpanded: 1
+    _tile: 0
+    _xLength: 500
+    _yLength: 500
+    _terrainLayer: {fileID: 8574412962073106934, guid: 60da0525910355e4d811449ea621c667, type: 2}
+    _layerType: 0
+    _part: {fileID: 320324556}
+  - _layerName: flowdir.x
+    _strength: 1
+    _uiExpanded: 1
+    _tile: 0
+    _xLength: 500
+    _yLength: 500
+    _terrainLayer: {fileID: 8574412962073106934, guid: fbce23d2b2bb9ff4d9a8c116ff4c1224, type: 2}
+    _layerType: 0
+    _part: {fileID: 1714755601}
+  - _layerName: flowdir.y
+    _strength: 1
+    _uiExpanded: 1
+    _tile: 0
+    _xLength: 500
+    _yLength: 500
+    _terrainLayer: {fileID: 8574412962073106934, guid: 4770874010829e348b1d135a510e1e46, type: 2}
+    _layerType: 0
+    _part: {fileID: 345327437}
+  _tileIndex: 0
+  _isDirty: 0
+  _geoName: output0
+  _objName: test_hightfield_mountain_1_3
+  _uiExpanded: 1
+  _terrainData: {fileID: 15600000, guid: 1a6bc34c35dcc0e4b9b4b8e648659096, type: 2}
+  _parentAsset: {fileID: 1546449804}
+--- !u!114 &1051871272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ce3a7cc3f38404592fdd27226cb0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
+  _partID: 0
+  _partName: output0_0
+  _objectNodeID: 36
+  _geoID: 37
+  _partType: 2
+  _geoNode: {fileID: 320271761}
+  _isAttribInstancer: 0
+  _isPartInstanced: 0
+  _partPointCount: 1
+  _isObjectInstancer: 0
+  _objectInstancesGenerated: 0
+  _objectInstanceInfos: []
+  _terrainOffsetPosition: {x: 499, y: -62.693523, z: -499}
+  _assetDBTerrainData: {fileID: 15600000, guid: 1a6bc34c35dcc0e4b9b4b8e648659096, type: 2}
+  _isPartEditable: 0
+  _partOutputType: 2
+  _curve: {fileID: 0}
+  _attributesStore: {fileID: 0}
+  _haveInstancesBeenGenerated: 0
+  _meshVertexCount: 1
+  _generatedOutput:
+    _outputData:
+      _gameObject: {fileID: 484227916}
+      _renderMaterials: []
+      _colliders: []
+    _childOutputs: []
+    isInstancer: 0
+  _volumeLayerName: height
 --- !u!1001 &1290099343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -389,6 +903,321 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8729676832615714742, guid: 12469fb9c132ab5408b3e242b7f1c9c7, type: 3}
   m_PrefabInstance: {fileID: 1290099343}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1310239257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ce3a7cc3f38404592fdd27226cb0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
+  _partID: 3
+  _partName: output0_3
+  _objectNodeID: 36
+  _geoID: 37
+  _partType: 2
+  _geoNode: {fileID: 320271761}
+  _isAttribInstancer: 0
+  _isPartInstanced: 0
+  _partPointCount: 1
+  _isObjectInstancer: 0
+  _objectInstancesGenerated: 0
+  _objectInstanceInfos: []
+  _terrainOffsetPosition: {x: 0, y: 0, z: 0}
+  _assetDBTerrainData: {fileID: 0}
+  _isPartEditable: 0
+  _partOutputType: 2
+  _curve: {fileID: 0}
+  _attributesStore: {fileID: 0}
+  _haveInstancesBeenGenerated: 0
+  _meshVertexCount: 1
+  _generatedOutput:
+    _outputData:
+      _gameObject: {fileID: 0}
+      _renderMaterials: []
+      _colliders: []
+    _childOutputs: []
+    isInstancer: 0
+  _volumeLayerName: sediment
+--- !u!21 &1368712172
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: test_hightfield_mountain_1_3_output0_output0_0-Material
+  m_Shader: {fileID: 4800000, guid: eb607f5e8fc16e140b732f33d26c8c31, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainHolesTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AddPrecomputedVelocity: 0
+    - _CullMode: 2
+    - _EnableHeightBlend: 0
+    - _EnableInstancedPerPixelNormal: 1
+    - _HeightTransition: 0
+    - _ReceivesSSR: 1
+    - _SpecularOcclusionMode: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 0
+    - _StencilRefGBuffer: 2
+    - _StencilWriteMask: 3
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskGBuffer: 3
+    - _SupportDecals: 1
+    - _TransparentZWrite: 0
+    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestGBuffer: 4
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!1 &1546449803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1546449805}
+  - component: {fileID: 1546449804}
+  m_Layer: 0
+  m_Name: HDA_Data
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1546449804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546449803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740823ef63d3f6d468aaab5799b16654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_HoudiniAsset
+  _assetType: 1
+  _assetInfo:
+    nodeId: 35
+    objectNodeId: 36
+    hasEverCooked: 1
+    nameSH: 2002
+    labelSH: 2003
+    filePathSH: 2004
+    versionSH: 1998
+    fullOpNameSH: 1999
+    helpTextSH: 2000
+    helpURLSH: 2001
+    objectCount: -1
+    handleCount: 0
+    transformInputCount: 0
+    geoInputCount: 1
+    geoOutputCount: 1
+    haveObjectsChanged: 0
+    haveMaterialsChanged: 0
+  _nodeInfo:
+    id: 35
+    parentId: 36
+    nameSH: 1397
+    type: 2
+    isValid: 1
+    totalCookCount: 1
+    uniqueHoudiniNodeId: 17908
+    internalNodePathSH: 1958
+    parmCount: 0
+    parmIntValueCount: 0
+    parmFloatValueCount: 0
+    parmStringValueCount: 0
+    parmChoiceCount: 0
+    childNodeCount: 9
+    inputCount: 1
+    outputCount: 1
+    createdPostAssetLoad: 1
+    isTimeDependent: 1
+  _assetName: test_hightfield_mountain_1_3
+  _assetOpName: TEST_HIGHTFIELD_MOUNTAIN::Sop/test_hightfield_mountain::1.0
+  _assetHelp: 
+  _assetPath: Assets/Designer/HDA/sop_TEST_HIGHTFIELD_MOUNTAIN.test_hightfield_mountain.1.0.hdalc
+  _loadAssetFromMemory: 0
+  _alwaysOverwriteOnLoad: 0
+  _assetFileObject: {fileID: 102900000, guid: 0efcef5f489cbd8498919738ca3bb313, type: 3}
+  _objectNodes:
+  - {fileID: 532029884}
+  _rootGameObject: {fileID: 2007479738}
+  _materialCache: []
+  _parameters: {fileID: 700022942}
+  _lastSyncedTransformMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  _lastSyncedChildTransformMatrices:
+  - e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  - e00: 1
+    e01: 0
+    e02: 0
+    e03: -499
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: -62.693523
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: -499
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  _assetCacheFolderPath: Assets/HoudiniEngineAssetCache/Working/sop_TEST_HIGHTFIELD_MOUNTAIN.test_hightfield_mountain.1
+    2.0
+  _subassetNames:
+  - TEST_HIGHTFIELD_MOUNTAIN::Sop/test_hightfield_mountain::1.0
+  _selectedSubassetIndex: 0
+  _totalCookCount: 2
+  _requestBuildAction: 0
+  _checkParameterChangeForCook: 0
+  _skipCookCheck: 0
+  _uploadParameters: 1
+  _forceUploadInputs: 0
+  _upstreamCookChanged: 0
+  _cookStatus: 0
+  _lastCookResult: 1
+  _isCookingAssetReloaded: 0
+  _sessionID: 2803596025616
+  _uiLocked: 1
+  _showHDAOptions: 0
+  _showGenerateSection: 1
+  _showBakeSection: 1
+  _showEventsSection: 0
+  _showCurvesSection: 0
+  _showInputNodesSection: 1
+  _showToolsSection: 0
+  _showTerrainSection: 1
+  _instanceInputUIState: {fileID: 229070534}
+  _reloadDataEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _cookedDataEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _bakedDataEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _preAssetEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _generateUVs: 0
+  _generateTangents: 1
+  _generateNormals: 1
+  _pushTransformToHoudini: 1
+  _transformChangeTriggersCooks: 0
+  _cookingTriggersDownCooks: 1
+  _autoCookOnParameterChange: 1
+  _ignoreNonDisplayNodes: 0
+  _useOutputNodes: 1
+  _generateMeshUsingPoints: 0
+  _useLODGroups: 1
+  _splitGeosByGroup: 0
+  _sessionSyncAutoCook: 1
+  _bakeUpdateKeepPreviousTransformValues: 1
+  _curveEditorEnabled: 1
+  _curves: []
+  _curveDrawCollision: 0
+  _curveDrawColliders: []
+  _curveDrawLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _curveProjectMaxDistance: 1000
+  _curveProjectDirection: {x: 0, y: -1, z: 0}
+  _curveProjectDirectionToView: 1
+  _curveDisableScaleRotation: 1
+  _curveFrameSelectedNodes: 1
+  _curveFrameSelectedNodeDistance: 20
+  _inputNodes:
+  - {fileID: 561560009}
+  _handles: []
+  _handlesEnabled: 1
+  _volumeCaches:
+  - {fileID: 790514062}
+  _attributeStores: []
+  _editableNodesToolsEnabled: 0
+  _toolsInfo: {fileID: 1871927451}
+  _serializedMetaData: {fileID: 384604113}
+--- !u!4 &1546449805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546449803}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2007479740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1631592885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -450,6 +1279,46 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fa231be2adfee54f8395d505860ee49, type: 3}
+--- !u!114 &1714755601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ce3a7cc3f38404592fdd27226cb0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
+  _partID: 5
+  _partName: output0_5
+  _objectNodeID: 36
+  _geoID: 37
+  _partType: 2
+  _geoNode: {fileID: 320271761}
+  _isAttribInstancer: 0
+  _isPartInstanced: 0
+  _partPointCount: 1
+  _isObjectInstancer: 0
+  _objectInstancesGenerated: 0
+  _objectInstanceInfos: []
+  _terrainOffsetPosition: {x: 0, y: 0, z: 0}
+  _assetDBTerrainData: {fileID: 0}
+  _isPartEditable: 0
+  _partOutputType: 2
+  _curve: {fileID: 0}
+  _attributesStore: {fileID: 0}
+  _haveInstancesBeenGenerated: 0
+  _meshVertexCount: 1
+  _generatedOutput:
+    _outputData:
+      _gameObject: {fileID: 0}
+      _renderMaterials: []
+      _colliders: []
+    _childOutputs: []
+    isInstancer: 0
+  _volumeLayerName: flowdir.x
 --- !u!1 &1819436598
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +1366,128 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1871927451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c73216ad1e23b43a82620464ff135d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_ToolsInfo
+  _paintBrushSize: 1
+  _paintBrushOpacity: 1
+  _paintIntValue: 
+  _paintFloatValue: []
+  _paintStringValue: []
+  _lastAttributesGeoID: 0
+  _lastAttributesPartID: 0
+  _lastAttributeNodeName: 
+  _lastAttributeName: 
+  _brushHandleColor: {r: 0, g: 0, b: 0, a: 1}
+  _affectedAreaPaintColor: {r: 1, g: 1, b: 0, a: 1}
+  _liveUpdate: 1
+  _isPainting: 0
+  _editPointBoxSize: 0.1
+  _editPointBoxUnselectedColor: {r: 1, g: 0, b: 0, a: 1}
+  _editPointBoxSelectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _recacheRequired: 1
+  _paintMergeMode: 0
+  _showOnlyEditGeometry: 1
+  _alwaysCookUpstream: 1
+  _paintMeshVisiblity: 0
+--- !u!114 &1888035768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ce3a7cc3f38404592fdd27226cb0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
+  _partID: 2
+  _partName: output0_2
+  _objectNodeID: 36
+  _geoID: 37
+  _partType: 2
+  _geoNode: {fileID: 320271761}
+  _isAttribInstancer: 0
+  _isPartInstanced: 0
+  _partPointCount: 1
+  _isObjectInstancer: 0
+  _objectInstancesGenerated: 0
+  _objectInstanceInfos: []
+  _terrainOffsetPosition: {x: 0, y: 0, z: 0}
+  _assetDBTerrainData: {fileID: 0}
+  _isPartEditable: 0
+  _partOutputType: 2
+  _curve: {fileID: 0}
+  _attributesStore: {fileID: 0}
+  _haveInstancesBeenGenerated: 0
+  _meshVertexCount: 1
+  _generatedOutput:
+    _outputData:
+      _gameObject: {fileID: 0}
+      _renderMaterials: []
+      _colliders: []
+    _childOutputs: []
+    isInstancer: 0
+  _volumeLayerName: debris
+--- !u!1 &2007479738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2007479740}
+  - component: {fileID: 2007479739}
+  m_Layer: 0
+  m_Name: test_hightfield_mountain_1_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2007479739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007479738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d22482c65bf0a248a742275874c35f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_HoudiniAssetRoot
+  _houdiniAsset: {fileID: 1546449804}
+  _bakeTargets:
+  - {fileID: 2244916388219327164, guid: 2ae57f06027fa854fb8a0d0a983cd8d2, type: 3}
+--- !u!4 &2007479740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007479738}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1546449805}
+  - {fileID: 484227919}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2032596246
@@ -757,7 +1748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7805300042053971260, guid: 2ae57f06027fa854fb8a0d0a983cd8d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -59.34
       objectReference: {fileID: 0}
     - target: {fileID: 7805300042053971260, guid: 2ae57f06027fa854fb8a0d0a983cd8d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -807,3 +1798,4 @@ SceneRoots:
   - {fileID: 1290099343}
   - {fileID: 1631592885}
   - {fileID: 344894748}
+  - {fileID: 2007479740}
