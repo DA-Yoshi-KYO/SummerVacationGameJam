@@ -6,7 +6,6 @@
  * 2026-08-12 | ‰‰ñì¬
  */
 using UnityEngine;
-using System.Collections.Generic;
 
 public class CS_BaseBullet : MonoBehaviour
 {
@@ -50,6 +49,11 @@ public class CS_BaseBullet : MonoBehaviour
         CS_LifeStealEffect lifeStealEffect = GameObject.FindAnyObjectByType<CS_LifeStealEffect>();
         if (lifeStealEffect != null)
             lifeStealEffect.ApplyEffect(currentDamage);
+
+        // Œp‘±ƒ_ƒ[ƒWŒø‰Ê‚ª‚ ‚éê‡”­“®
+        CS_DotBulletEffect dotBulletEffect = GameObject.FindAnyObjectByType<CS_DotBulletEffect>();
+        if (dotBulletEffect != null)
+            dotBulletEffect.ApplyDotEffect(other.gameObject, currentDamage);
 
         Deactivate();
     }

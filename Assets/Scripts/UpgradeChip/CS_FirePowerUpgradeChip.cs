@@ -15,6 +15,20 @@ public class CS_FirePowerUpgradeChip : CS_UpgradeChipBase
     [SerializeField]
     private float _criticalBoostDamageRate = 2.0f;
 
+    [Header("命中時に継続ダメージデバフを付与するエフェクト")]
+
+    [Tooltip("継続ダメージデバフのダメージ割合")]
+    [SerializeField]
+    private int _damageOverTimeRate = 5;
+
+    [Tooltip("継続ダメージデバフの継続時間")]
+    [SerializeField]
+    private float _damageOverTimeDuration = 3.0f;
+
+    [Tooltip("継続ダメージデバフの発動間隔時間")]
+    [SerializeField]
+    private float _damageOverTimeInterval = 1.0f;
+
     [Header("相手のHPが一定値以下の時、与えるダメージを増加するエフェクト")]
 
     [Tooltip("HPが一定値以下の時の閾値")]
@@ -64,8 +78,12 @@ public class CS_FirePowerUpgradeChip : CS_UpgradeChipBase
     {
         if (UpgradeStatus_NameCheck("EffectLevel3")) return;
 
-        // 命中時に継続ダメージデバフを付与するエフェクトを追加させる
-        // 対象：弾
+        // 命中時に継続ダメージデバフを付与するエフェクトを追加
+        CS_DotBulletEffect dotBulletEffect = _chipManager.gameObject.AddComponent<CS_DotBulletEffect>();
+
+        dotBulletEffect.SetDamageInterval(_damageOverTimeInterval); // 発動間隔時間
+        dotBulletEffect.SetRemainingTime(_damageOverTimeDuration); // 継続時間
+        dotBulletEffect.SetDamageRate(_damageOverTimeRate); // ダメージ割合
     }
 
     protected override void ApplyEffectLevel4()
