@@ -15,7 +15,31 @@ public class CS_BaseBullet : MonoBehaviour
 
     protected bool isActive = false;//弾がアクティブかどうか
 
-    private CS_UpgradeChipManager _upgradeChipManager;
+    protected CS_UpgradeChipManager _upgradeChipManager;
+
+    private void Awake()
+    {
+        _upgradeChipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
+    }
+
+    private void Start()
+    {
+        Collider collider = GetComponent<Collider>();
+
+        if (collider is CapsuleCollider capsule)
+        {
+            capsule.radius *= _upgradeChipManager.upgradeStatus.getupgradeStatus.bulletSizeIncreaseRate;
+            capsule.height *= _upgradeChipManager.upgradeStatus.getupgradeStatus.bulletSizeIncreaseRate;
+        }
+        else if (collider is SphereCollider sphere)
+        {
+            sphere.radius *= _upgradeChipManager.upgradeStatus.getupgradeStatus.bulletSizeIncreaseRate;
+        }
+        else if (collider is BoxCollider box)
+        {
+            box.size *= _upgradeChipManager.upgradeStatus.getupgradeStatus.bulletSizeIncreaseRate;
+        }
+    }
 
     private void Update()
     {
@@ -32,14 +56,11 @@ public class CS_BaseBullet : MonoBehaviour
         if (other.gameObject.tag == owner.transform.root.tag)
             return;
 
-        int currentDamage = Mathf.RoundToInt(damage);
-
-        if (_upgradeChipManager == null)
-            _upgradeChipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
+        int currentDamage = (int)(damage * _upgradeChipManager.upgradeStatus.getupgradeStatus.damageIncreaseRate);
 
         foreach (var effect in _upgradeChipManager.damageBoostEffects)
         {
-            currentDamage += effect.DamageUp(currentDamage, other.gameObject);
+            currentDamage += effect.DamageUp((int)damage, other.gameObject);
         }
 
         //ダメージを与える処理
@@ -61,7 +82,7 @@ public class CS_BaseBullet : MonoBehaviour
     //弾の移動処理
     protected virtual void BulletMovement()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.forward * (speed * _upgradeChipManager.upgradeStatus.getupgradeStatus.bulletSpeedIncreaseRate) * Time.deltaTime;
     }
 
     //プール用のリセット処理

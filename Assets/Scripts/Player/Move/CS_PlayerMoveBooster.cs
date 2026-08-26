@@ -16,6 +16,9 @@ public class CS_PlayerMoveBooster : MonoBehaviour
     [SerializeField]
     private CS_PlayerMoveBoostEnergy _energy;
 
+    [Tooltip("アップグレードチップマネージャーの参照")]
+    private CS_UpgradeChipManager _upgradeChipManager;
+
     /// <summary>
     /// ブースト中かどうか
     /// </summary>
@@ -38,6 +41,7 @@ public class CS_PlayerMoveBooster : MonoBehaviour
 
     private void Awake()
     {
+        _upgradeChipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
         _releaseBoostInputTimer = _stats.boostCooldown;
     }
 
@@ -168,8 +172,8 @@ public class CS_PlayerMoveBooster : MonoBehaviour
             // 初動ブーストのカーブ値を使って、初動ブースト力と継続ブースト力を補間
             CurrentBoostForce =
                 Mathf.Lerp(
-                    _stats.boostContinuousForce,
-                    _stats.boostInitialForce,
+                    _stats.boostContinuousForce * _upgradeChipManager.upgradeStatus.getupgradeStatus.boostSpeedIncreaseRate,
+                    _stats.boostInitialForce * _upgradeChipManager.upgradeStatus.getupgradeStatus.boostSpeedIncreaseRate,
                     curveValue
                 );
 
@@ -178,7 +182,7 @@ public class CS_PlayerMoveBooster : MonoBehaviour
 
         // 初動終了後
         CurrentBoostForce =
-            _stats.boostContinuousForce;
+            _stats.boostContinuousForce * _upgradeChipManager.upgradeStatus.getupgradeStatus.boostSpeedIncreaseRate;
     }
 
     /// <summary>

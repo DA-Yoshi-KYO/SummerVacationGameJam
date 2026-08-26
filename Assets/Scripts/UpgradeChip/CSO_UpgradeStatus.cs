@@ -36,7 +36,7 @@ public class CSO_UpgradeStatus : ScriptableObject
         [Tooltip("弾数を増加させる割合（0.0～1.0）")]
         public float bulletCountIncreaseRate;
         [Header("連射速度の増加率")]
-        [Tooltip("連射速度を増加させる割合（0.0～1.0）")]
+        [Tooltip("連射速度を早める割合（0.0～1.0）")]
         public float fireRateIncreaseRate;
         [Header("リロード速度の増加率")]
         [Tooltip("リロード速度を増加させる割合（0.0～1.0）")]
@@ -47,7 +47,7 @@ public class CSO_UpgradeStatus : ScriptableObject
         [Header("弾の射程増加率")]
         [Tooltip("弾の射程を増加させる割合（0.0～1.0）")]
         public float bulletRangeIncreaseRate;
-        [Header("弾の貫通力の増加量")]
+        [Header("弾の貫通力の増加量")]// 未実装
         [Tooltip("弾の貫通力を増加させる量")]
         public int bulletPenetrationIncreaseAmount;
         [Header("弾速の増加率")]
@@ -107,13 +107,13 @@ public class CSO_UpgradeStatus : ScriptableObject
                 = 1.0f + upgradeStatus.bulletCountIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.fireRateIncreaseRate 
-                = 1.0f + upgradeStatus.fireRateIncreaseRate * allChipEffectIncreaseRate;
+                = upgradeStatus.fireRateIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.reloadSpeedIncreaseRate 
-                = 1.0f + upgradeStatus.reloadSpeedIncreaseRate * allChipEffectIncreaseRate;
+                = upgradeStatus.reloadSpeedIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.bulletSizeIncreaseRate 
-                = 1.0f + upgradeStatus.bulletSizeIncreaseRate *     allChipEffectIncreaseRate;
+                = 1.0f + upgradeStatus.bulletSizeIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.bulletRangeIncreaseRate 
                 = 1.0f + upgradeStatus.bulletRangeIncreaseRate * allChipEffectIncreaseRate;

@@ -23,6 +23,9 @@ public class CS_PlayerMoveSystem : MonoBehaviour
     [SerializeField]
     private CS_PlayerMoveBooster _booster;
 
+    [Tooltip("アップグレードチップマネージャーの参照")]
+    private CS_UpgradeChipManager _upgradeChipManager;
+
     [Tooltip("プレイヤーのRigidbody")]
     [SerializeField]
     private Rigidbody _rb;
@@ -44,6 +47,8 @@ public class CS_PlayerMoveSystem : MonoBehaviour
             _rb = GetComponent<Rigidbody>();
         }
         _rb.useGravity = false;
+
+        _upgradeChipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
     }
 
     private void FixedUpdate()
@@ -96,7 +101,7 @@ public class CS_PlayerMoveSystem : MonoBehaviour
             // 目標速度を計算
             Vector3 targetVelocity =
                 moveDirection *
-                _stats.moveSpeed;
+                _stats.moveSpeed * _upgradeChipManager.upgradeStatus.getupgradeStatus.playerMovementSpeedIncreaseRate;
 
             // 目標速度に向かって加速する
             horizontalVelocity =
