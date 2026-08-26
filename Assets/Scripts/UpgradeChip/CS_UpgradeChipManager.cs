@@ -10,6 +10,10 @@ public class CS_UpgradeChipManager : MonoBehaviour
 
     private List<CS_UpgradeChipBase> upgradeChips = new List<CS_UpgradeChipBase>();
 
+    // ダメージブースト効果のリスト
+    private List<CS_DamageBoostEffectBase> _damageBoostEffects = new List<CS_DamageBoostEffectBase>();
+    public List<CS_DamageBoostEffectBase> damageBoostEffects => _damageBoostEffects;
+
     private void Start()
     {
         _upgradeStatus = ScriptableObject.CreateInstance<CSO_UpgradeStatus>();
@@ -22,6 +26,15 @@ public class CS_UpgradeChipManager : MonoBehaviour
             {
                 upgradeChips.Add(chip);
             }
+        }
+    }
+
+    public void AddDamageBoostEffect(CS_DamageBoostEffectBase effect)
+    {
+        // すでに同じ効果がリストに存在しない場合のみ追加
+        if (!_damageBoostEffects.Contains(effect))
+        {
+            _damageBoostEffects.Add(effect);
         }
     }
 

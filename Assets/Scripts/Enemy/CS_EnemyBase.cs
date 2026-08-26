@@ -16,6 +16,9 @@ public class CS_EnemyBase : MonoBehaviour
     // 移動速度
     [Header("ステータス")]
     [SerializeField] private float _health = 100f;
+    public float health => _health;
+    private float _maxHealth = 100f;
+    public float maxHealth => _maxHealth;
     [SerializeField] protected float _moveSpeed = 3.0f;
 
     // 攻撃関連
@@ -33,6 +36,11 @@ public class CS_EnemyBase : MonoBehaviour
     // gizmos表示用
     [Header("デバッグ")]
     [SerializeField] private bool _showDebugRange = true;
+
+    private void Start()
+    {
+        _maxHealth = _health;
+    }
 
     // Update is called once per frame
     private void Update()
@@ -61,6 +69,24 @@ public class CS_EnemyBase : MonoBehaviour
         if (distToPlayer < _attackRange)
         {
             Attack();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // 撃破時にダメージ増加エフェクトがあれば、撃破数を加算する
+        CS_UpgradeChipManager chipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
+
+        if (chipManager != null)
+        {
+            foreach (var effect in chipManager.damageBoostEffects)
+            {
+                if (effect is CS_KillStackDamageBoostEffect damageBoostEffect)
+                {
+                    damageBoostEffect.IncreaseKillStack();
+                    break;
+                }
+            }
         }
     }
 
