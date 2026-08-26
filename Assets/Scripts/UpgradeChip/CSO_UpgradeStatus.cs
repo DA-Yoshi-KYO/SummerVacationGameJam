@@ -47,7 +47,7 @@ public class CSO_UpgradeStatus : ScriptableObject
         [Header("’e‚ÌË’ö‘‰Á—¦")]
         [Tooltip("’e‚ÌË’ö‚ğ‘‰Á‚³‚¹‚éŠ„‡i0.0`1.0j")]
         public float bulletRangeIncreaseRate;
-        [Header("’e‚ÌŠÑ’Ê—Í‚Ì‘‰Á—Ê")]// –¢À‘•
+        [Header("’e‚ÌŠÑ’Ê—Í‚Ì‘‰Á—Ê")]
         [Tooltip("’e‚ÌŠÑ’Ê—Í‚ğ‘‰Á‚³‚¹‚é—Ê")]
         public int bulletPenetrationIncreaseAmount;
         [Header("’e‘¬‚Ì‘‰Á—¦")]

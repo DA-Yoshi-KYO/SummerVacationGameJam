@@ -6,11 +6,16 @@
  * 2026-08-12 | 初回作成
  */
 using UnityEngine;
+using System.Collections.Generic;
 
 public class CS_BaseBullet : MonoBehaviour
 {
     protected float damage;
     protected float speed;
+
+    protected int penetrationCount = 0;
+    protected List<GameObject> penetrationedEnemys = new List<GameObject>();//貫通した敵のリスト
+
     protected GameObject owner;//弾を撃ったオブジェクト
 
     protected bool isActive = false;//弾がアクティブかどうか
@@ -76,7 +81,13 @@ public class CS_BaseBullet : MonoBehaviour
         if (dotBulletEffect != null)
             dotBulletEffect.ApplyDotEffect(other.gameObject, currentDamage);
 
-        Deactivate();
+        if (penetrationedEnemys == null)
+            penetrationedEnemys = new List<GameObject>();
+
+        if (penetrationedEnemys.Count >= penetrationCount + _upgradeChipManager.upgradeStatus.getupgradeStatus.bulletPenetrationIncreaseAmount)
+            Deactivate();
+        else
+            penetrationedEnemys.Add(other.gameObject);
     }
 
     //弾の移動処理
