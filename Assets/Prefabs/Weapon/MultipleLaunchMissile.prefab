@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 781247923136304038}
   - component: {fileID: 5125151029556781471}
   - component: {fileID: 6514870099094920990}
+  - component: {fileID: -2684780495428966508}
   m_Layer: 0
   m_Name: MultipleLaunchMissile
   m_TagString: Untagged
@@ -80,10 +81,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_MultipleLaunchMissileWeapon
   firePoint: {fileID: 1819486444691227729}
   weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
-  weaponName: 
   bulletPool: {fileID: 6514870099094920990}
-  aimUI: {fileID: 0}
-  angleWeight: 0
+  _multipleShotCount: 1
 --- !u!114 &6514870099094920990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +97,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_BulletPool
   poolSize: 5
   spawnPoint: {fileID: 0}
+--- !u!114 &-2684780495428966508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714052840442064089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a54ff1465af7044183990ced7edc4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_AimWeaponTarget
+  _aimUI: {fileID: 0}
 --- !u!1 &7806252999198231721
 GameObject:
   m_ObjectHideFlags: 0

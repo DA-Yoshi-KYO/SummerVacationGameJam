@@ -2,18 +2,10 @@ using UnityEngine;
 
 public class CS_MinigunWeapon : CS_BaseWeapon
 {
-    [Header("Æ€UI")]
-    private CS_AimUI _aimUI;
-
-    [SerializeField]
-    [Header("Æ€‚Ìd‚İ")]
-    private float _angleWeight;
-
     public override void Start()
     {
         weaponName = "Minigun";
         base.Start();
-        _aimUI = GameObject.FindAnyObjectByType<CS_AimUI>();
     }
 
     protected override void Shot()
@@ -22,7 +14,7 @@ public class CS_MinigunWeapon : CS_BaseWeapon
         CS_BaseBullet bullet = base.ActivateBullet();
 
         //•W“I‚ğİ’è
-        GameObject targetEnemy = FindTargetWithAim();
+        GameObject targetEnemy = _weaponTarget.FindTarget();
 
         if (targetEnemy != null)
         {
@@ -43,32 +35,5 @@ public class CS_MinigunWeapon : CS_BaseWeapon
             CS_SimpleBullet simpleBullet = bullet as CS_SimpleBullet;
             simpleBullet.SetRange(weaponData.range);
         }
-    }
-
-    //Æ€•ûŒü‚Ìˆê”Ô‹ß‚¢“G‚ğ‘_‚¤ˆ—
-    public GameObject FindTargetWithAim()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        GameObject lockonGameObject = null;
-        float lockonScore = Mathf.Infinity;
-
-        foreach (var enemy in enemies)
-        {
-            float dist = Vector3.Distance(transform.position, enemy.transform.position);
-
-            Vector3 dirToEnemy = (enemy.transform.position - transform.position).normalized;
-            float angle = Vector3.Angle(transform.forward, dirToEnemy);
-
-            float score = dist + angle * _angleWeight;
-
-            if (score < lockonScore)
-            {
-                lockonScore = score;
-                lockonGameObject = enemy;
-            }
-        }
-
-        return lockonGameObject;
     }
 }

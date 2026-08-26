@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9168700808931457539}
   - component: {fileID: 6320388420193551977}
   - component: {fileID: 1525499366218427155}
+  - component: {fileID: -37113334998229366}
   m_Layer: 0
   m_Name: SniperRifle
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   firePoint: {fileID: 8309710513316898853}
   weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
   bulletPool: {fileID: 1525499366218427155}
+  _multipleShotCount: 1
 --- !u!114 &1525499366218427155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +66,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_BulletPool
   poolSize: 5
   spawnPoint: {fileID: 0}
+--- !u!114 &-37113334998229366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658369428436590472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a54ff1465af7044183990ced7edc4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_AimWeaponTarget
+  _aimUI: {fileID: 0}
 --- !u!1 &3991084878903735366
 GameObject:
   m_ObjectHideFlags: 0

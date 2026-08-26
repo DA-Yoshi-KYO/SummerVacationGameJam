@@ -48,8 +48,11 @@ public class CS_WeaponStatusUpgradeChip : CS_UpgradeChipBase
     {
         if (UpgradeStatus_NameCheck("EffectLevel4")) return;
 
-        // HPが少ない敵を優先的に狙うようになるエフェクトを追加させる
-        // 対象: プレイヤーの武器
+        // HPが少ない敵を優先的に狙うようにする
+        foreach(var weapon in _playerEquipment.equipmentWeaponScriptList)
+        {
+            weapon.ChangeTargetSystem(new CS_LowHpWeaponTarget());
+        }
     }
 
     protected override void ApplyEffectLevel5()

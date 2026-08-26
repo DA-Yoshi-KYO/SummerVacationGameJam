@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class CS_SniperRifleWeapon : CS_BaseWeapon
 {
-    [Header("è∆èÄUI")]
-    private CS_AimUI _aimUI;
-
     public override void Start()
     {
         weaponName = "SniperRifle";
         base.Start();
-        _aimUI = GameObject.FindAnyObjectByType<CS_AimUI>();
     }
 
     protected override void Shot()
@@ -18,7 +14,7 @@ public class CS_SniperRifleWeapon : CS_BaseWeapon
         CS_BaseBullet bullet = base.ActivateBullet();
 
         //ïWìIÇê›íË
-        GameObject targetEnemy = FindTargetWithAim();
+        GameObject targetEnemy = _weaponTarget.FindTarget();
 
         if (targetEnemy != null)
         {
@@ -39,32 +35,5 @@ public class CS_SniperRifleWeapon : CS_BaseWeapon
             CS_SimpleBullet simpleBullet = bullet as CS_SimpleBullet;
             simpleBullet.SetRange(weaponData.range);
         }
-    }
-
-    //è∆èÄï˚å¸ÇÃàÍî‘ãﬂÇ¢ìGÇë_Ç§èàóù
-    public GameObject FindTargetWithAim()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        GameObject lockonGameObject = null;
-        float lockonScore = Mathf.Infinity;
-
-        foreach (var enemy in enemies)
-        {
-            float dist = Vector3.Distance(transform.position, enemy.transform.position);
-
-            Vector3 dirToEnemy = (enemy.transform.position - transform.position).normalized;
-            float angle = Vector3.Angle(transform.forward, dirToEnemy);
-
-            float score = dist + angle;
-
-            if (score < lockonScore)
-            {
-                lockonScore = score;
-                lockonGameObject = enemy;
-            }
-        }
-
-        return lockonGameObject;
     }
 }

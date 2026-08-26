@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class CS_BeamRifleWeapon : CS_BaseWeapon
 {
-    [Header("照準UI")]
-    private CS_AimUI _aimUI;
-
     public override void Start()
     {
         weaponName = "BeamRifle";
         base.Start();
-        _aimUI = GameObject.FindAnyObjectByType<CS_AimUI>();
     }
 
     protected override void Shot()
@@ -17,7 +13,7 @@ public class CS_BeamRifleWeapon : CS_BaseWeapon
         //プールから弾を取得して発射
         CS_BaseBullet bullet = base.ActivateBullet();
         //標的を設定
-        GameObject targetEnemy = FindTargetWithAim();
+        GameObject targetEnemy = _weaponTarget.FindTarget();
         if (targetEnemy != null)
         {
             // 敵の方向ヘのベクトルを計算
@@ -35,25 +31,5 @@ public class CS_BeamRifleWeapon : CS_BaseWeapon
             CS_SimpleBullet simpleBullet = bullet as CS_SimpleBullet;
             simpleBullet.SetRange(weaponData.range);
         }
-    }
-
-    private GameObject FindTargetWithAim()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject lockonGameObject = null;
-        float lockonScore = Mathf.Infinity;
-        foreach (var enemy in enemies)
-        {
-            float dist = Vector3.Distance(transform.position, enemy.transform.position);
-            Vector3 dirToEnemy = (enemy.transform.position - transform.position).normalized;
-            float angle = Vector3.Angle(transform.forward, dirToEnemy);
-            float score = dist + angle;
-            if (score < lockonScore)
-            {
-                lockonScore = score;
-                lockonGameObject = enemy;
-            }
-        }
-        return lockonGameObject;
     }
 }

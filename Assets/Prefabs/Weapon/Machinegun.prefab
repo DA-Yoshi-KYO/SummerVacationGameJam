@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 7607806625104812385}
   - component: {fileID: -8846046365117879763}
   - component: {fileID: 7171361714301133115}
+  - component: {fileID: -3209057256809336489}
   m_Layer: 0
   m_Name: Machinegun
   m_TagString: Untagged
@@ -192,9 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_MachinegunWeapon
   firePoint: {fileID: 7988625638020751592}
   weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
-  weaponName: ' Machinegun'
   bulletPool: {fileID: 7171361714301133115}
-  _angleWeight: 0
+  _multipleShotCount: 1
 --- !u!114 &7171361714301133115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,3 +209,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_BulletPool
   poolSize: 5
   spawnPoint: {fileID: 0}
+--- !u!114 &-3209057256809336489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983866578195823010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a54ff1465af7044183990ced7edc4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_AimWeaponTarget
+  _aimUI: {fileID: 0}

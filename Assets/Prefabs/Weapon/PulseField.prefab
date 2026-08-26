@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 4094556102355214466}
   - component: {fileID: 2555490614788714017}
   - component: {fileID: 2298959473813956216}
+  - component: {fileID: 6830556469314246017}
   m_Layer: 0
   m_Name: PulseField
   m_TagString: Untagged
@@ -192,8 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_PulseFieldWeapon
   firePoint: {fileID: 1778765876857866159}
   weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
-  weaponName: 
   bulletPool: {fileID: 2298959473813956216}
+  _multipleShotCount: 1
 --- !u!114 &2298959473813956216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +209,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_BulletPool
   poolSize: 1
   spawnPoint: {fileID: 0}
+--- !u!114 &6830556469314246017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890564750385461443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a54ff1465af7044183990ced7edc4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_AimWeaponTarget
+  _aimUI: {fileID: 0}
