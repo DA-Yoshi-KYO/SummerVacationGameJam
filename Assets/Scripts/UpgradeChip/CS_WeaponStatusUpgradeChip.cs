@@ -56,8 +56,10 @@ public class CS_WeaponStatusUpgradeChip : CS_UpgradeChipBase
     {
         if (UpgradeStatus_NameCheck("EffectLevel5")) return;
 
-        // 発射される弾の数が+1されるエフェクトを追加させる
-        // 対象: プレイヤーの武器
-        // (ショットガンの場合は5ペレットの場合、10ペレットになる)
+        // 発射される弾の数が+1する
+        foreach(var weapon in _playerEquipment.equipmentWeaponScriptList)
+        {
+            weapon.multipleShotCount = 2;
+        }
     }
 }
