@@ -134,6 +134,11 @@ public class CS_EnemyBase : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage)
+    {
+        _health = Mathf.Max(_health - damage, 0f);
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (!_showDebugRange)
