@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4079401033106566549, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
+      propertyPath: _upgradeChipManager
+      value: 
+      objectReference: {fileID: 1927036666}
     - target: {fileID: 5464479283556063199, guid: f7c83dce1480c6b409cf0b090a201676, type: 3}
       propertyPath: m_Name
       value: Player
@@ -208,6 +212,62 @@ MonoBehaviour:
   _showInstanceInputs: 1
   _numInputsToShowUI: 5
   _inputsPageIndexUI: 0
+--- !u!21 &229817724
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: test_hightfield_mountain_1_0_output0_output0_0-Material
+  m_Shader: {fileID: 4800000, guid: eb607f5e8fc16e140b732f33d26c8c31, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainHolesTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AddPrecomputedVelocity: 0
+    - _CullMode: 2
+    - _EnableHeightBlend: 0
+    - _EnableInstancedPerPixelNormal: 1
+    - _HeightTransition: 0
+    - _ReceivesSSR: 1
+    - _SpecularOcclusionMode: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 0
+    - _StencilRefGBuffer: 2
+    - _StencilWriteMask: 3
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskGBuffer: 3
+    - _SupportDecals: 1
+    - _TransparentZWrite: 0
+    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestGBuffer: 4
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &320271761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,12 +282,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_GeoNode
   _geoInfo:
     type: 0
-    nameSH: 2007
-    nodeId: 37
+    nameSH: 37
+    nodeId: 4
     isEditable: 0
     isTemplated: 0
     isDisplayGeo: 1
-    hasGeoChanged: 0
+    hasGeoChanged: 1
     hasMaterialChanged: 0
     pointGroupCount: 0
     primitiveGroupCount: 0
@@ -262,8 +322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
   _partID: 4
   _partName: output0_4
-  _objectNodeID: 36
-  _geoID: 37
+  _objectNodeID: 3
+  _geoID: 4
   _partType: 2
   _geoNode: {fileID: 320271761}
   _isAttribInstancer: 0
@@ -436,8 +496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
   _partID: 6
   _partName: output0_6
-  _objectNodeID: 36
-  _geoID: 37
+  _objectNodeID: 3
+  _geoID: 4
   _partType: 2
   _geoNode: {fileID: 320271761}
   _isAttribInstancer: 0
@@ -489,8 +549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
   _partID: 1
   _partName: output0_1
-  _objectNodeID: 36
-  _geoID: 37
+  _objectNodeID: 3
+  _geoID: 4
   _partType: 2
   _geoNode: {fileID: 320271761}
   _isAttribInstancer: 0
@@ -527,7 +587,7 @@ GameObject:
   - component: {fileID: 484227918}
   - component: {fileID: 484227920}
   m_Layer: 0
-  m_Name: test_hightfield_mountain_1_3_output0_output0_0
+  m_Name: test_hightfield_mountain_1_0_output0_output0_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -542,7 +602,7 @@ Terrain:
   m_GameObject: {fileID: 484227916}
   m_Enabled: 1
   serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: 1a6bc34c35dcc0e4b9b4b8e648659096, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 74172a846ccb573489e9d06727911845, type: 2}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -560,7 +620,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 1368712172}
+  m_MaterialTemplate: {fileID: 229817724}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -607,7 +667,7 @@ TerrainCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: 1a6bc34c35dcc0e4b9b4b8e648659096, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 74172a846ccb573489e9d06727911845, type: 2}
   m_EnableTreeColliders: 1
 --- !u!114 &532029884
 MonoBehaviour:
@@ -621,10 +681,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d064048945a579428d136799401f238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_ObjectNode
-  _objName: test_hightfield_mountain_1_3
+  _objName: test_hightfield_mountain_1_0
   _parentAsset: {fileID: 1546449804}
   _objectInfo:
-    nameSH: 1396
+    nameSH: 10
     objectInstancePathSH: 0
     hasTransformChanged: 1
     haveGeosChanged: 1
@@ -632,7 +692,7 @@ MonoBehaviour:
     isInstancer: 0
     isInstanced: 0
     geoCount: 0
-    nodeId: 36
+    nodeId: 3
     objectToInstanceId: -1
   _geoNodes:
   - {fileID: 320271761}
@@ -675,9 +735,9 @@ MonoBehaviour:
   _inputAsset: {fileID: 0}
   _connectedInputAsset: {fileID: 0}
   _inputAssetInfos: []
-  _nodeID: 35
+  _nodeID: 0
   _inputIndex: 0
-  _requiresCook: 0
+  _requiresCook: 1
   _requiresUpload: 0
   _inputName: Sub-Network Input #1
   _labelName: Sub-Network Input #1
@@ -751,7 +811,7 @@ MonoBehaviour:
     _tile: 0
     _xLength: 500
     _yLength: 500
-    _terrainLayer: {fileID: 8574412962073106934, guid: b410f8a78ca03f64992765fe991f4bfe, type: 2}
+    _terrainLayer: {fileID: 8574412962073106934, guid: ce64cbc750b09694886934451ef6a8ae, type: 2}
     _layerType: 0
     _part: {fileID: 1888035768}
   - _layerName: sediment
@@ -760,7 +820,7 @@ MonoBehaviour:
     _tile: 0
     _xLength: 500
     _yLength: 500
-    _terrainLayer: {fileID: 8574412962073106934, guid: 3b9e01949af658c4887efaeb31cb5e05, type: 2}
+    _terrainLayer: {fileID: 8574412962073106934, guid: d95beacc7a6edd94ea78b0a02987cdcf, type: 2}
     _layerType: 0
     _part: {fileID: 1310239257}
   - _layerName: flow
@@ -769,7 +829,7 @@ MonoBehaviour:
     _tile: 0
     _xLength: 500
     _yLength: 500
-    _terrainLayer: {fileID: 8574412962073106934, guid: 60da0525910355e4d811449ea621c667, type: 2}
+    _terrainLayer: {fileID: 8574412962073106934, guid: 8b19281b0056fb9498491e6916a7aa36, type: 2}
     _layerType: 0
     _part: {fileID: 320324556}
   - _layerName: flowdir.x
@@ -778,7 +838,7 @@ MonoBehaviour:
     _tile: 0
     _xLength: 500
     _yLength: 500
-    _terrainLayer: {fileID: 8574412962073106934, guid: fbce23d2b2bb9ff4d9a8c116ff4c1224, type: 2}
+    _terrainLayer: {fileID: 8574412962073106934, guid: ecb72fc050bc1af459e33402eb9dc1b9, type: 2}
     _layerType: 0
     _part: {fileID: 1714755601}
   - _layerName: flowdir.y
@@ -787,7 +847,7 @@ MonoBehaviour:
     _tile: 0
     _xLength: 500
     _yLength: 500
-    _terrainLayer: {fileID: 8574412962073106934, guid: 4770874010829e348b1d135a510e1e46, type: 2}
+    _terrainLayer: {fileID: 8574412962073106934, guid: cb692f79527906348ac7cb3867e94ee5, type: 2}
     _layerType: 0
     _part: {fileID: 345327437}
   _tileIndex: 0
@@ -795,7 +855,7 @@ MonoBehaviour:
   _geoName: output0
   _objName: test_hightfield_mountain_1_3
   _uiExpanded: 1
-  _terrainData: {fileID: 15600000, guid: 1a6bc34c35dcc0e4b9b4b8e648659096, type: 2}
+  _terrainData: {fileID: 15600000, guid: 74172a846ccb573489e9d06727911845, type: 2}
   _parentAsset: {fileID: 1546449804}
 --- !u!114 &1051871272
 MonoBehaviour:
@@ -811,8 +871,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
   _partID: 0
   _partName: output0_0
-  _objectNodeID: 36
-  _geoID: 37
+  _objectNodeID: 3
+  _geoID: 4
   _partType: 2
   _geoNode: {fileID: 320271761}
   _isAttribInstancer: 0
@@ -822,7 +882,7 @@ MonoBehaviour:
   _objectInstancesGenerated: 0
   _objectInstanceInfos: []
   _terrainOffsetPosition: {x: 499, y: -62.693523, z: -499}
-  _assetDBTerrainData: {fileID: 15600000, guid: 1a6bc34c35dcc0e4b9b4b8e648659096, type: 2}
+  _assetDBTerrainData: {fileID: 15600000, guid: 74172a846ccb573489e9d06727911845, type: 2}
   _isPartEditable: 0
   _partOutputType: 2
   _curve: {fileID: 0}
@@ -917,8 +977,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
   _partID: 3
   _partName: output0_3
-  _objectNodeID: 36
-  _geoID: 37
+  _objectNodeID: 3
+  _geoID: 4
   _partType: 2
   _geoNode: {fileID: 320271761}
   _isAttribInstancer: 0
@@ -943,62 +1003,6 @@ MonoBehaviour:
     _childOutputs: []
     isInstancer: 0
   _volumeLayerName: sediment
---- !u!21 &1368712172
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: test_hightfield_mountain_1_3_output0_output0_0-Material
-  m_Shader: {fileID: 4800000, guid: eb607f5e8fc16e140b732f33d26c8c31, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TerrainHolesTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _AddPrecomputedVelocity: 0
-    - _CullMode: 2
-    - _EnableHeightBlend: 0
-    - _EnableInstancedPerPixelNormal: 1
-    - _HeightTransition: 0
-    - _ReceivesSSR: 1
-    - _SpecularOcclusionMode: 1
-    - _StencilRef: 0
-    - _StencilRefDepth: 0
-    - _StencilRefGBuffer: 2
-    - _StencilWriteMask: 3
-    - _StencilWriteMaskDepth: 8
-    - _StencilWriteMaskGBuffer: 3
-    - _SupportDecals: 1
-    - _TransparentZWrite: 0
-    - _ZTestDepthEqualForOpaque: 4
-    - _ZTestGBuffer: 4
-    - _ZWrite: 1
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &1546449803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,16 +1034,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_HoudiniAsset
   _assetType: 1
   _assetInfo:
-    nodeId: 35
-    objectNodeId: 36
+    nodeId: 0
+    objectNodeId: 3
     hasEverCooked: 1
-    nameSH: 2002
-    labelSH: 2003
-    filePathSH: 2004
-    versionSH: 1998
-    fullOpNameSH: 1999
-    helpTextSH: 2000
-    helpURLSH: 2001
+    nameSH: 32
+    labelSH: 33
+    filePathSH: 34
+    versionSH: 28
+    fullOpNameSH: 29
+    helpTextSH: 30
+    helpURLSH: 31
     objectCount: -1
     handleCount: 0
     transformInputCount: 0
@@ -1048,14 +1052,14 @@ MonoBehaviour:
     haveObjectsChanged: 0
     haveMaterialsChanged: 0
   _nodeInfo:
-    id: 35
-    parentId: 36
-    nameSH: 1397
+    id: 0
+    parentId: 3
+    nameSH: 11
     type: 2
     isValid: 1
-    totalCookCount: 1
-    uniqueHoudiniNodeId: 17908
-    internalNodePathSH: 1958
+    totalCookCount: 2
+    uniqueHoudiniNodeId: 14
+    internalNodePathSH: 12
     parmCount: 0
     parmIntValueCount: 0
     parmFloatValueCount: 0
@@ -1066,7 +1070,7 @@ MonoBehaviour:
     outputCount: 1
     createdPostAssetLoad: 1
     isTimeDependent: 1
-  _assetName: test_hightfield_mountain_1_3
+  _assetName: test_hightfield_mountain_1_0
   _assetOpName: TEST_HIGHTFIELD_MOUNTAIN::Sop/test_hightfield_mountain::1.0
   _assetHelp: 
   _assetPath: Assets/Designer/HDA/sop_TEST_HIGHTFIELD_MOUNTAIN.test_hightfield_mountain.1.0.hdalc
@@ -1133,7 +1137,7 @@ MonoBehaviour:
   _subassetNames:
   - TEST_HIGHTFIELD_MOUNTAIN::Sop/test_hightfield_mountain::1.0
   _selectedSubassetIndex: 0
-  _totalCookCount: 2
+  _totalCookCount: 3
   _requestBuildAction: 0
   _checkParameterChangeForCook: 0
   _skipCookCheck: 0
@@ -1142,8 +1146,8 @@ MonoBehaviour:
   _upstreamCookChanged: 0
   _cookStatus: 0
   _lastCookResult: 1
-  _isCookingAssetReloaded: 0
-  _sessionID: 2803596025616
+  _isCookingAssetReloaded: 1
+  _sessionID: 1905916877696
   _uiLocked: 1
   _showHDAOptions: 0
   _showGenerateSection: 1
@@ -1293,8 +1297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
   _partID: 5
   _partName: output0_5
-  _objectNodeID: 36
-  _geoID: 37
+  _objectNodeID: 3
+  _geoID: 4
   _partType: 2
   _geoNode: {fileID: 320271761}
   _isAttribInstancer: 0
@@ -1415,8 +1419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_PartData
   _partID: 2
   _partName: output0_2
-  _objectNodeID: 36
-  _geoID: 37
+  _objectNodeID: 3
+  _geoID: 4
   _partType: 2
   _geoNode: {fileID: 320271761}
   _isAttribInstancer: 0
@@ -1441,6 +1445,78 @@ MonoBehaviour:
     _childOutputs: []
     isInstancer: 0
   _volumeLayerName: debris
+--- !u!1001 &1927036665
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 435.67422
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 107.02872
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 213.8099
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856150873194497228, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: debugAddChipName
+      value: Hp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520070259262719961, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+      propertyPath: m_Name
+      value: UpgradeChipManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+--- !u!114 &1927036666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1856150873194497228, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
+  m_PrefabInstance: {fileID: 1927036665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789e912299250da49aa5bdf1fd4fc874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_UpgradeChipManager
 --- !u!1 &2007479738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,3 +1875,4 @@ SceneRoots:
   - {fileID: 1631592885}
   - {fileID: 344894748}
   - {fileID: 2007479740}
+  - {fileID: 1927036665}
