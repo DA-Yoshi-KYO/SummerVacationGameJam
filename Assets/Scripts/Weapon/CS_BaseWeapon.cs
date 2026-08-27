@@ -29,6 +29,14 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     protected bool isShooting;//射撃中かどうか
     protected float nextFireTime;//次に発射できる時間
 
+    [SerializeField]
+    protected int _multipleShotCount = 1;//同時発射数
+    public int multipleShotCount
+    {
+        get { return _multipleShotCount; }
+        set { _multipleShotCount = value; }
+    }
+
     protected float reloadTime = 0.0f;//リロード中のタイマー
 
     public virtual void Start()
@@ -49,6 +57,8 @@ public abstract class CS_BaseWeapon : MonoBehaviour
         }
 
         _upgradeChipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
+
+        _multipleShotCount = 1;
 
         //現在の弾数を設定
         currentBullets = weaponData.bulletCount;
@@ -83,7 +93,9 @@ public abstract class CS_BaseWeapon : MonoBehaviour
         }
 
         //弾を発射
-        Shot();
+        for (int i = 0; i < weaponData.bulletCount; i++)
+            Shot();
+
         currentBullets--;
 
         //次に発射出来る時間を更新

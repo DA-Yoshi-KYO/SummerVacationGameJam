@@ -62,7 +62,9 @@ public class CS_MultipleLaunchMissileWeapon : CS_BaseWeapon
         }
 
         //’e‚ð”­ŽË
-        Shot();
+        for(int i = 0; i < weaponData.bulletCount; i++)
+            Shot();
+
         currentBullets--;
         _isFiringStarted = true;
 
