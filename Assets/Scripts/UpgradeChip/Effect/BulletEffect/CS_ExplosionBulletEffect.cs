@@ -23,7 +23,7 @@ public class CS_ExplosionBulletEffect : MonoBehaviour
                 CS_EnemyBase enemy = hitCollider.GetComponent<CS_EnemyBase>();
                 if (enemy != null)
                 {
-                    // ダメージを与える処理を呼び出す
+                    enemy.TakeDamage(_damageAmount);
                 }
             }
         }
