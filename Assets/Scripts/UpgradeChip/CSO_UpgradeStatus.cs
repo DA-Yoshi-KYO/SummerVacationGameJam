@@ -83,13 +83,13 @@ public class CSO_UpgradeStatus : ScriptableObject
                 = (int)(upgradeStatus.healthIncreaseAmount * allChipEffectIncreaseRate);
 
             readUpgradeStatus.damageReductionRate 
-                = upgradeStatus.damageReductionRate * allChipEffectIncreaseRate;
+                = 1.0f - upgradeStatus.damageReductionRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.boostEnergyIncreaseAmount 
                 = (int)(upgradeStatus.boostEnergyIncreaseAmount * allChipEffectIncreaseRate);
 
             readUpgradeStatus.boostConsumptionReductionRate 
-                = upgradeStatus.boostConsumptionReductionRate * allChipEffectIncreaseRate;
+                = 1.0f - upgradeStatus.boostConsumptionReductionRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.boostSpeedIncreaseRate 
                 = 1.0f + upgradeStatus.boostSpeedIncreaseRate * allChipEffectIncreaseRate;
@@ -107,10 +107,10 @@ public class CSO_UpgradeStatus : ScriptableObject
                 = 1.0f + upgradeStatus.bulletCountIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.fireRateIncreaseRate 
-                = upgradeStatus.fireRateIncreaseRate * allChipEffectIncreaseRate;
+                = 1.0f - upgradeStatus.fireRateIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.reloadSpeedIncreaseRate 
-                = upgradeStatus.reloadSpeedIncreaseRate * allChipEffectIncreaseRate;
+                = 1.0f - upgradeStatus.reloadSpeedIncreaseRate * allChipEffectIncreaseRate;
 
             readUpgradeStatus.bulletSizeIncreaseRate 
                 = 1.0f + upgradeStatus.bulletSizeIncreaseRate * allChipEffectIncreaseRate;
