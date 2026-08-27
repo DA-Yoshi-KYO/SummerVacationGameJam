@@ -6,6 +6,7 @@
  * 2026-08-12 | 初回作成
  */
 using UnityEngine;
+using System.Collections.Generic;
 
 public class CS_BaseBullet : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class CS_BaseBullet : MonoBehaviour
     protected GameObject owner;//弾を撃ったオブジェクト
 
     protected bool isActive = false;//弾がアクティブかどうか
+
+    private CS_UpgradeChipManager _upgradeChipManager;
 
     private void Update()
     {
@@ -30,8 +33,18 @@ public class CS_BaseBullet : MonoBehaviour
         if (other.gameObject.tag == owner.transform.root.tag)
             return;
 
+        int currentDamage = Mathf.RoundToInt(damage);
+
+        if (_upgradeChipManager == null)
+            _upgradeChipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
+
+        foreach (var effect in _upgradeChipManager.damageBoostEffects)
+        {
+            currentDamage += effect.DamageUp(currentDamage, other.gameObject);
+        }
+
         //ダメージを与える処理
-        Debug.Log("Hit " + other.gameObject.name + " Damage: " + damage);
+        Debug.Log("Hit " + other.gameObject.name + " Damage: " + currentDamage);
 
         Deactivate();
     }
