@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 3160778091686907509}
   - component: {fileID: 4827529612618204035}
   - component: {fileID: 8917036365070164528}
+  - component: {fileID: 3783910768716573576}
   m_Layer: 0
   m_Name: HomingMissile
   m_TagString: Untagged
@@ -162,8 +163,9 @@ MonoBehaviour:
   firePoint: {fileID: 9100777739535038009}
   weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
   bulletPool: {fileID: 8917036365070164528}
-  aimUI: {fileID: 0}
-  angleWeight: 0
+  _multipleShotCount: 1
+  _aimUI: {fileID: 0}
+  _angleWeight: 0
 --- !u!114 &8917036365070164528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +180,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_BulletPool
   poolSize: 5
   spawnPoint: {fileID: 0}
+--- !u!114 &3783910768716573576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5331869404502916671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a54ff1465af7044183990ced7edc4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_AimWeaponTarget
+  _aimUI: {fileID: 0}
 --- !u!1 &7304850518292017784
 GameObject:
   m_ObjectHideFlags: 0

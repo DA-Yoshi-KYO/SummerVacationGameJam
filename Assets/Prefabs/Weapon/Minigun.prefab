@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 136510923747891046}
   - component: {fileID: -4620508438405936097}
   - component: {fileID: 7868901963056025208}
+  - component: {fileID: -6559393427426232449}
   m_Layer: 0
   m_Name: Minigun
   m_TagString: Untagged
@@ -49,9 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_MinigunWeapon
   firePoint: {fileID: 2413747175160854493}
   weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
-  weaponName: Minigun
   bulletPool: {fileID: 7868901963056025208}
-  _angleWeight: 0
+  _multipleShotCount: 1
 --- !u!114 &7868901963056025208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +66,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_BulletPool
   poolSize: 5
   spawnPoint: {fileID: 0}
+--- !u!114 &-6559393427426232449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940581244213751151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a54ff1465af7044183990ced7edc4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_AimWeaponTarget
+  _aimUI: {fileID: 0}
 --- !u!1 &5677178549528363607
 GameObject:
   m_ObjectHideFlags: 0

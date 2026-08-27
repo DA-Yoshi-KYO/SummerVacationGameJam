@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4807884920288845354}
   - component: {fileID: 1771548409834800279}
   - component: {fileID: 8934218686237703133}
+  - component: {fileID: -3550511899905827589}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -80,10 +81,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_PistolWeapon
   firePoint: {fileID: 1202726426179692530}
   weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
-  weaponName: Pistol
   bulletPool: {fileID: 0}
-  _aimUI: {fileID: 0}
-  _angleWeight: 0
+  _multipleShotCount: 1
 --- !u!114 &8934218686237703133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +97,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_BulletPool
   poolSize: 5
   spawnPoint: {fileID: 0}
+--- !u!114 &-3550511899905827589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7754399794532597180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a54ff1465af7044183990ced7edc4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_AimWeaponTarget
+  _aimUI: {fileID: 0}
 --- !u!1 &8275445458834392356
 GameObject:
   m_ObjectHideFlags: 0

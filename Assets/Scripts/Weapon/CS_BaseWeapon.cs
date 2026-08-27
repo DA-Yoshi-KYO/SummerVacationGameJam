@@ -24,6 +24,8 @@ public abstract class CS_BaseWeapon : MonoBehaviour
 
     private CS_UpgradeChipManager _upgradeChipManager;
 
+    protected CS_WeaponTargetBase _weaponTarget;
+
     protected int currentBullets;//現在の弾数
     protected bool isReloading;//リロード中かどうか
     protected bool isShooting;//射撃中かどうか
@@ -67,6 +69,8 @@ public abstract class CS_BaseWeapon : MonoBehaviour
 
         //弾プールを初期化
         bulletPool.Initialize(weaponData.bulletPrefab.GetComponent<CS_BaseBullet>());
+
+        _weaponTarget = GetComponent<CS_WeaponTargetBase>();
     }
 
     private void Update()
@@ -171,5 +175,15 @@ public abstract class CS_BaseWeapon : MonoBehaviour
 
         // リストに追加
         bulletComponentSetters.Add(bulletComponentType, setter);
+    }
+
+    public void ChangeTargetSystem(CS_WeaponTargetBase newTargetSystem)
+    {
+        if (_weaponTarget != null)
+        {
+            Destroy(_weaponTarget);
+        }
+
+        _weaponTarget = gameObject.AddComponent(newTargetSystem.GetType()) as CS_WeaponTargetBase;
     }
 }
