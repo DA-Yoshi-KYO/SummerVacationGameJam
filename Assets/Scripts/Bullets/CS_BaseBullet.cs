@@ -46,6 +46,11 @@ public class CS_BaseBullet : MonoBehaviour
         //ダメージを与える処理
         Debug.Log("Hit " + other.gameObject.name + " Damage: " + currentDamage);
 
+        // ライフスティール効果がある場合発動
+        CS_LifeStealEffect lifeStealEffect = GameObject.FindAnyObjectByType<CS_LifeStealEffect>();
+        if (lifeStealEffect != null)
+            lifeStealEffect.ApplyEffect(currentDamage);
+
         Deactivate();
     }
 
