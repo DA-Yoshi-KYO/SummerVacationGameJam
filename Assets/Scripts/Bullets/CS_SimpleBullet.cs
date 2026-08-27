@@ -16,7 +16,7 @@ public class CS_SimpleBullet : CS_BaseBullet
         BulletMovement();
 
         // 射程距離を超えたら非アクティブ化
-        if (Vector3.Distance(_firePoint, transform.position) > _range)
+        if (Vector3.Distance(_firePoint, transform.position) > _range * _upgradeChipManager.upgradeStatus.getupgradeStatus.bulletRangeIncreaseRate)
         {
             Deactivate();
         }

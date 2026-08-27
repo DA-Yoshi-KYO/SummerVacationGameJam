@@ -170,7 +170,7 @@ public class CS_PlayerLowHpBuff : MonoBehaviour
         CS_PlayerMoveBoostEnergy playerBoostEnergy = _player.GetComponent<CS_PlayerMoveBoostEnergy>();
 
         // ƒGƒlƒ‹ƒM[‚Ì10%‚ğ‰ñ•œ‚·‚é‚æ‚¤‚Éİ’è
-        float boostEnergyRegenerationAmount = playerBoostEnergy.MaxEnergy * _boostEnergyRegenerationRate;
+        float boostEnergyRegenerationAmount = playerBoostEnergy.maxEnergy * _boostEnergyRegenerationRate;
         _boostEnergyRegenerationBuff.SetRegenerationAmount(boostEnergyRegenerationAmount); // ‰ñ•œ—Ê‚ğİ’è
         _boostEnergyRegenerationBuff.SetRegenerationInterval(1f); // ‰ñ•œŠÔŠu‚ğİ’è
         _boostEnergyRegenerationBuff.SetTarget(playerBoostEnergy); // ‰ñ•œ‘ÎÛ‚ğİ’è

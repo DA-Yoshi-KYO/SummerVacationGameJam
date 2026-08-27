@@ -22,6 +22,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     // 引数に弾のゲームオブジェクトを渡して追加コンポーネントを設定するリスト
     private Dictionary<Type, Action<GameObject>> bulletComponentSetters = new Dictionary<Type, Action<GameObject>>();
 
+    private CS_UpgradeChipManager _upgradeChipManager;
 
     protected int currentBullets;//現在の弾数
     protected bool isReloading;//リロード中かどうか
@@ -46,6 +47,8 @@ public abstract class CS_BaseWeapon : MonoBehaviour
             Debug.LogError(weaponName + " がデータベースに存在しません");
             return;
         }
+
+        _upgradeChipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
 
         //現在の弾数を設定
         currentBullets = weaponData.bulletCount;
@@ -84,7 +87,7 @@ public abstract class CS_BaseWeapon : MonoBehaviour
         currentBullets--;
 
         //次に発射出来る時間を更新
-        nextFireTime = Time.time + weaponData.fireRate;
+        nextFireTime = Time.time + weaponData.fireRate * _upgradeChipManager.upgradeStatus.getupgradeStatus.fireRateIncreaseRate;
     }
 
     //弾を発射する処理
@@ -121,9 +124,9 @@ public abstract class CS_BaseWeapon : MonoBehaviour
     {
         reloadTime += Time.deltaTime;
 
-        if (reloadTime >= weaponData.reloadTime)
+        if (reloadTime >= weaponData.reloadTime * _upgradeChipManager.upgradeStatus.getupgradeStatus.reloadSpeedIncreaseRate)
         {
-            currentBullets = weaponData.bulletCount;
+            currentBullets = (int)(weaponData.bulletCount * _upgradeChipManager.upgradeStatus.getupgradeStatus.bulletCountIncreaseRate);
             isReloading = false;
             reloadTime = 0.0f;
         }

@@ -6,9 +6,12 @@ public class CS_PlayerStatus : MonoBehaviour
     [Header("参照するDB")]
     private CSO_PlayerStatusDataBase _playerStatusDataBase;
 
+    [Tooltip("チップマネージャーの参照")]
+    private CS_UpgradeChipManager _upgradeChipManager;
+
     [Tooltip("プレイヤーの最大体力")]
     private float _maxHealth = 100f;
-    public float maxHealth => _maxHealth;
+    public float maxHealth => _maxHealth + _upgradeChipManager.upgradeStatus.getupgradeStatus.healthIncreaseAmount;
 
     [Tooltip("プレイヤーの現在の体力")]
     private float _currentHealth;
@@ -28,6 +31,8 @@ public class CS_PlayerStatus : MonoBehaviour
 
     private void Start()
     {
+        _upgradeChipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
+
         //--- データベースから初期値を取得してステータスを設定 ---//
 
         // 体力
@@ -42,7 +47,7 @@ public class CS_PlayerStatus : MonoBehaviour
 
     public void AddExp(float exp)
     {
-        _exp += exp;
+        _exp += (exp * _upgradeChipManager.upgradeStatus.getupgradeStatus.experienceGainIncreaseRate);
     }
 
     public void LevelUp(int upLevel)
@@ -70,6 +75,8 @@ public class CS_PlayerStatus : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        damage *= _upgradeChipManager.upgradeStatus.getupgradeStatus.damageReductionRate;
+
         CS_PlayerShield shield = GetComponent<CS_PlayerShield>();
         if (shield != null)
             damage = shield.TakeDamage(damage);

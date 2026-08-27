@@ -8,26 +8,33 @@ public class CS_PlayerMoveBoostEnergy : MonoBehaviour
     [SerializeField]
     private CSO_PlayerMoveStatus _stats;
 
+    [Tooltip("アップグレードチップマネージャーの参照")]
+    [SerializeField]
+    private CS_UpgradeChipManager _upgradeChipManager;
+
     /// <summary>
     /// 現在のエネルギー値
     /// </summary>
-    public float CurrentEnergy { get; private set; }
+    private float _currentEnergy;
+    public float currentEnergy => _currentEnergy;
 
     /// <summary>
     /// 最大エネルギー値
     /// </summary>
-    public float MaxEnergy => _stats.maxEnergy;
+    public float maxEnergy => _stats.maxEnergy + _upgradeChipManager.upgradeStatus.getupgradeStatus.boostEnergyIncreaseAmount;
 
 
     private void Awake()
     {
-        CurrentEnergy = _stats.maxEnergy;
+        _currentEnergy = _stats.maxEnergy;
+
+        _upgradeChipManager = GameObject.FindAnyObjectByType<CS_UpgradeChipManager>();
 
         CS_ValueObserver.Instance.Register(
             gameObject,
             this,
             "プレイヤー：現在のエネルギー値",
-            () => CurrentEnergy
+            () => currentEnergy
         );
     }
 
@@ -39,12 +46,14 @@ public class CS_PlayerMoveBoostEnergy : MonoBehaviour
     /// </returns>
     public bool TryConsume(float amount)
     {
-        if (CurrentEnergy < amount)
+        amount *= _upgradeChipManager.upgradeStatus.getupgradeStatus.boostConsumptionReductionRate;
+
+        if (_currentEnergy < amount)
         {
             return false;
         }
 
-        CurrentEnergy -= amount;
+        _currentEnergy -= amount;
 
         return true;
     }
@@ -54,8 +63,8 @@ public class CS_PlayerMoveBoostEnergy : MonoBehaviour
     /// </summary>
     public void Consume(float amount)
     {
-        CurrentEnergy = Mathf.Max(
-            CurrentEnergy - amount,
+        _currentEnergy = Mathf.Max(
+            _currentEnergy - amount,
             0f
         );
     }
@@ -66,9 +75,9 @@ public class CS_PlayerMoveBoostEnergy : MonoBehaviour
     /// <param name="amount">回復量</param>
     public void Regenerate(float amount)
     {
-        CurrentEnergy = Mathf.Min(
-            CurrentEnergy + amount,
-            MaxEnergy
+        _currentEnergy = Mathf.Min(
+            _currentEnergy + amount,
+            maxEnergy
         );
     }
 
@@ -80,6 +89,6 @@ public class CS_PlayerMoveBoostEnergy : MonoBehaviour
     /// </returns>
     public bool CanBoost()
     {
-        return CurrentEnergy > 0f;
+        return _currentEnergy > 0f;
     }
 }
