@@ -24,8 +24,8 @@ public class CS_DamageOverTimeEffect : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer >= _damageInterval)
         {
-            // ダメージを与える処理をここに追加
-            // _enemyBase.TakeDamage(_damageAmount);
+            // ダメージを与える
+            _enemyBase.TakeDamage(_damageAmount);
 
             _timer = 0f;
         }

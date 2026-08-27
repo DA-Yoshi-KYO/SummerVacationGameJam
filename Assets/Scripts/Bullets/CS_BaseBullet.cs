@@ -69,7 +69,7 @@ public class CS_BaseBullet : MonoBehaviour
         }
 
         //ダメージを与える処理
-        Debug.Log("Hit " + other.gameObject.name + " Damage: " + currentDamage);
+        other.GetComponent<CS_EnemyBase>()?.TakeDamage(currentDamage);
 
         // ライフスティール効果がある場合発動
         CS_LifeStealEffect lifeStealEffect = GameObject.FindAnyObjectByType<CS_LifeStealEffect>();
