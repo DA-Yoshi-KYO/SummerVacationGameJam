@@ -1145,7 +1145,7 @@ MonoBehaviour:
   _forceUploadInputs: 0
   _upstreamCookChanged: 0
   _cookStatus: 0
-  _lastCookResult: 1
+  _lastCookResult: 0
   _isCookingAssetReloaded: 1
   _sessionID: 1905916877696
   _uiLocked: 1
@@ -1455,15 +1455,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 435.67422
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 107.02872
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 213.8099
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1579759243359023083, guid: ba7011b3c9de6654e982229793d612ba, type: 3}
       propertyPath: m_LocalRotation.w
