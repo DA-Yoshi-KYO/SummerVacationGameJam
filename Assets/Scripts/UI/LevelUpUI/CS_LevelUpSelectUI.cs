@@ -23,10 +23,10 @@ public class CS_LevelUpSelectUI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GenerateUpgradeSlots();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    GenerateUpgradeSlots();
+        //}
     }
 
     //レベルアップ候補をまとめるためのラッパークラス

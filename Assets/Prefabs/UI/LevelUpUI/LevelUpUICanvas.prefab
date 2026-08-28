@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_SlotDropData
   mySlot: {fileID: 0}
+  slotIndex: 0
 --- !u!114 &4933599050385431824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf22de2892703f3409c61b1ecc3c852b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_DropSelectUIData
-  icon: {fileID: 7287427581989031310}
+  playerSlotUI: {fileID: 0}
+  weaponDataBase: {fileID: 0}
 --- !u!1 &4241721795055689156
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_SlotDropData
   mySlot: {fileID: 0}
+  slotIndex: 0
 --- !u!114 &8110889494950077415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,7 +646,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf22de2892703f3409c61b1ecc3c852b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CS_DropSelectUIData
-  icon: {fileID: 1352663992627233335}
+  playerSlotUI: {fileID: 0}
+  weaponDataBase: {fileID: 0}
 --- !u!1 &5538016980759173275
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +827,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1648385773542841904
 MonoBehaviour:
@@ -884,6 +888,8 @@ MonoBehaviour:
   speed: 10
   delayBeforeClose: 1
   cursorImage: {fileID: 2800000, guid: ee64bf4d1bd811544a806265df4e2dc4, type: 3}
+  selectUI: {fileID: 7875811176484214058}
+  upGradeCountUI: {fileID: 4887411045571805801}
   isLevelUpUIOpen: 0
 --- !u!1 &6550101497423671783
 GameObject:
@@ -1303,7 +1309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CS_UpGradeCountUI
   upGradeText: {fileID: 8991906576488767158}
   currentUpGradeCount: 0
-  upGrandeTextSet: 
+  upGrandeTextSet: aaaaaa
 --- !u!1 &8870624171650312096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,6 +1319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8893481040959784357}
+  - component: {fileID: 1384979394705929078}
   m_Layer: 5
   m_Name: LevelUpUI_WeaponSlot
   m_TagString: Untagged
@@ -1345,6 +1352,19 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: -200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1384979394705929078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8870624171650312096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0319db48bc8f5044ba84068dfab84d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_LevelUpWeaponSlot
+  slotIndex: 0
 --- !u!1001 &382331975533935557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1353,6 +1373,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8893481040959784357}
     m_Modifications:
+    - target: {fileID: 431479293273774135, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: levelText
+      value: 
+      objectReference: {fileID: 1821343401263091407}
     - target: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1433,6 +1457,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8028728195256988198, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: slotIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Name
       value: LevelUpUI_Weapon_Set2
@@ -1440,13 +1468,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6564770804489682402}
   m_SourcePrefab: {fileID: 100100000, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
 --- !u!224 &1780805365317817045 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
   m_PrefabInstance: {fileID: 382331975533935557}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1821343401263091407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2020118195074037002, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 382331975533935557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &8406722059616891769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 382331975533935557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6564770804489682402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406722059616891769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0319db48bc8f5044ba84068dfab84d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_LevelUpWeaponSlot
+  slotIndex: 2
 --- !u!1001 &384567136723946824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1455,6 +1515,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8893481040959784357}
     m_Modifications:
+    - target: {fileID: 431479293273774135, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: levelText
+      value: 
+      objectReference: {fileID: 1828082179025451074}
     - target: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1535,6 +1599,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8028728195256988198, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: slotIndex
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Name
       value: LevelUpUI_Weapon_Set5
@@ -1542,13 +1610,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6079372245757214384}
   m_SourcePrefab: {fileID: 100100000, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
 --- !u!224 &1778535002533897304 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
   m_PrefabInstance: {fileID: 384567136723946824}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1828082179025451074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2020118195074037002, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 384567136723946824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &8408990223167833588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 384567136723946824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6079372245757214384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408990223167833588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0319db48bc8f5044ba84068dfab84d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_LevelUpWeaponSlot
+  slotIndex: 5
 --- !u!1001 &1294778092525117240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1557,6 +1657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8893481040959784357}
     m_Modifications:
+    - target: {fileID: 431479293273774135, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: levelText
+      value: 
+      objectReference: {fileID: 1008559043290737202}
     - target: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1637,6 +1741,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8028728195256988198, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: slotIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Name
       value: LevelUpUI_Weapon_Set4
@@ -1644,13 +1752,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1923634290185337064}
   m_SourcePrefab: {fileID: 100100000, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
 --- !u!224 &868939899988031016 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
   m_PrefabInstance: {fileID: 1294778092525117240}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1008559043290737202 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2020118195074037002, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 1294778092525117240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &6922881568104273796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 1294778092525117240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1923634290185337064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6922881568104273796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0319db48bc8f5044ba84068dfab84d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_LevelUpWeaponSlot
+  slotIndex: 4
 --- !u!1001 &2852502135966540449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1659,6 +1799,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8893481040959784357}
     m_Modifications:
+    - target: {fileID: 431479293273774135, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: levelText
+      value: 
+      objectReference: {fileID: 4296145284379236267}
     - target: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1739,6 +1883,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8028728195256988198, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: slotIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Name
       value: LevelUpUI_Weapon_Set1
@@ -1746,13 +1894,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 484671404618530993}
   m_SourcePrefab: {fileID: 100100000, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
 --- !u!224 &4210582496364841905 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
   m_PrefabInstance: {fileID: 2852502135966540449}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4296145284379236267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2020118195074037002, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 2852502135966540449}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &6229290134610291229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 2852502135966540449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &484671404618530993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229290134610291229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0319db48bc8f5044ba84068dfab84d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_LevelUpWeaponSlot
+  slotIndex: 1
 --- !u!1001 &7550445110279357590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1761,6 +1941,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8893481040959784357}
     m_Modifications:
+    - target: {fileID: 431479293273774135, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: levelText
+      value: 
+      objectReference: {fileID: 8412855055265935772}
     - target: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1841,6 +2025,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8028728195256988198, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: slotIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Name
       value: LevelUpUI_Weapon_Set3
@@ -1848,8 +2036,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1204310071432437070}
   m_SourcePrefab: {fileID: 100100000, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+--- !u!1 &1813943605582613546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 7550445110279357590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1204310071432437070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813943605582613546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0319db48bc8f5044ba84068dfab84d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_LevelUpWeaponSlot
+  slotIndex: 3
+--- !u!114 &8412855055265935772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2020118195074037002, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 7550445110279357590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &8444372714928516486 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
@@ -1863,6 +2083,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8893481040959784357}
     m_Modifications:
+    - target: {fileID: 431479293273774135, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      propertyPath: levelText
+      value: 
+      objectReference: {fileID: 8076454951421946016}
     - target: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1950,8 +2174,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4471943145020098714}
   m_SourcePrefab: {fileID: 100100000, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+--- !u!1 &2159845442221593878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8206963472972286140, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 7790578881228168618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4471943145020098714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159845442221593878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0319db48bc8f5044ba84068dfab84d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_LevelUpWeaponSlot
+  slotIndex: 0
+--- !u!114 &8076454951421946016 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2020118195074037002, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}
+  m_PrefabInstance: {fileID: 7790578881228168618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &8207058099309786298 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2159724427705182480, guid: 337928ab7b739764caf0ddbe812cf28a, type: 3}

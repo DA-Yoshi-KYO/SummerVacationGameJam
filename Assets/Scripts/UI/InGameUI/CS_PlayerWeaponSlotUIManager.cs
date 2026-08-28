@@ -8,7 +8,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeaponSlotUIManager : MonoBehaviour
+public class CS_PlayerWeaponSlotUIManager : MonoBehaviour
 {
     [Header("UI武器データベース")][SerializeField] private CSO_WeaponDataBase weaponDataBase;
 

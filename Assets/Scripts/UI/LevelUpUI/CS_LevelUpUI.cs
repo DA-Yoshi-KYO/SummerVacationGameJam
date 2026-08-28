@@ -24,6 +24,8 @@ public class CS_LevelUpUI : MonoBehaviour
 
     [Header("強化選択生成の親オブジェクト")][SerializeField] private CS_LevelUpSelectUI selectUI;
 
+    [Header("強化回数のテキスト")][SerializeField] private CS_UpGradeCountUI upGradeCountUI;
+
     private float targetScaleY;//現在のターゲットスケール
 
     //元の値を保存する辞書
@@ -48,12 +50,18 @@ public class CS_LevelUpUI : MonoBehaviour
     {
         CursorShow();
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            OpenUI();
-        }
+        //if (Input.GetKeyDown(KeyCode.UpArrow))
+        //{
+        //    OpenUI();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        //if (Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    //CloseUIWithDelay();
+        //    upGradeCountUI.LevelDown();
+        //}
+
+        if (upGradeCountUI.currentUpGradeCount < 0)
         {
             CloseUIWithDelay();
         }
@@ -76,6 +84,9 @@ public class CS_LevelUpUI : MonoBehaviour
 
         //スロット生成
         selectUI.GenerateUpgradeSlots();
+
+        //強化回数の設定
+        upGradeCountUI.SetLevel(5);
     }
 
     //UIを閉じる

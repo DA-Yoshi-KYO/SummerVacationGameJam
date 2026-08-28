@@ -18,6 +18,7 @@ MonoBehaviour:
     text: 
     minLevel: 1
     maxLevel: 15
+    currentLevel: 3
     damage:
       serializedVersion: 2
       m_Curve:
@@ -143,6 +144,7 @@ MonoBehaviour:
     text: 
     minLevel: 1
     maxLevel: 15
+    currentLevel: 3
     damage:
       serializedVersion: 2
       m_Curve:
@@ -266,8 +268,9 @@ MonoBehaviour:
   - weaponName: PulseField
     weaponIcon: {fileID: 21300000, guid: cf66300a3ea89f348a2399b4c085896d, type: 3}
     text: 
-    minLevel: 0
-    maxLevel: 0
+    minLevel: 1
+    maxLevel: 15
+    currentLevel: 3
     damage:
       serializedVersion: 2
       m_Curve:
@@ -393,6 +396,7 @@ MonoBehaviour:
     text: 
     minLevel: 1
     maxLevel: 15
+    currentLevel: 4
     damage:
       serializedVersion: 2
       m_Curve:
@@ -518,6 +522,7 @@ MonoBehaviour:
     text: 
     minLevel: 1
     maxLevel: 15
+    currentLevel: 4
     damage:
       serializedVersion: 2
       m_Curve:
@@ -643,6 +648,7 @@ MonoBehaviour:
     text: 
     minLevel: 1
     maxLevel: 15
+    currentLevel: 1
     damage:
       serializedVersion: 2
       m_Curve:
@@ -768,6 +774,7 @@ MonoBehaviour:
     text: 
     minLevel: 1
     maxLevel: 15
+    currentLevel: 0
     damage:
       serializedVersion: 2
       m_Curve:
@@ -893,6 +900,7 @@ MonoBehaviour:
     text: 
     minLevel: 1
     maxLevel: 15
+    currentLevel: 1
     damage:
       serializedVersion: 2
       m_Curve:
@@ -1018,6 +1026,7 @@ MonoBehaviour:
     text: 
     minLevel: 1
     maxLevel: 15
+    currentLevel: 7
     damage:
       serializedVersion: 2
       m_Curve:

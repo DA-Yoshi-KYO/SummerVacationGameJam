@@ -1,38 +1,65 @@
-/* 
- *   ƒhƒ‰ƒbƒO‚Æƒhƒƒbƒv‚Å•Ší‚ğƒXƒƒbƒg‚É“ü‚ê‚éˆ—
- * 
- *    Œ³˜Q—œ
+ï»¿/* ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼
+ *   ãƒ‰ãƒ©ãƒƒã‚°ã¨ãƒ‰ãƒ­ãƒƒãƒ—ã§æ­¦å™¨ã‚’ã‚¹ãƒ­ãƒƒãƒˆã«å…¥ã‚Œã‚‹å‡¦ç†
+ * ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼
+ *    å…ƒæµªæ¢¨ç·’
  * ----------------------------------------------------------
- * 2026-08-23 | ‰‰ñì¬
+ * 2026-08-23 | åˆå›ä½œæˆ
  */
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CS_SlotDropData : MonoBehaviour, IDropHandler
 {
-    [Header("ƒXƒƒbƒg‚Ìî•ñ")][SerializeField] private CS_WeaponSet mySlot;
+    [Header("ã‚¹ãƒ­ãƒƒãƒˆã®æƒ…å ±")][SerializeField] private CS_WeaponSet mySlot;
 
-    //ƒhƒƒbƒv‚³‚ê‚½‚Æ‚«‚ÉŒÄ‚Î‚ê‚éˆ—
+    [Header("ã“ã®ã‚¹ãƒ­ãƒƒãƒˆã®ç•ªå·ï¼ˆ0ã€œ5ï¼‰")][SerializeField] private int slotIndex;
+
+    [Header("å¼·åŒ–ãƒ†ã‚­ã‚¹ãƒˆ")][SerializeField] CS_UpGradeCountUI upGradeCountUI;
+
+    //ãƒ‰ãƒ­ãƒƒãƒ—ã•ã‚ŒãŸã¨ãã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
     public void OnDrop(PointerEventData eventData)
     {
         var data = eventData.pointerDrag.GetComponentInParent<CS_SelectUISet>();
         if (data == null) return;
 
-        //ƒXƒƒbƒg‚ª‹ó‚È‚ç“ü‚ê‚é
+        //ã‚¹ãƒ­ãƒƒãƒˆãŒç©ºãªã‚‰å…¥ã‚Œã‚‹
         if (mySlot.currentWeapon == null)
         {
+            //WeaponLevelDataã‚’å–å¾—
+            var weaponLevelData = data.GetData().weapon;
+
+            //åˆæœŸãƒ¬ãƒ™ãƒ«ã‚’è¨­å®š
+            weaponLevelData.currentLevel = weaponLevelData.minLevel;
+
+            //UIã®ãƒ¬ãƒ™ãƒ«è¡¨ç¤ºã‚‚åˆæœŸåŒ–
+            mySlot.weaponLevelUpUI.currentWeaponLevel = weaponLevelData.currentLevel;
+            mySlot.weaponLevelUpUI.weaponLevelText.text = weaponLevelData.currentLevel.ToString();
+
+            //ã‚¹ãƒ­ãƒƒãƒˆã«ã‚»ãƒƒãƒˆ
             mySlot.SetUI(data);
+
+            //ãƒ—ãƒ¬ã‚¤ä¸­ã®æ­¦å™¨ã‚¹ãƒ­ãƒƒãƒˆã‚‚æ›´æ–°
+            CS_LevelUpManager.Instance.SetWeapon(slotIndex, data);
+
+            upGradeCountUI.LevelDown();
+
             return;
         }
 
-        //ƒXƒƒbƒg‚É•Ší‚ª“ü‚Á‚Ä‚¢‚éê‡
+        //ã‚¹ãƒ­ãƒƒãƒˆã«æ­¦å™¨ãŒå…¥ã£ã¦ã„ã‚‹å ´åˆ
         string slotWeaponName = mySlot.currentWeapon.GetData().weapon.weaponName;
         string dragWeaponName = data.GetData().weapon.weaponName;
 
-        //“¯‚¶•Ší‚È‚çƒŒƒxƒ‹ƒAƒbƒv
+        //åŒã˜æ­¦å™¨ãªã‚‰ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—
         if (slotWeaponName == dragWeaponName)
         {
             mySlot.weaponLevelUpUI.LevelUp();
+
+            //ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—å¾Œã«PlayerWeaponSlotã‚‚æ›´æ–°ã™ã‚‹
+            CS_LevelUpManager.Instance.SetWeapon(slotIndex, data);
+
+            upGradeCountUI.LevelDown();
+
             return;
         }
     }

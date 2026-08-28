@@ -16,6 +16,7 @@ public class CS_PlayerWeaponSlotUI : MonoBehaviour
     [Header("アイコン画像")][SerializeField] private Image iconImage;
     [Header("弾数テキスト")][SerializeField] private TextMeshProUGUI bulletsText;
     [Header("リロード画像")][SerializeField] private Image reloadImage;
+    [Header("レベルのテキスト")][SerializeField] private TextMeshProUGUI levelText;
 
     private int maxBullets;//最大弾数
     private int currentBullets;//現在の弾数
@@ -44,7 +45,10 @@ public class CS_PlayerWeaponSlotUI : MonoBehaviour
         iconImage.enabled = true;
         bulletsText.enabled = true;
         BackImage.enabled = false;
+        levelText.enabled = true;
+        
         frameImage.GetComponent<CS_ChangeUITexture>().ChangeTexture(true);
+        levelText.GetComponent<CS_WeaponLevelUpUI>().SetLevel(data.currentLevel); ;
 
         maxBullets = data.bulletCount;
         currentBullets = data.bulletCount;
@@ -100,6 +104,7 @@ public class CS_PlayerWeaponSlotUI : MonoBehaviour
         iconImage.enabled = false;
         bulletsText.enabled = false;
         BackImage.enabled = true;
+        levelText.enabled = false;
 
         StopBlink();
     }

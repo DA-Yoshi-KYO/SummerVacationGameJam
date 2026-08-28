@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 1614184045129986820}
   - component: {fileID: 4974035754155348851}
   - component: {fileID: 2419485471615309801}
+  - component: {fileID: 1350753058953198248}
   m_Layer: 5
   m_Name: PlayerWeapon_Set1
   m_TagString: Untagged
@@ -280,7 +281,22 @@ MonoBehaviour:
   iconImage: {fileID: 274064758291252969}
   bulletsText: {fileID: 372843419434255384}
   reloadImage: {fileID: 1115591451480300314}
+  levelText: {fileID: 8570937901300051998}
   blinkSpeed: 5
+--- !u!114 &1350753058953198248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305887910377229652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf22de2892703f3409c61b1ecc3c852b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_DropSelectUIData
+  playerSlotUI: {fileID: 2419485471615309801}
+  weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
 --- !u!1 &442340346648691452
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,15 +324,15 @@ RectTransform:
   m_GameObject: {fileID: 442340346648691452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1614184045129986820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6094480649153306576
 CanvasRenderer:
@@ -708,6 +724,7 @@ GameObject:
   - component: {fileID: 2536833171499893237}
   - component: {fileID: 1791770456262218877}
   - component: {fileID: 1881543380597038435}
+  - component: {fileID: 6284519762347686068}
   m_Layer: 5
   m_Name: WeaponLevel
   m_TagString: Untagged
@@ -834,6 +851,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6284519762347686068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848718369571479469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021a5a9a40a51f24ba9e5624bb22dfd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_WeaponLevelUpUI
+  weaponLevelText: {fileID: 1881543380597038435}
+  initWeaponLevel: 1
+  maxWeaponLevel: 15
+  currentWeaponLevel: 0
 --- !u!1 &852552145869673131
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,15 +969,15 @@ RectTransform:
   m_GameObject: {fileID: 1098110709440096975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5902178607306132739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2373534866655528801
 CanvasRenderer:
@@ -2236,6 +2269,7 @@ GameObject:
   - component: {fileID: 9220206147279469287}
   - component: {fileID: 2876258980042420260}
   - component: {fileID: 8817077412742373535}
+  - component: {fileID: 1722985199878751930}
   m_Layer: 5
   m_Name: WeaponLevel
   m_TagString: Untagged
@@ -2362,6 +2396,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1722985199878751930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786793974669236268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021a5a9a40a51f24ba9e5624bb22dfd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_WeaponLevelUpUI
+  weaponLevelText: {fileID: 8817077412742373535}
+  initWeaponLevel: 1
+  maxWeaponLevel: 15
+  currentWeaponLevel: 0
 --- !u!1 &2843598370138651921
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,6 +2746,7 @@ GameObject:
   - component: {fileID: 3378944332145965325}
   - component: {fileID: 8560077147509907920}
   - component: {fileID: 8570937901300051998}
+  - component: {fileID: 5602183203456663722}
   m_Layer: 5
   m_Name: WeaponLevel
   m_TagString: Untagged
@@ -2822,6 +2873,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5602183203456663722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2917456410183447851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021a5a9a40a51f24ba9e5624bb22dfd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_WeaponLevelUpUI
+  weaponLevelText: {fileID: 8570937901300051998}
+  initWeaponLevel: 1
+  maxWeaponLevel: 15
+  currentWeaponLevel: 0
 --- !u!1 &2992273673377595049
 GameObject:
   m_ObjectHideFlags: 0
@@ -4264,6 +4331,7 @@ GameObject:
   - component: {fileID: 4544730108248058544}
   - component: {fileID: 5501109863298733736}
   - component: {fileID: 5346063959687936102}
+  - component: {fileID: 4926122887241056435}
   m_Layer: 5
   m_Name: PlayerWeapon_Set2
   m_TagString: Untagged
@@ -4321,7 +4389,22 @@ MonoBehaviour:
   iconImage: {fileID: 5940787513552075231}
   bulletsText: {fileID: 8209493060509408867}
   reloadImage: {fileID: 1933681371835040880}
+  levelText: {fileID: 2509026655085066689}
   blinkSpeed: 5
+--- !u!114 &4926122887241056435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745516807989459751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf22de2892703f3409c61b1ecc3c852b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_DropSelectUIData
+  playerSlotUI: {fileID: 5346063959687936102}
+  weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
 --- !u!1 &5002838176056407474
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,15 +4507,15 @@ RectTransform:
   m_GameObject: {fileID: 5152307904233650980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4127279188310726184}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8809461533557943136
 CanvasRenderer:
@@ -4558,6 +4641,7 @@ GameObject:
   - component: {fileID: 3340984449870099527}
   - component: {fileID: 1784532948981861687}
   - component: {fileID: 2396506831665291906}
+  - component: {fileID: 6866821578047246422}
   m_Layer: 5
   m_Name: PlayerWeapon_Set4
   m_TagString: Untagged
@@ -4615,7 +4699,22 @@ MonoBehaviour:
   iconImage: {fileID: 4907701397558507612}
   bulletsText: {fileID: 8122044181785027274}
   reloadImage: {fileID: 1650039634512764708}
+  levelText: {fileID: 433578997393282391}
   blinkSpeed: 5
+--- !u!114 &6866821578047246422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464747549710330687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf22de2892703f3409c61b1ecc3c852b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_DropSelectUIData
+  playerSlotUI: {fileID: 2396506831665291906}
+  weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
 --- !u!1 &5656634686798102956
 GameObject:
   m_ObjectHideFlags: 0
@@ -5301,6 +5400,7 @@ GameObject:
   - component: {fileID: 4127279188310726184}
   - component: {fileID: 2355196295201397792}
   - component: {fileID: 909026359066905250}
+  - component: {fileID: 6697861299177168178}
   m_Layer: 5
   m_Name: PlayerWeapon_Set0
   m_TagString: Untagged
@@ -5358,7 +5458,22 @@ MonoBehaviour:
   iconImage: {fileID: 8740393472397668238}
   bulletsText: {fileID: 5728898105713227257}
   reloadImage: {fileID: 6325049878303587973}
+  levelText: {fileID: 1881543380597038435}
   blinkSpeed: 5
+--- !u!114 &6697861299177168178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6246592312189187429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf22de2892703f3409c61b1ecc3c852b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_DropSelectUIData
+  playerSlotUI: {fileID: 909026359066905250}
+  weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
 --- !u!1 &6390968823200887889
 GameObject:
   m_ObjectHideFlags: 0
@@ -5386,15 +5501,15 @@ RectTransform:
   m_GameObject: {fileID: 6390968823200887889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4544730108248058544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4099422694007011017
 CanvasRenderer:
@@ -5807,6 +5922,7 @@ GameObject:
   - component: {fileID: 8870925649647943603}
   - component: {fileID: 1789402727882861128}
   - component: {fileID: 5112615827037835595}
+  - component: {fileID: 6155105920087507181}
   m_Layer: 5
   m_Name: WeaponLevel
   m_TagString: Untagged
@@ -5933,6 +6049,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6155105920087507181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936966556437287223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021a5a9a40a51f24ba9e5624bb22dfd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_WeaponLevelUpUI
+  weaponLevelText: {fileID: 5112615827037835595}
+  initWeaponLevel: 1
+  maxWeaponLevel: 15
+  currentWeaponLevel: 0
 --- !u!1 &7092292546586896881
 GameObject:
   m_ObjectHideFlags: 0
@@ -5944,6 +6076,7 @@ GameObject:
   - component: {fileID: 3801757403484252655}
   - component: {fileID: 4690934555547880492}
   - component: {fileID: 3336554373809274892}
+  - component: {fileID: 3630871086627973374}
   m_Layer: 5
   m_Name: PlayerWeapon_Set5
   m_TagString: Untagged
@@ -6001,7 +6134,22 @@ MonoBehaviour:
   iconImage: {fileID: 589442958486981299}
   bulletsText: {fileID: 6577210272674904046}
   reloadImage: {fileID: 8194754648477616486}
+  levelText: {fileID: 8817077412742373535}
   blinkSpeed: 5
+--- !u!114 &3630871086627973374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092292546586896881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf22de2892703f3409c61b1ecc3c852b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_DropSelectUIData
+  playerSlotUI: {fileID: 3336554373809274892}
+  weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
 --- !u!1 &7125340989280844496
 GameObject:
   m_ObjectHideFlags: 0
@@ -6584,6 +6732,7 @@ GameObject:
   - component: {fileID: 5962429171736820980}
   - component: {fileID: 4730375088260922415}
   - component: {fileID: 2509026655085066689}
+  - component: {fileID: 3996816595940649296}
   m_Layer: 5
   m_Name: WeaponLevel
   m_TagString: Untagged
@@ -6710,6 +6859,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3996816595940649296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7785824306702740292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021a5a9a40a51f24ba9e5624bb22dfd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_WeaponLevelUpUI
+  weaponLevelText: {fileID: 2509026655085066689}
+  initWeaponLevel: 1
+  maxWeaponLevel: 15
+  currentWeaponLevel: 0
 --- !u!1 &7799326666805991266
 GameObject:
   m_ObjectHideFlags: 0
@@ -6796,6 +6961,7 @@ GameObject:
   - component: {fileID: 5902178607306132739}
   - component: {fileID: 1852208524168140265}
   - component: {fileID: 248208850354153786}
+  - component: {fileID: 3875761571624640463}
   m_Layer: 5
   m_Name: PlayerWeapon_Set3
   m_TagString: Untagged
@@ -6853,7 +7019,22 @@ MonoBehaviour:
   iconImage: {fileID: 3035593797947395542}
   bulletsText: {fileID: 4582919445526307139}
   reloadImage: {fileID: 365575233597380517}
+  levelText: {fileID: 5112615827037835595}
   blinkSpeed: 5
+--- !u!114 &3875761571624640463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840084954081770589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf22de2892703f3409c61b1ecc3c852b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_DropSelectUIData
+  playerSlotUI: {fileID: 248208850354153786}
+  weaponDataBase: {fileID: 11400000, guid: 22eb5ef96bdaeac4f8bf566c61f6946e, type: 2}
 --- !u!1 &7844598998979374283
 GameObject:
   m_ObjectHideFlags: 0
@@ -6956,15 +7137,15 @@ RectTransform:
   m_GameObject: {fileID: 7907325355182533071}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3801757403484252655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2033496166672923108
 CanvasRenderer:
@@ -7015,6 +7196,7 @@ GameObject:
   - component: {fileID: 6913338767723144519}
   - component: {fileID: 6732401990640708058}
   - component: {fileID: 433578997393282391}
+  - component: {fileID: 5781246555766358238}
   m_Layer: 5
   m_Name: WeaponLevel
   m_TagString: Untagged
@@ -7141,6 +7323,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5781246555766358238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8225580829750920905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021a5a9a40a51f24ba9e5624bb22dfd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CS_WeaponLevelUpUI
+  weaponLevelText: {fileID: 433578997393282391}
+  initWeaponLevel: 1
+  maxWeaponLevel: 15
+  currentWeaponLevel: 0
 --- !u!1 &8342153992063853275
 GameObject:
   m_ObjectHideFlags: 0
@@ -7812,15 +8010,15 @@ RectTransform:
   m_GameObject: {fileID: 8840813427660757504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3340984449870099527}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &559976332917578848
 CanvasRenderer:

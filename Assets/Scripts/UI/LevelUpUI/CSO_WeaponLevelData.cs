@@ -19,6 +19,7 @@ public class CSO_WeaponLevelData : ScriptableObject
         [Header("武器の説明")] public string text;
         [Header("最小レベル")]　public int minLevel;
         [Header("最大レベル")] public int maxLevel;
+        [Header("現在のレベル")] public int currentLevel = 1;
         [Header("ダメージ")] public AnimationCurve damage;
         [Header("連射速度")] public AnimationCurve fireRate;
         [Header("射程距離")] public AnimationCurve range;
