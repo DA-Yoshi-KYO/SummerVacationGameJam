@@ -15,6 +15,7 @@ public class CSO_WeaponDataBase : ScriptableObject
     public class WeaponDataBase
     {
         [Header("武器の名前")] public string weaponName;
+        [Header("武器のアイコン")] public Sprite weaponIcon;
         [Header("ダメージ")] public float damage;
         [Header("連射速度")] public float fireRate;
         [Header("弾速")] public float bulletSpeed;
